@@ -1,0 +1,77 @@
+% =============================================================================
+% NexaLearn Graduation Project — Package Imports
+% Cairo University, Faculty of Engineering, Department of Computer Engineering
+% =============================================================================
+
+% ---- Encoding & Fonts (Arial equivalent via Helvetica) ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+% ---- Page Layout ----
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  left=1in,
+  right=1in,
+  top=1in,
+  bottom=1in
+}
+
+% ---- Line Spacing ----
+\usepackage{setspace}
+
+% ---- Section & Chapter Formatting ----
+\usepackage{titlesec}
+
+% ---- Headers & Footers ----
+\usepackage{fancyhdr}
+
+% ---- Table of Contents Formatting ----
+\usepackage{tocloft}
+
+% ---- Graphics & Floats ----
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+
+% ---- Captions (figures below, tables above) ----
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ---- Tables ----
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+
+% ---- Colors ----
+\usepackage{xcolor}
+\definecolor{CUGreen}{HTML}{006400}
+
+% ---- Code Listings ----
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  captionpos=b,
+  tabsize=2
+}
+
+% ---- Hyperlinks ----
+\usepackage{hyperref}
+
+% ---- Bibliography ----
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=none,
+  maxbibnames=99
+]{biblatex}
+
+% ---- Justified body text ----
+\usepackage{ragged2e}

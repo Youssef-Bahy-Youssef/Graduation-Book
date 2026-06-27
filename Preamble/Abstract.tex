@@ -1,0 +1,32 @@
+% =============================================================================
+% NexaLearn Graduation Project — Abstract (English & Arabic)
+% Cairo University, Faculty of Engineering, Department of Computer Engineering
+% =============================================================================
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+The global shift toward digital education has intensified demand for backend platforms that can orchestrate authentication, structured course delivery, secure payments, media processing, automated assessment, and real-time learner engagement within a single cohesive system. Existing solutions often address these concerns in isolation: commercial Learning Management Systems (LMS) provide turnkey features but limit customisation and data ownership; legacy open-source platforms rely on monolithic designs that resist modern scalability requirements; and generic web application templates omit domain-specific concerns such as enrollment state machines, payment webhook idempotency, video transcoding pipelines, and AI-assisted content generation. This fragmentation leaves educators and engineering teams without a complete, production-ready reference architecture for end-to-end e-learning operations.
+
+This graduation project addresses that gap by designing and implementing \textbf{NexaLearn}, a full-featured e-learning backend built with NestJS and TypeScript. The primary objective is to deliver a modular monolith organised according to Domain-Driven Design (DDD), comprising more than fifteen bounded contexts---including Authentication, Courses, Enrollment, Payments (Stripe), Media (Mux video), AI Pipeline (quiz generation via Whisper transcription and large language models), Assessment, Discussion, Progress, Reviews, Certificates, Search, Streak, Notifications, and Instructor Analytics---each encapsulated with clear domain boundaries, application use cases, and infrastructure adapters.
+
+The adopted approach follows Clean Architecture and CQRS-lite separation of commands and queries, complemented by an event-driven integration model and a transactional outbox pattern to guarantee reliable, at-least-once event delivery with exactly-once side effects across contexts. Security is enforced through JSON Web Token (JWT) authentication with refresh-token rotation, role-based access control (RBAC), and HMAC-signed service-to-service calls for internal pipeline communication. Persistence is managed with PostgreSQL and the Prisma ORM; Redis supports caching, session management, and rate limiting; Stripe handles checkout and refund flows; Mux manages direct-to-cloud video upload and transcoding; and AWS S3 stores supplementary assets. The system is containerised with Docker for reproducible deployment.
+
+The resulting platform exposes a comprehensive REST API covering enrollment lifecycles, lesson progress projection, quiz attempts, discussion moderation, certificate generation, full-text course search, and instructor analytics dashboards. Integration testing with Jest and Testcontainers validates critical paths including concurrent outbox processing, payment activation flows, and access-control enforcement. NexaLearn demonstrates that a rigorously structured NestJS backend can unify the functional breadth of a modern e-learning marketplace while preserving maintainability, testability, and operational readiness.
+
+\textbf{Keywords:} E-Learning, NestJS, Domain-Driven Design, Clean Architecture, Transactional Outbox, Stripe, Mux, Artificial Intelligence, PostgreSQL
+
+\clearpage
+
+\section*{الملخص}
+\addcontentsline{toc}{section}{الملخص}
+
+يشهد قطاع التعليم الإلكتروني نمواً متسارعاً يفرض الحاجة إلى منصات خلفية متكاملة قادرة على إدارة المصادقة، ومحتوى الدورات، ومعالجة الفيديو، والمدفوعات، والاختبارات المولّدة بالذكاء الاصطناعي، وتفاعل المتعلمين في نظام واحد متماسك. ومع ذلك، تفتقر الحلول المتاحة حالياً---سواء المنصات التجارية المغلقة أو الأنظمة مفتوحة المصدر القديمة أو القوالب العامة---إلى التكامل الكامل بين هذه المتطلبات، مما يحد من قابلية التوسع والتخصيص والجاهزية للإنتاج.
+
+يهدف هذا المشروع إلى تصميم وتنفيذ \textbf{NexaLearn}، وهي منصة تعليم إلكتروني متكاملة مبنية بإطار عمل NestJS بلغة TypeScript، وفق مبادئ التصميم القائم على المجال (DDD) والهندسة النظيفة (Clean Architecture). يتكون النظام من أكثر من خمسة عشر سياقاً محدداً، من بينها: المصادقة، الدورات، التسجيل، المدفوعات (Stripe)، الوسائط (Mux)، خط أنابيب الذكاء الاصطناعي (توليد الاختبارات عبر Whisper ونماذج اللغة الكبيرة)، التقييم، المناقشات، التقدم، المراجعات، الشهادات، البحث، الاستمرارية، الإشعارات، وتحليلات المدربين.
+
+يعتمد النهج المتبع على فصل أوامر CQRS-lite، وبنية موجهة بالأحداث، ونمط صندوق الصادرات المعاملاتي (Transactional Outbox) لضمان تسليم الأحداث بموثوقية عالية. تُطبَّق المصادقة عبر JWT مع تدوير رموز التحديث، والتحكم في الوصول القائم على الأدوار (RBAC)، واستدعاءات موقّعة بـ HMAC بين الخدمات. تُستخدم PostgreSQL مع Prisma ORM للتخزين، وRedis للتخزين المؤقت وإدارة الجلسات، وStripe للمدفوعات، وMux لمعالجة الفيديو، وAWS S3 للملفات، مع Docker للنشر.
+
+أنتج المشروع واجهة REST API شاملة تغطي دورة حياة التسجيل، وتتبع التقدم، ومحاولات الاختبارات، والمناقشات، وإصدار الشهادات، والبحث، ولوحات تحليلات المدربين. وتم التحقق من المسارات الحرجة عبر اختبارات تكامل باستخدام Jest وTestcontainers. يُظهر NexaLearn إمكانية بناء منصة تعليم إلكتروني حديثة قابلة للصيانة والاختبار والتوسع ضمن بنية NestJS منظمة.
+
+\clearpage

@@ -1,16 +1,66 @@
-\documentclass[12pt, a4paper]{report}
+% =============================================================================
+% NexaLearn Graduation Project — Root Document
+% Cairo University, Faculty of Engineering, Department of Computer Engineering
+% =============================================================================
+
+\documentclass[12pt,a4paper]{report}
 
 \input{Preamble/packages}
 \input{Preamble/formatting}
+\input{Preamble/begin_document}
 
-\begin{document}
-
+% ---- Cover page (no page number) ----
 \pagestyle{empty}
 \input{Preamble/Frontpage}
 
+% ---- General guidelines note (remove from final submission) ----
+% The faculty template includes a general-guidelines page between the cover
+% and the abstract. Omit it in the final report; keep this comment as a reminder.
+
+% ---- Front matter: roman numerals starting at Abstract (page iii) ----
+\cleardoublepage
 \pagenumbering{roman}
-\input{Preamble/Abstract}
-\input{Preamble/Acknowledgments}
-\input{Preamble/Abbreviations}
+\setcounter{page}{3}
+\pagestyle{fancy}
+
+\input{Preamble/Abstract}          % Abstract (English) — iii; Arabic abstract — iv
+\input{Preamble/Acknowledgments}  % Acknowledgments — v
+
+\tableofcontents                    % Table of Contents — vi
+\cleardoublepage
+\listoffigures                      % List of Figures — ix
+\cleardoublepage
+\listoftables                       % List of Tables — x
+
+\input{Preamble/Abbreviations}     % List of Abbreviations — xi
+\input{Preamble/Symbols}           % List of Symbols — xii
+\input{Preamble/Contacts}           % Contacts — xiii
+
+% ---- Main body: arabic numerals starting at Chapter 1 ----
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\include{Chapter1/Chapter1}
+\include{Chapter2/Chapter2}
+\include{Chapter3/Chapter3}
+\include{Chapter4/Chapter4}
+\include{Chapter5/Chapter5}
+\include{Chapter6/Chapter6}
+
+% ---- References (BibTeX/biblatex) ----
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[title={References}]
+
+% ---- Appendices ----
+\appendix
+
+\include{AppendixA/AppendixA}  % A — Development Platforms and Tools
+\include{AppendixB/AppendixB}  % B — Use Cases
+\include{AppendixC/AppendixC}  % C — User Guide
+\include{AppendixD/AppendixD}  % D — Code Documentation
+\include{AppendixE/AppendixE}  % E — Feasibility Study
 
 \end{document}

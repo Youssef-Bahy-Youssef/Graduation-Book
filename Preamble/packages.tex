@@ -5,6 +5,7 @@
 
 % ---- XeLaTeX — Fonts & Arabic Support ----
 \usepackage{fontspec}
+\setmainfont{Helvetica}
 \setsansfont{Helvetica}
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -12,6 +13,8 @@
 \setdefaultlanguage{english}
 \setotherlanguage{arabic}
 \newfontfamily\arabicfont[Script=Arabic]{Geeza Pro}
+\newfontfamily\arabicfontsf[Script=Arabic]{Geeza Pro}
+\newfontfamily\arabicfonttt[Script=Arabic]{Geeza Pro}
 
 % ---- Page Layout ----
 \usepackage{geometry}

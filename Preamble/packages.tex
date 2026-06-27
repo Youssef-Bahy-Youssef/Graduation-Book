@@ -10,11 +10,11 @@
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{polyglossia}
+\newfontfamily\arabicfont[Script=Arabic,AutoFakeBold=2.5]{DecoType Naskh}
+\newfontfamily\arabicfontsf[Script=Arabic,AutoFakeBold=2.5]{DecoType Naskh}
+\newfontfamily\arabicfonttt[Script=Arabic]{DecoType Naskh}
 \setdefaultlanguage{english}
 \setotherlanguage{arabic}
-\newfontfamily\arabicfont[Script=Arabic]{Geeza Pro}
-\newfontfamily\arabicfontsf[Script=Arabic]{Geeza Pro}
-\newfontfamily\arabicfonttt[Script=Arabic]{Geeza Pro}
 
 % ---- Page Layout ----
 \usepackage{geometry}
@@ -77,8 +77,10 @@
   backend=biber,
   style=numeric,
   sorting=none,
-  maxbibnames=99
+  maxbibnames=99,
+  language=american
 ]{biblatex}
+\DeclareLanguageMapping{arabic}{american}
 
 % ---- Justified body text ----
 \usepackage{ragged2e}

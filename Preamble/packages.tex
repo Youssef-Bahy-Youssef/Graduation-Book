@@ -3,11 +3,15 @@
 % Cairo University, Faculty of Engineering, Department of Computer Engineering
 % =============================================================================
 
-% ---- Encoding & Fonts (Arial equivalent via Helvetica) ----
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{helvet}
+% ---- XeLaTeX — Fonts & Arabic Support ----
+\usepackage{fontspec}
+\setsansfont{Helvetica}
 \renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{arabic}
+\newfontfamily\arabicfont[Script=Arabic]{Amiri}
 
 % ---- Page Layout ----
 \usepackage{geometry}

@@ -18,6 +18,7 @@ The resulting platform exposes a comprehensive REST API covering enrollment life
 
 \clearpage
 
+\begin{arabic}
 \section*{الملخص}
 \addcontentsline{toc}{section}{الملخص}
 
@@ -28,5 +29,6 @@ The resulting platform exposes a comprehensive REST API covering enrollment life
 يعتمد النهج المتبع على فصل أوامر CQRS-lite، وبنية موجهة بالأحداث، ونمط صندوق الصادرات المعاملاتي (Transactional Outbox) لضمان تسليم الأحداث بموثوقية عالية. تُطبَّق المصادقة عبر JWT مع تدوير رموز التحديث، والتحكم في الوصول القائم على الأدوار (RBAC)، واستدعاءات موقّعة بـ HMAC بين الخدمات. تُستخدم PostgreSQL مع Prisma ORM للتخزين، وRedis للتخزين المؤقت وإدارة الجلسات، وStripe للمدفوعات، وMux لمعالجة الفيديو، وAWS S3 للملفات، مع Docker للنشر.
 
 أنتج المشروع واجهة REST API شاملة تغطي دورة حياة التسجيل، وتتبع التقدم، ومحاولات الاختبارات، والمناقشات، وإصدار الشهادات، والبحث، ولوحات تحليلات المدربين. وتم التحقق من المسارات الحرجة عبر اختبارات تكامل باستخدام Jest وTestcontainers. يُظهر NexaLearn إمكانية بناء منصة تعليم إلكتروني حديثة قابلة للصيانة والاختبار والتوسع ضمن بنية NestJS منظمة.
+\end{arabic}
 
 \clearpage

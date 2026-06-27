@@ -1,0 +1,102 @@
+% =============================================================================
+% Section 1.4: Document Organization
+% =============================================================================
+
+\section{Document Organization}
+\label{sec:document-organization}
+
+This report is structured to guide evaluators, future maintainers, and interested engineers from commercial and academic motivation through detailed engineering design, empirical verification, and critical reflection. Each chapter fulfils a distinct role in the narrative arc; together they satisfy the Cairo University Faculty of Engineering graduation project template while tailoring content to the NexaLearn backend domain. Table~\ref{tab:chapter-roadmap} provides a concise roadmap; subsections below expand the purpose and internal organisation of each chapter.
+
+\begin{table}[H]
+  \centering
+  \caption{Roadmap of Report Chapters and Primary Focus Areas}
+  \label{tab:chapter-roadmap}
+  \small
+  \begin{tabular}{@{}clp{7.8cm}@{}}
+    \toprule
+    \textbf{Ch.} & \textbf{Title} & \textbf{Primary Focus} \\
+    \midrule
+    1 & Introduction &
+    Motivation, problems, objectives, outcomes, report structure \\
+    2 & Market Visibility Study &
+    Customers, competitors, business case, financial analysis \\
+    3 & Literature Survey &
+    DDD, Clean Architecture, technologies, prior work comparison \\
+    4 & System Design and Architecture &
+    Modules, diagrams, use cases, implementation patterns \\
+    5 & System Testing and Verification &
+    Test strategy, module/integration results, schedules \\
+    6 & Conclusions and Future Work &
+    Challenges, experience gained, limitations, extensions \\
+    \midrule
+    -- & References &
+    Numbered citations in order of appearance \\
+    A--E & Appendices &
+    Tools, use cases, user guide, code docs, feasibility study \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Chapter 2: Market Visibility Study}
+\label{subsec:doc-ch2}
+
+Chapter~2 positions NexaLearn within the commercial e-learning landscape. It opens with an introductory paragraph framing the market for backend platforms and independent course infrastructure. Section~2.1 identifies \textbf{target customers} in three segments: universities and educational institutions requiring data sovereignty and customisation; corporate learning and development (L\&D) departments needing SSO integration, compliance tracking, and ROI analytics; and independent course creators or edtech startups seeking white-label backends without revenue-sharing SaaS constraints.
+
+Section~2.2 presents a \textbf{market survey} of competing platforms---Udemy for Business, Coursera, Teachable, Thinkific, Moodle, Open edX, and generic NestJS boilerplates---with dedicated subsections analysing strengths, weaknesses, architectural openness, and implications for NexaLearn differentiation. Section~2.3 develops the \textbf{business case and financial analysis}, estimating capital expenditure (development salaries, infrastructure setup), operational expenditure (cloud hosting, monitoring, support), projected sales volumes over five years, pricing strategy relative to competitors, monthly cash-flow projections, and the projected break-even date. This chapter demonstrates that NexaLearn is not only technically viable but commercially conceivable if productised.
+
+\subsection{Chapter 3: Literature Survey}
+\label{subsec:doc-ch3}
+
+Chapter~3 supplies the theoretical and technological foundations required to understand design decisions in Chapters~4 and~5. An introductory paragraph outlines the chapter's two-part structure: engineering background, then comparative prior work.
+
+Background sections (e.g., Sections~3.1--3.2) cover pivotal topics including \textbf{Domain-Driven Design} (entities, aggregates, bounded contexts, context maps), \textbf{Clean Architecture} and dependency inversion, \textbf{CQRS-lite} command/query separation, \textbf{event-driven architecture}, the \textbf{transactional outbox pattern}, and relevant platform technologies: NestJS module system, PostgreSQL ACID semantics, Prisma ORM, Redis caching patterns, Stripe payment lifecycles, Mux video pipelines, and AI speech/LLM integration patterns.
+
+Section~3.3 presents a \textbf{comparative study of previous work}, reviewing recent academic publications and industry articles on e-learning platform architecture, microservice reliability, and LMS modernisation from approximately the past three years. Section~3.4 concludes with the \textbf{implemented approach}, justifying NexaLearn's modular monolith over premature microservice decomposition, and documenting adaptations (CQRS-lite rather than full event sourcing, outbox rather than Kafka in v1) appropriate to graduation project scope.
+
+\subsection{Chapter 4: System Design and Architecture}
+\label{subsec:doc-ch4}
+
+Chapter~4 is the technical core, answering \textit{what was built} and \textit{how it was built}. It opens with assumptions (single-tenant deployment, English primary locale, external AI provider availability) and non-functional requirements (security, horizontal scalability of stateless API tier, observability via structured logging and audit trails).
+
+Section~4.2 presents \textbf{system architecture} through block diagrams, deployment topology, and the three high-level module groupings:
+\begin{itemize}
+  \item \textbf{Learning Core} --- Auth, Courses, Enrollment, Media, Progress, Assessment, Certificates;
+  \item \textbf{Engagement \& Commerce} --- Discussion, Reviews, Streak, Notifications, Payments, Search;
+  \item \textbf{Platform \& Operations} --- Instructor Analytics, Admin, Audit, Events/Outbox, AI Pipeline, Prisma/Common infrastructure.
+\end{itemize}
+
+Subsequent sections (4.3 onward) decompose each major module following the faculty template substructure: \textit{functional description}, \textit{modular decomposition} (domain/application/infrastructure layers), \textit{design constraints}, and supplementary discussion with diagrams, sequence charts, ERD excerpts, and representative TypeScript code snippets. Event flows---enrollment activation, outbox processing, Mux webhook handling, AI callback ingestion---receive dedicated treatment because they embody cross-cutting reliability concerns introduced in Chapter~1.
+
+\subsection{Chapter 5: System Testing and Verification}
+\label{subsec:doc-ch5}
+
+Chapter~5 documents verification strategy and results. Section~5.1 describes the \textbf{testing setup}: Docker Compose environments, Testcontainers PostgreSQL/Redis, mocked Stripe/Mux/AI providers where external calls are impractical in CI, and Jest as the test runner. Section~5.2 explains the \textbf{testing plan and strategy}, distinguishing unit tests (domain logic), integration tests (repository + outbox + webhook handlers against real database), and end-to-end HTTP tests (full request/response cycles).
+
+Subsections~5.2.1 and~5.2.2 cover \textbf{module testing} and \textbf{integration testing} respectively, presenting representative test cases, expected versus actual outcomes, and defects discovered during development. Section~5.3 outlines the \textbf{testing schedule} aligned with development milestones. Section~5.4 provides \textbf{comparative results} where applicable---e.g., outbox throughput under concurrent workers, payment activation latency---in tabular or graphical form with interpretive commentary linking results back to Objective~8 (production-grade reliability).
+
+\subsection{Chapter 6: Conclusions and Future Work}
+\label{subsec:doc-ch6}
+
+Chapter~6 synthesises the project narrative. Section~6.1 discusses \textbf{faced challenges}: Stripe webhook edge cases (delayed duplicates, metadata mismatches), coordinating Prisma migrations across team members, managing AI pipeline latency and cost, and balancing DDD purity with delivery deadlines. Section~6.2 reflects on \textbf{gained experience} in NestJS modular design, event-driven reliability, payment integration security, and technical writing.
+
+Section~6.3 states \textbf{conclusions}: the extent to which objectives were met, distinctive features of NexaLearn (unified open reference, outbox-tested reliability, AI pipeline integration), and acknowledged limitations (single-region deployment, no bundled frontend in scope, dependence on external AI providers). Section~6.4 proposes \textbf{future work}: multi-tenant isolation, GraphQL adjunct APIs, recommendation engines, SCORM/xAPI import, localised content, Kubernetes deployment manifests, and third-party security audit.
+
+\subsection{References and Appendices}
+\label{subsec:doc-backmatter}
+
+\textbf{References} follow Chapter~6, numbered in order of first citation throughout the report (faculty template style \texttt{[1], [2], \ldots}).
+
+\textbf{Appendix~A} --- Development Platforms and Tools: hardware/software inventory, NestJS, Prisma, Docker, Stripe/Mux SDKs, AI tooling. \textbf{Appendix~B} --- Use Cases: formal use case diagrams and descriptions for student enrollment, instructor publishing, admin moderation. \textbf{Appendix~C} --- User Guide: step-by-step operational instructions for instructors and administrators with screenshots. \textbf{Appendix~D} --- Code Documentation: selected module walkthroughs and directory structure. \textbf{Appendix~E} --- Feasibility Study: expanded financial projections supporting Chapter~2.
+
+\subsection{Reading Paths for Different Audiences}
+\label{subsec:doc-reading-paths}
+
+Readers may navigate selectively:
+\begin{itemize}
+  \item \textbf{Faculty evaluators} --- Chapter~1 (context), Chapter~4 (design depth), Chapter~5 (verification), Chapter~6 (reflection);
+  \item \textbf{Future student maintainers} --- Chapter~4, Appendices~A and~D, plus repository README;
+  \item \textbf{Industry reviewers} --- Chapter~1 objectives/outcomes, Chapter~3 patterns, Chapter~4 outbox/payment/AI sections;
+  \item \textbf{Business stakeholders} --- Chapter~2 market study, Appendix~E feasibility.
+\end{itemize}
+
+This organisational structure ensures NexaLearn is documented as a complete, reproducible engineering contribution---not an isolated GitHub repository---and closes Chapter~1 by orienting the reader toward the detailed chapters that follow.

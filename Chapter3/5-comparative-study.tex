@@ -1,0 +1,127 @@
+% =============================================================================
+% Section 3.5: Comparative Study of Previous Work
+% =============================================================================
+
+\section{Comparative Study of Previous Work}
+\label{sec:comparative-study}
+
+Several academic and industrial projects have explored architectural patterns for e-learning backends, event-driven reliability, and AI-assisted content generation. This section positions NexaLearn within the landscape of prior work by analysing four representative studies and identifying the gaps that NexaLearn's combined approach addresses.
+
+\subsection{Dossena et al. (2022) --- DDD in E-Learning Platforms}
+
+Dossena, Fugini, and Peroni~\cite{dossena2022ddd} present a case study of applying DDD strategic and tactical patterns to the design of a university LMS. Their work decomposes the e-learning domain into six bounded contexts---Course Management, Enrollment, Assessment, Gradebook, Communication, and Reporting---and documents the context map with upstream/downstream relationships. The authors report that the bounded context decomposition reduced inter-module coupling by 40\% compared to a previous monolithic version, and that the ubiquitous language improved communication between developers and faculty stakeholders during requirements gathering.
+
+\textbf{Limitations.} The project was constrained to a single-semester pilot involving 15 courses and 300 students, limiting generalisability to production-scale deployments. The architecture relies on a relational database with no event-driven patterns, meaning that cross-context synchronisation is performed through direct remote procedure calls (RPC) between microservices, exposing the system to the dual-write problem described in Section~\ref{sec:event-driven-outbox}. The assessment context supports only manually authored quizzes, with no AI-assisted question generation.
+
+\subsection{Yang et al. (2023) --- Microservices for E-Learning}
+
+Yang, Chen, and Zhang~\cite{yang2023micro} conducted a systematic literature review of 47 papers published between 2018 and 2023 on microservice decomposition, inter-service communication, and data management in e-learning systems. Their taxonomy identifies four decomposition strategies: (1) by business capability (e.g., separate services for users, courses, payments), (2) by workflow step (e.g., video ingestion as a separate service from video delivery), (3) by subdomain (consistent with DDD bounded contexts), and (4) by volatility (extracting frequently changing features into independently deployable services). The survey found that 62\% of analysed systems used synchronous HTTP/REST for inter-service communication, 21\% used asynchronous messaging (primarily RabbitMQ or Apache Kafka), and only 17\% employed transactional outbox patterns for data consistency.
+
+\textbf{Limitations.} The review identifies a significant adoption gap: while the outbox pattern is recommended in the microservices literature ~\cite{richardson2018outbox} as the standard solution for reliable event publication, fewer than one in five surveyed e-learning systems implement it. Most rely on distributed transactions (XA protocol) or best-effort eventual consistency without idempotency guarantees. The review does not address AI integration patterns, as none of the surveyed papers incorporated Whisper, LLM-based quiz generation, or similar AI services as first-class components of the architecture.
+
+\subsection{Kumar et al. (2023) --- LLM Quiz Generation}
+
+Kumar, Barrios, and Haridas~\cite{kumar2023llmquiz} present an end-to-end pipeline for generating formative assessment questions from lecture transcripts using GPT-4. Their system, evaluated on 50 university lectures spanning computer science, biology, and economics, achieved a 73\% expert-acceptability rate for generated multiple-choice questions. The paper contributes a prompt engineering methodology that instructs the LLM to produce questions targeting different cognitive levels (Bloom's taxonomy: remember, understand, apply, analyse).
+
+\textbf{Limitations.} The pipeline is a standalone Python service invoked manually by instructors; it does not integrate with an LMS backend for automated lifecycle management. There is no support for human-in-the-loop review workflows, meaning that generated questions are either used directly (risk of uncaught errors) or manually copied into a separate quiz-authoring tool. The paper does not address authentication or secure callback patterns for async AI processing, and the pipeline assumes the transcript is already available---it does not include ASR integration.
+
+\subsection{Mehta et al. (2023) --- Event-Driven Educational Analytics}
+
+Mehta, Soni, and Thakkar~\cite{mehta2023eda} propose an event-driven architecture for processing real-time learner interaction events in large-scale educational platforms. Their system defines a canonical event schema---\texttt{LearnerInteractionEvent} with fields for learner ID, session ID, resource ID, event type (e.g., \texttt{PAGE\_VIEW}, \texttt{VIDEO\_PLAY}, \texttt{QUIZ\_SUBMIT}), timestamp, and arbitrary key-value metadata. Events are ingested via Apache Kafka and processed by Kafka Streams topologies that compute per-learner and per-course aggregates with sub-second latency. The authors report processing 2.8 million events per day across 15,000 learners with a p99 processing latency of 850 ms.
+
+\textbf{Limitations.} The architecture depends on a Kafka cluster, which represents significant operational overhead for self-hosted deployments by small teams or institutions with limited DevOps resources. The event schema is generic and does not enforce domain-specific invariants; events are not derived from domain aggregates and therefore risk becoming disconnected from the write model's correctness guarantees. The outbox pattern is not used, as events are published directly to Kafka from application code, exposing the system to the dual-write problem.
+
+\subsection{Synthesis and Gap Analysis}
+
+Table~\ref{tab:lit-comparison} summarises the coverage of key architectural dimensions across the four studies and NexaLearn. The comparison reveals that no single prior work addresses the full combination of DDD decomposition, reliable event processing via the outbox pattern, AI-assisted transcription and quiz generation with HMAC-secured callbacks, and HLS-based video streaming with lifecycle management. NexaLearn's contribution is the \textit{integration} of these patterns into a cohesive, open-source backend architecture that is deployable as a modular monolith without requiring a separate message broker infrastructure.
+
+\begin{table}[H]
+  \centering
+  \caption{Comparative Summary of Prior Work and NexaLearn Coverage}
+  \label{tab:lit-comparison}
+  \small
+  \begin{tabular}{@{}p{3.2cm} p{2.2cm} p{2.2cm} p{2.2cm} p{2.2cm} p{2.2cm}@{}}
+    \toprule
+    \textbf{Dimension} &
+    \textbf{Dossena} &
+    \textbf{Yang} &
+    \textbf{Kumar} &
+    \textbf{Mehta} &
+    \textbf{NexaLearn} \\
+    \midrule
+    DDD bounded contexts &
+    Full &
+    Reviewed &
+    --- &
+    --- &
+    Full \\
+    \addlinespace
+    Clean Architecture layers &
+    Partial &
+    --- &
+    --- &
+    --- &
+    Full \\
+    \addlinespace
+    Transactional outbox &
+    --- &
+    Reviewed &
+    --- &
+    --- &
+    Full \\
+    \addlinespace
+    Idempotent event processing &
+    --- &
+    --- &
+    --- &
+    Kafka-level &
+    Full \\
+    \addlinespace
+    ASR (Whisper) integration &
+    --- &
+    --- &
+    --- &
+    --- &
+    Full \\
+    \addlinespace
+    LLM quiz generation &
+    --- &
+    --- &
+    Full &
+    --- &
+    Full \\
+    \addlinespace
+    Human-in-the-loop review &
+    --- &
+    --- &
+    --- &
+    --- &
+    Full \\
+    \addlinespace
+    HLS video streaming &
+    --- &
+    Reviewed &
+    --- &
+    --- &
+    Full \\
+    \addlinespace
+    HMAC callback security &
+    --- &
+    --- &
+    --- &
+    --- &
+    Full \\
+    \addlinespace
+    No broker dependency &
+    --- &
+    Partial &
+    --- &
+    Kafka req. &
+    Yes \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+NexaLearn is distinguished by its comprehensive coverage across all ten dimensions. The three dimensions not covered by any prior work---Whisper integration, human-in-the-loop quiz review, and HMAC callback security---represent the principal novel contributions of this project's architecture. The absence of a mandatory message broker (Kafka or RabbitMQ) is a deliberate design decision, justified in Section~\ref{sec:implemented-approach}, that reduces operational complexity for the primary target audience of edtech startups and university IT departments.
+
+The table further reveals that existing work either addresses architecture (Dossena, Yang, Mehta) or AI content (Kumar), but never both. NexaLearn's architecture is explicitly designed to bridge this gap, making it---to the best of our knowledge---the first open-source NestJS backend to combine DDD-governed bounded contexts with a full AI pipeline, transactional outbox eventing, and Mux-based video lifecycle.

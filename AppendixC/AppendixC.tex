@@ -1,0 +1,420 @@
+% =============================================================================
+% Appendix C: User Guide
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{User Guide}
+\label{app:userguide}
+
+This appendix provides practical guidance for interacting with the NexaLearn API. All endpoints are accessible via the Swagger UI at \texttt{/api/docs} when the application is running.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{images/swagger_placeholder.png}
+  \caption{Swagger UI documentation at \texttt{/api/docs} showing the Auth module endpoints. The interactive UI allows testing endpoints directly from the browser.}\label{fig:swagger-ui}
+\end{figure}
+
+\section{API Authentication Guide}
+\label{sec:app-auth-guide}
+
+\subsection{Obtaining JWT Tokens}
+
+NexaLearn uses a dual-token authentication system: a short-lived access token (15 minutes) and a long-lived refresh token (7 days).
+
+\textbf{Step 1: Register an account.}
+
+\begin{lstlisting}[caption=Register a new user,label=lst:guide-register]
+POST /auth/register
+Content-Type: application/json
+
+{
+  "email": "student@example.com",
+  "password": "SecurePass123",
+  "fullName": "Ahmed Hassan",
+  "role": "student"
+}
+\end{lstlisting}
+
+Response: HTTP 201 with an activation token sent to the email address.
+
+\textbf{Step 2: Verify email.}
+
+\begin{lstlisting}[caption=Verify email address,label=lst:guide-verify]
+POST /auth/verify-email
+Content-Type: application/json
+
+{
+  "token": "abcdef123456..."
+}
+\end{lstlisting}
+
+\textbf{Step 3: Log in.}
+
+\begin{lstlisting}[caption=Login and obtain tokens,label=lst:guide-login]
+POST /auth/login
+Content-Type: application/json
+
+{
+  "email": "student@example.com",
+  "password": "SecurePass123"
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Response with tokens,label=lst:guide-tokens]
+HTTP 200 OK
+Content-Type: application/json
+
+{
+  "accessToken": "eyJhbGciOiJSUzI1NiIs...",
+  "refreshToken": "a1b2c3d4e5f6...",
+  "expiresIn": 900,
+  "user": {
+    "id": "user_abc123",
+    "email": "student@example.com",
+    "role": "student",
+    "fullName": "Ahmed Hassan"
+  }
+}
+\end{lstlisting}
+
+\textbf{Step 4: Use the access token.}
+
+Include the access token in the \texttt{Authorization} header for all authenticated requests:
+
+\begin{lstlisting}[caption=Authenticated request,label=lst:guide-auth-request]
+GET /courses
+Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
+\end{lstlisting}
+
+\textbf{Step 5: Refresh the access token.}
+
+When the access token expires (after 15 minutes), use the refresh token to obtain a new pair:
+
+\begin{lstlisting}[caption=Refresh tokens,label=lst:guide-refresh]
+POST /auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "a1b2c3d4e5f6..."
+}
+\end{lstlisting}
+
+\textbf{Important:} The refresh token is single-use. Each refresh call invalidates the old token and issues a new one. Store the new refresh token securely (HTTPOnly cookie, secure local storage).
+
+\subsection{Token Storage Best Practices}
+
+\begin{itemize}
+  \item \textbf{Web applications:} Store the access token in memory (JavaScript variable). Store the refresh token in an HTTPOnly, Secure, SameSite=Strict cookie set by the server.
+  \item \textbf{Mobile applications:} Store both tokens in the device's secure keychain (iOS Keychain, Android Keystore).
+  \item \textbf{Never} store tokens in \texttt{localStorage} (vulnerable to XSS attacks).
+  \item \textbf{Never} log tokens to the console or send them in URLs.
+\end{itemize}
+
+\section{Instructor Guide}
+\label{sec:app-instructor-guide}
+
+\subsection{Creating a Course}
+
+\begin{enumerate}
+  \item Log in with an instructor account (role: \texttt{instructor}).
+  \item Send a POST request to \texttt{/courses} with course metadata.
+
+\begin{lstlisting}[caption=Create a course,label=lst:guide-create-course]
+POST /courses
+Authorization: Bearer <instructor-access-token>
+Content-Type: application/json
+
+{
+  "title": "Introduction to Machine Learning",
+  "description": "A comprehensive introduction to ML concepts...",
+  "categoryId": "cat_ml",
+  "difficulty": "beginner",
+  "price": 4900,
+  "coverImageUrl": "https://nexalearn.s3.amazonaws.com/covers/ml-intro.png"
+}
+\end{lstlisting}
+\end{enumerate}
+
+\subsection{Adding Modules and Lessons}
+
+\begin{enumerate}
+  \item Add modules to the course:
+
+\begin{lstlisting}[caption=Add a module,label=lst:guide-add-module]
+POST /courses/:courseId/modules
+Authorization: Bearer <instructor-access-token>
+Content-Type: application/json
+
+{
+  "title": "Supervised Learning",
+  "description": "Linear regression, decision trees, SVMs",
+  "order": 1
+}
+\end{lstlisting}
+
+  \item Add lessons to each module:
+
+\begin{lstlisting}[caption=Add a lesson,label=lst:guide-add-lesson]
+POST /modules/:moduleId/lessons
+Content-Type: application/json
+
+{
+  "title": "Linear Regression",
+  "content": "<h2>Introduction</h2><p>Linear regression models...</p>",
+  "contentType": "html",
+  "order": 1,
+  "estimatedDurationMinutes": 15
+}
+\end{lstlisting}
+\end{enumerate}
+
+\subsection{Uploading Videos}
+
+The video upload flow uses Mux's direct upload to avoid proxying video files through the server:
+
+\begin{enumerate}
+  \item Request a Mux upload URL:
+
+\begin{lstlisting}[caption=Request upload URL,label=lst:guide-upload-url]
+POST /media/upload
+Authorization: Bearer <instructor-access-token>
+
+Response:
+{
+  "uploadUrl": "https://api.mux.com/video/v1/uploads/...",
+  "assetId": "asset_abc123"
+}
+\end{lstlisting}
+
+  \item Upload the video file directly to Mux from the frontend using the returned URL.
+  \item The system will process the video asynchronously. Check the asset status:
+
+\begin{lstlisting}[caption=Check video status,label=lst:guide-video-status]
+GET /media/assets/:assetId
+
+Response:
+{
+  "id": "asset_abc123",
+  "status": "READY",
+  "playbackUrl": "https://stream.mux.com/playback_id.m3u8",
+  "duration": 1842
+}
+\end{lstlisting}
+
+  \item Attach the video to a lesson:
+
+\begin{lstlisting}[caption=Attach video to lesson,label=lst:guide-attach-video]
+PATCH /lessons/:lessonId
+Content-Type: application/json
+
+{
+  "videoAssetId": "asset_abc123"
+}
+\end{lstlisting}
+\end{enumerate}
+
+\subsection{Managing AI-Generated Quizzes}
+
+When a video is uploaded with the \texttt{generateQuiz: true} flag, the system creates a draft quiz automatically.
+
+\begin{enumerate}
+  \item View the generated quiz draft:
+
+\begin{lstlisting}[caption=View AI-generated quiz,label=lst:guide-view-ai-quiz]
+GET /quizzes/:quizId
+\end{lstlisting}
+
+  \item Edit questions, add or remove options, change question types.
+  \item Publish the quiz when ready:
+
+\begin{lstlisting}[caption=Publish quiz,label=lst:guide-publish-quiz]
+POST /quizzes/:quizId/publish
+\end{lstlisting}
+\end{enumerate}
+
+\section{Student Guide}
+\label{sec:app-student-guide}
+
+\subsection{Enrolling in a Course}
+
+\begin{enumerate}
+  \item Browse the course catalogue:
+
+\begin{lstlisting}[caption=List published courses,label=lst:guide-list-courses]
+GET /courses?status=PUBLISHED&page=1&limit=20
+\end{lstlisting}
+
+  \item View course details:
+
+\begin{lstlisting}[caption=View course,label=lst:guide-view-course]
+GET /courses/:courseId
+\end{lstlisting}
+
+  \item For free courses, send an enrollment request:
+
+\begin{lstlisting}[caption=Enroll in free course,label=lst:guide-enroll-free]
+POST /enrollments
+Content-Type: application/json
+
+{
+  "courseId": "course_abc123"
+}
+\end{lstlisting}
+
+  \item For paid courses, the enrollment creates a Stripe Payment Intent. Complete the payment on the frontend using the returned \texttt{clientSecret}.
+\end{enumerate}
+
+\subsection{Watching Lessons and Tracking Progress}
+
+\begin{enumerate}
+  \item Access enrolled courses:
+
+\begin{lstlisting}[caption=List enrolled courses,label=lst:guide-enrolled-courses]
+GET /enrollments?status=ACTIVE
+\end{lstlisting}
+
+  \item View course curriculum with module--lesson hierarchy:
+
+\begin{lstlisting}[caption=View course curriculum,label=lst:guide-curriculum]
+GET /courses/:courseId/curriculum
+\end{lstlisting}
+
+  \item Access a lesson (the response includes the video playback URL, quiz link, and discussion thread):
+
+\begin{lstlisting}[caption=Access lesson,label=lst:guide-access-lesson]
+GET /lessons/:lessonId
+\end{lstlisting}
+
+  \item Send progress updates as the student watches:
+
+\begin{lstlisting}[caption=Update lesson progress,label=lst:guide-progress]
+PATCH /lessons/:lessonId/progress
+Content-Type: application/json
+
+{
+  "progressPercent": 45,
+  "currentPosition": 320
+}
+\end{lstlisting}
+
+  \item Mark lesson as completed (sent when 90\%+ watched):
+
+\begin{lstlisting}[caption=Complete lesson,label=lst:guide-complete-lesson]
+POST /lessons/:lessonId/complete
+\end{lstlisting}
+\end{enumerate}
+
+\subsection{Taking Quizzes}
+
+\begin{enumerate}
+  \item View quiz questions (without answer keys):
+
+\begin{lstlisting}[caption=View quiz,label=lst:guide-view-quiz]
+GET /quizzes/:quizId
+\end{lstlisting}
+
+  \item Submit an attempt:
+
+\begin{lstlisting}[caption=Submit quiz attempt,label=lst:guide-submit-quiz]
+POST /quizzes/:quizId/attempts
+Content-Type: application/json
+
+{
+  "answers": [
+    { "questionId": "q_1", "selectedOptionId": "opt_a" },
+    { "questionId": "q_2", "textAnswer": "Supervised learning is..." }
+  ]
+}
+\end{lstlisting}
+
+  \item View the graded result:
+
+\begin{lstlisting}[caption=View graded attempt,label=lst:guide-graded]
+GET /attempts/:attemptId
+
+Response includes: score, percentage, per-question feedback,
+and instructor comments for short-answer questions.
+\end{lstlisting}
+\end{enumerate}
+
+\subsection{Discussion}
+
+\begin{enumerate}
+  \item Create a discussion thread:
+
+\begin{lstlisting}[caption=Create thread,label=lst:guide-create-thread]
+POST /courses/:courseId/discussions
+Content-Type: application/json
+
+{
+  "title": "Question about linear regression",
+  "body": "I don't understand how gradient descent converges..."
+}
+\end{lstlisting}
+
+  \item Reply to a thread:
+
+\begin{lstlisting}[caption=Post reply,label=lst:guide-post-reply]
+POST /discussions/:threadId/replies
+Content-Type: application/json
+
+{
+  "body": "Gradient descent converges when the learning rate..."
+}
+\end{lstlisting}
+
+  \item Mark thread as resolved:
+
+\begin{lstlisting}[caption=Resolve thread,label=lst:guide-resolve-thread]
+PATCH /discussions/:threadId/resolve
+\end{lstlisting}
+\end{enumerate}
+
+\section{Admin Guide}
+\label{sec:app-admin-guide}
+
+\subsection{Managing Categories}
+
+\begin{lstlisting}[caption=Create category,label=lst:guide-create-category]
+POST /admin/categories
+Authorization: Bearer <admin-access-token>
+Content-Type: application/json
+
+{
+  "name": "Machine Learning",
+  "slug": "machine-learning",
+  "parentId": null
+}
+\end{lstlisting}
+
+\subsection{Viewing Audit Logs}
+
+The system logs all state-changing operations in the audit log table. Admins can query logs by date range, user, or resource:
+
+\begin{lstlisting}[caption=Query audit logs,label=lst:guide-audit-logs]
+GET /admin/audit-logs?from=2025-01-01&to=2025-06-01&userId=user_123
+
+Response:
+[
+  {
+    "timestamp": "2025-03-15T10:30:00Z",
+    "userId": "user_123",
+    "action": "COURSE_PUBLISHED",
+    "resourceId": "course_abc",
+    "details": { "courseTitle": "ML Intro" }
+  }
+]
+\end{lstlisting}
+
+\subsection{Managing Instructor Applications}
+
+When a new instructor signs up, their account is created with role \texttt{student} by default. An admin can promote the user:
+
+\begin{lstlisting}[caption=Promote user to instructor,label=lst:guide-promote]
+PATCH /admin/users/:userId/role
+Content-Type: application/json
+
+{
+  "role": "instructor"
+}
+\end{lstlisting}

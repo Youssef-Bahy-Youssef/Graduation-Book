@@ -13,39 +13,47 @@
 \pagestyle{empty}
 \input{Preamble/Frontpage}
 
-% ---- General guidelines note (remove from final submission) ----
-% The faculty template includes a general-guidelines page between the cover
-% and the abstract. Omit it in the final report; keep this comment as a reminder.
-
-% ---- Front matter: roman numerals starting at Abstract (page iii) ----
+% ---- Front matter ----
 \cleardoublepage
 \pagenumbering{roman}
 \setcounter{page}{3}
 \pagestyle{fancy}
 
 \input{Preamble/Abstract}          % Abstract (English) — iii; Arabic abstract — iv
-\input{Preamble/Acknowledgments}  % Acknowledgments — v
+\input{Preamble/Acknowledgments}   % Acknowledgments — v
 
-\tableofcontents                    % Table of Contents — vi
+\input{Preamble/toc}               % Table of Contents — vi
+\input{Preamble/ListofFigures}     % List of Figures — ix
+
 \cleardoublepage
-\listoffigures                      % List of Figures — ix
-\cleardoublepage
-\listoftables                       % List of Tables — x
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables                      % List of Tables — x
 
 \input{Preamble/Abbreviations}     % List of Abbreviations — xi
 \input{Preamble/Symbols}           % List of Symbols — xii
-\input{Preamble/Contacts}           % Contacts — xiii
+\input{Preamble/Contacts}          % Contacts — xiii
 
-% ---- Main body: arabic numerals starting at Chapter 1 ----
+% ---- Main body: arabic numerals ----
 \cleardoublepage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
 \include{Chapter1/Chapter1}
+\cleardoublepage
+
 \include{Chapter2/Chapter2}
+\cleardoublepage
+
 \include{Chapter3/Chapter3}
+\cleardoublepage
+
 \include{Chapter4/Chapter4}
+\cleardoublepage
+
 \include{Chapter5/Chapter5}
+\cleardoublepage
+
 \include{Chapter6/Chapter6}
 
 % ---- References (BibTeX/biblatex) ----
@@ -56,11 +64,20 @@
 
 % ---- Appendices ----
 \appendix
+\cleardoublepage
 
-\include{AppendixA/AppendixA}  % A — Development Platforms and Tools
-\include{AppendixB/AppendixB}  % B — Use Cases
-\include{AppendixC/AppendixC}  % C — User Guide
-\include{AppendixD/AppendixD}  % D — Code Documentation
-\include{AppendixE/AppendixE}  % E — Feasibility Study
+\include{AppendixA/AppendixA}
+\cleardoublepage
+
+\include{AppendixB/AppendixB}
+\cleardoublepage
+
+\include{AppendixC/AppendixC}
+\cleardoublepage
+
+\include{AppendixD/AppendixD}
+\cleardoublepage
+
+\include{AppendixE/AppendixE}
 
 \end{document}

@@ -1,0 +1,339 @@
+% =============================================================================
+% Appendix B: Use Cases
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{Use Cases}
+\label{app:usecases}
+
+This appendix documents the ten primary use cases of the NexaLearn platform. Each use case is presented in a structured format with an identifier, name, actors, preconditions, main flow, postconditions, and exception conditions.
+
+% ---------------------------------------------------------------------------
+\section{Use Case Descriptions}
+
+% UC-01
+\subsection{UC-01: Student Signup and Email Verification}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-01 \\
+  \textbf{Name} & Student Signup and Email Verification \\
+  \textbf{Actors} & Unauthenticated student \\
+  \textbf{Preconditions} & The student has an email address and a password that meets the platform's password policy (minimum 8 characters, at least one uppercase letter and one digit). \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The student submits a registration request with full name, email address, and password via \texttt{POST /auth/register}.
+    \item The system validates the input format (email syntax, password strength) and checks that the email address is not already registered.
+    \item The system creates a \texttt{User} aggregate in \texttt{UNVERIFIED} status, hashes the password using bcrypt (cost factor 12), and stores the record in PostgreSQL.
+    \item The system generates a cryptographically random email verification token (64 hex characters), stores its SHA-256 hash in Redis with a 24-hour TTL, and sends an email via Resend containing a verification link: \texttt{https://nexalearn.app/auth/verify?token=<raw\_token>}.
+    \item The student clicks the verification link. The system hashes the raw token and retrieves the corresponding user ID from Redis.
+    \item The system updates the \texttt{User} aggregate to \texttt{ACTIVE} status and returns a success response.
+  \end{enumerate} \\
+  \textbf{Postconditions} & The user is registered and verified. The user can log in using email and password. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: Duplicate email.} If the email is already registered, the system returns HTTP 409 Conflict with the message "An account with this email already exists."
+    \item \textbf{E02: Invalid token.} If the verification token is expired or malformed, the system returns HTTP 400 Bad Request.
+    \item \textbf{E03: Email delivery failure.} If the Resend API returns a non-2xx response, the user is created but remains \texttt{UNVERIFIED}. A resend endpoint (\texttt{POST /auth/resend-verification}) allows the user to request a new token.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-02
+\subsection{UC-02: Instructor Course Creation and Publishing}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-02 \\
+  \textbf{Name} & Instructor Course Creation and Publishing \\
+  \textbf{Actors} & Authenticated instructor \\
+  \textbf{Preconditions} & The instructor is logged in with a valid access token. The instructor's role is \texttt{INSTRUCTOR}. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The instructor submits course metadata (title, description, category, difficulty level, price, cover image) via \texttt{POST /courses}. The course is created in \texttt{DRAFT} status.
+    \item The instructor adds modules to the course via \texttt{POST /courses/:id/modules}. Each module has a title, description, and ordinal position.
+    \item The instructor adds lessons to each module via \texttt{POST /modules/:id/lessons}. Each lesson has a title, content (HTML/Markdown), optional video asset, and optional quiz.
+    \item The instructor uploads a video for a lesson via the Mux direct upload flow (see UC-04).
+    \item The instructor submits a publish request via \texttt{POST /courses/:id/publish}.
+    \item The system validates the course completeness: at least one module required, each module must have at least one lesson, all lessons must have either text content or a video asset.
+    \item The system transitions the \texttt{Course} aggregate from \texttt{DRAFT} to \texttt{PUBLISHED} and publishes a \texttt{CoursePublished} domain event through the outbox.
+  \end{enumerate} \\
+  \textbf{Postconditions} & The course is visible in the course catalogue. Students can browse the course and enroll. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: Incomplete course.} If any completeness validation fails, the system returns HTTP 422 Unprocessable Entity with a list of missing requirements.
+    \item \textbf{E02: Unauthorised.} If the authenticated user's role is not \texttt{INSTRUCTOR} or \texttt{ADMIN}, the system returns HTTP 403 Forbidden.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-03
+\subsection{UC-03: Student Enrollment in Paid Course}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-03 \\
+  \textbf{Name} & Student Enrollment in Paid Course (Stripe Payment) \\
+  \textbf{Actors} & Authenticated student, Stripe payment gateway \\
+  \textbf{Preconditions} & The student is logged in. The course is in \texttt{PUBLISHED} status and has a non-zero price. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The student requests enrollment via \texttt{POST /enrollments/:courseId}.
+    \item The system checks that the student is not already enrolled (unique constraint on \texttt{(user\_id, course\_id, status)} where \texttt{status != 'CANCELLED'}).
+    \item The system creates a \texttt{PaymentIntent} record in \texttt{PENDING} status and requests a payment intent from Stripe via \texttt{stripe.paymentIntents.create()} with the course price and currency.
+    \item The system returns the \texttt{client\_secret} to the student's frontend.
+    \item The student completes the payment on the frontend using Stripe Elements or Stripe Checkout.
+    \item Stripe delivers a \texttt{payment\_intent.succeeded} webhook event to \texttt{POST /webhooks/stripe}.
+    \item The system verifies the webhook signature, checks idempotency via the \texttt{ProjectionEventLedger}, updates the \texttt{PaymentIntent} to \texttt{SUCCEEDED}, creates an \texttt{Enrollment} aggregate in \texttt{ACTIVE} status, and publishes an \texttt{EnrollmentActivated} event.
+  \end{enumerate} \\
+  \textbf{Postconditions} & The student is enrolled in the course with \texttt{ACTIVE} status. The student can access all lessons. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: Already enrolled.} If the student is already enrolled, the system returns HTTP 409 Conflict.
+    \item \textbf{E02: Payment failed.} If Stripe reports a payment failure, the \texttt{PaymentIntent} transitions to \texttt{FAILED} and the enrollment is created in \texttt{PENDING\_PAYMENT} status with a link to retry payment.
+    \item \textbf{E03: Duplicate webhook.} If the webhook is delivered multiple times, the \texttt{ProjectionEventLedger} unique constraint prevents duplicate processing.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-04
+\subsection{UC-04: Video Upload and AI Quiz Generation}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-04 \\
+  \textbf{Name} & Video Upload and AI Quiz Generation \\
+  \textbf{Actors} & Authenticated instructor, Mux Video API, OpenAI Whisper / LLM \\
+  \textbf{Preconditions} & The instructor is logged in. A lesson exists in the course. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The instructor requests a Mux direct upload URL via \texttt{POST /media/upload}. The system calls Mux's \texttt{/video/uploads} API and returns the upload URL to the frontend.
+    \item The frontend uploads the video file directly to Mux. Mux fires \texttt{video.asset.created} webhook upon upload completion.
+    \item The system creates a \texttt{VideoAsset} aggregate in \texttt{UPLOADED} status.
+    \item Mux transcodes the video and fires \texttt{video.asset.ready} (HLS available) and later \texttt{video.asset.mp4\_rendition.ready}.
+    \item When the asset reaches \texttt{MP4\_AVAILABLE} status, the system creates a \texttt{TranscriptionJob} in \texttt{PENDING} status and sends the MP4 download URL to the AI pipeline with an HMAC-signed callback URL.
+    \item The AI pipeline (Whisper) transcribes the audio and POSTs the transcript back to \texttt{POST /webhooks/ai-pipeline/transcription}. The system verifies the HMAC signature, stores the transcript, and creates a \texttt{QuizGenerationJob} in \texttt{PENDING} status.
+    \item The AI pipeline (LLM) generates quiz questions from the transcript and POSTs the result to \texttt{POST /webhooks/ai-pipeline/quiz}. The system creates a \texttt{Quiz} aggregate in \texttt{DRAFT} status linked to the lesson.
+    \item The instructor reviews the generated quiz and publishes it (see UC-06).
+  \end{enumerate} \\
+  \textbf{Postconditions} & The video is playable via HLS. A transcript is available. A draft quiz is created for instructor review. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: Transcoding failure.} If Mux reports \texttt{video.asset.errored}, the \texttt{VideoAsset} transitions to \texttt{ERRORED} and the instructor is notified.
+    \item \textbf{E02: Transcription timeout.} If the AI pipeline does not respond within 30 minutes, the \texttt{TranscriptionJob} transitions to \texttt{TIMEOUT} and the instructor is notified to re-submit.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-05
+\subsection{UC-05: Student Takes Quiz Attempt}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-05 \\
+  \textbf{Name} & Student Takes Quiz Attempt \\
+  \textbf{Actors} & Authenticated student \\
+  \textbf{Preconditions} & The student is enrolled in the course. The quiz is in \texttt{PUBLISHED} status and linked to a lesson. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The student requests the quiz via \texttt{GET /quizzes/:id}. The system returns the quiz questions (without answer keys) and the student's previous attempts, if any.
+    \item The student submits answers via \texttt{POST /quizzes/:id/attempts}. The system creates a \texttt{QuizAttempt} aggregate in \texttt{SUBMITTED} status.
+    \item For multiple-choice and true/false questions, the system grades automatically using the stored answer keys. For short-answer questions, the system publishes a \texttt{ShortAnswerGradeRequestedEvent} through the outbox.
+    \item The AI pipeline grades short-answer questions asynchronously and delivers results via webhook. The \texttt{QuizAttempt} aggregate tracks per-question grading status (\texttt{PENDING}, \texttt{AUTO\_GRADED}, \texttt{AI\_GRADED}).
+    \item When all questions are graded, the \texttt{QuizAttempt} transitions to \texttt{GRADED} and the total score and per-question feedback are computed.
+    \item The student retrieves the graded attempt via \texttt{GET /attempts/:id} and views the score, correct/incorrect markings, and instructor feedback for short-answer questions.
+  \end{enumerate} \\
+  \textbf{Postconditions} & The quiz attempt is graded. The score is recorded in the student's progress. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: Attempt limit exceeded.} If the quiz has an attempt limit (e.g., 3 maximum) and the student has exhausted it, the system returns HTTP 403 Forbidden.
+    \item \textbf{E02: Short-answer grading timeout.} If AI grading does not complete within 30 minutes, the attempt escalates to \texttt{REVIEW\_REQUIRED} for manual instructor intervention.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-06
+\subsection{UC-06: Instructor Reviews AI-Generated Quiz}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-06 \\
+  \textbf{Name} & Instructor Reviews AI-Generated Quiz \\
+  \textbf{Actors} & Authenticated instructor \\
+  \textbf{Preconditions} & The AI pipeline has generated a draft quiz attached to a lesson. The quiz is in \texttt{DRAFT} status. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The instructor navigates to the lesson and sees a notification that an AI-generated quiz draft is available for review.
+    \item The instructor requests the quiz via \texttt{GET /quizzes/:id} (with instructor permissions, which includes the answer keys).
+    \item The instructor reviews each question, edits the text, changes the question type, adds or removes options, and adjusts the correct answer.
+    \item The instructor publishes the quiz via \texttt{POST /quizzes/:id/publish}.
+    \item The system validates that the quiz has at least one question and transitions it to \texttt{PUBLISHED} status.
+  \end{enumerate} \\
+  \textbf{Postconditions} & The quiz is available to students enrolled in the course. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: No questions.} If the instructor attempts to publish a quiz with zero questions, the system returns HTTP 422 Unprocessable Entity.
+    \item \textbf{E02: Unauthorised.} If the authenticated user is not the course instructor or an admin, the system returns HTTP 403 Forbidden.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-07
+\subsection{UC-07: Student Watches Video with Progress Tracking}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-07 \\
+  \textbf{Name} & Student Watches Video with Progress Tracking \\
+  \textbf{Actors} & Authenticated student, Mux Video CDN \\
+  \textbf{Preconditions} & The student is enrolled in the course. The lesson has a video asset in \texttt{READY} status. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The student requests the lesson via \texttt{GET /lessons/:id}. The system verifies enrollment and returns the lesson content and a signed Mux playback URL.
+    \item The student's frontend loads the HLS stream using HLS.js and begins playback.
+    \item The frontend sends periodic progress updates to \texttt{PATCH /lessons/:id/progress} with the current playback position (in seconds) and the percentage watched.
+    \item When the student reaches 90\% of the video duration (configurable threshold), the frontend sends a completion event. The system creates or updates a \texttt{LessonProgress} record in \texttt{COMPLETED} status.
+    \item The system publishes a \texttt{LessonCompleted} event, which triggers streak computation (via \texttt{StreakService}) and updates the \texttt{CourseProgressView}.
+  \end{enumerate} \\
+  \textbf{Postconditions} & The lesson is marked as completed in the student's progress. The streak counter is updated. If all lessons in the course are completed, the course is marked as completed. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: Enrollment not active.} If the enrollment is \texttt{CANCELLED} or \texttt{PENDING\_PAYMENT}, the system denies access and returns HTTP 403 Forbidden.
+    \item \textbf{E02: Video not ready.} If the video asset is still processing, the system returns the lesson content without the video URL and a \texttt{Retry-After} header.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-08
+\subsection{UC-08: Discussion Thread Creation and Instructor Reply}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-08 \\
+  \textbf{Name} & Discussion Thread Creation and Instructor Reply \\
+  \textbf{Actors} & Authenticated student (thread creator), authenticated instructor (reply) \\
+  \textbf{Preconditions} & The student is enrolled in the course. The course has discussion enabled. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The student creates a discussion thread via \texttt{POST /courses/:id/discussions} with a title and body. The system creates a \texttt{Thread} aggregate in \texttt{OPEN} status and publishes a \texttt{ThreadCreated} event.
+    \item Other enrolled students can view the thread and post replies via \texttt{POST /discussions/:id/replies}.
+    \item The instructor views the thread and posts a reply that is marked with the \texttt{IS\_INSTRUCTOR} flag. The system fires \texttt{InstructorReplied} and sends an email notification to the thread creator.
+    \item The student can mark the thread as resolved via \texttt{PATCH /discussions/:id/resolve}, which transitions the thread to \texttt{RESOLVED} status.
+  \end{enumerate} \\
+  \textbf{Postconditions} & The thread is created and visible to all enrolled students. Participants can post replies. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: Rate limit exceeded.} If the student exceeds the maximum number of threads per hour (configurable), the system returns HTTP 429 Too Many Requests.
+    \item \textbf{E02: Course not enrolled.} If the student is not enrolled in the course, the system returns HTTP 403 Forbidden.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-09
+\subsection{UC-09: Certificate Generation After Course Completion}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-09 \\
+  \textbf{Name} & Certificate Generation After Course Completion \\
+  \textbf{Actors} & Authenticated student \\
+  \textbf{Preconditions} & The student has completed all lessons in the course (progress = 100\%). The course has certificate generation enabled. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item When the last lesson in the course is marked as completed, the \texttt{CourseProgressView} detects that all lessons are completed and publishes a \texttt{CourseCompleted} event.
+    \item The Certificates context handles the event and creates a \texttt{Certificate} aggregate in \texttt{PENDING} status.
+    \item A background job generates a PDF certificate using a templating library (PDFKit or Puppeteer). The PDF includes the student's name, course title, completion date, and a verification QR code.
+    \item The PDF is uploaded to AWS S3 with server-side encryption. The \texttt{Certificate} aggregate transitions to \texttt{ISSUED} status with an S3 key reference.
+    \item The student can download the certificate via \texttt{GET /certificates/:id/download}, which generates a presigned S3 URL with 1-hour expiration.
+    \item The student can share the certificate verification link: \texttt{https://nexalearn.app/verify/<certificate\_id>}, which displays the certificate details without requiring authentication.
+  \end{enumerate} \\
+  \textbf{Postconditions} & A verifiable PDF certificate is generated and stored. The student can download and share the certificate. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: Certificate already issued.} If the student requests a duplicate certificate, the system returns the existing certificate instead of generating a new one.
+    \item \textbf{E02: S3 upload failure.} If the PDF upload to S3 fails, the \texttt{Certificate} aggregate remains in \texttt{PENDING} and a retry is scheduled via the outbox.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}
+
+% UC-10
+\subsection{UC-10: Instructor Views Revenue Analytics Dashboard}
+
+\begin{longtable}{p{3cm}p{10cm}}
+  \toprule
+  \textbf{Element} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \textbf{ID} & UC-10 \\
+  \textbf{Name} & Instructor Views Revenue Analytics Dashboard \\
+  \textbf{Actors} & Authenticated instructor \\
+  \textbf{Preconditions} & The instructor is logged in and has at least one published course with completed enrollments. \\
+  \textbf{Main Flow} &
+  \begin{enumerate}
+    \item The instructor requests the analytics dashboard via \texttt{GET /analytics/instructor/dashboard}. The request includes query parameters for the time range (\texttt{?from=...\&to=...}).
+    \item The Instructor context queries read models in the Progress and Payments contexts to compute:
+      \begin{itemize}
+        \item Total revenue for the period (sum of succeeded payment intents).
+        \item Number of new enrollments per course per day.
+        \item Average quiz score across all attempts.
+        \item Course completion rate (students who completed / students enrolled).
+        \item Top-performing courses by revenue and enrollment count.
+      \end{itemize}
+    \item The system returns the computed metrics as a JSON response. The frontend renders charts and tables from this data.
+    \item The instructor can filter by course and date range and export the data as CSV.
+  \end{enumerate} \\
+  \textbf{Postconditions} & The instructor can view and export revenue and engagement analytics. \\
+  \textbf{Exceptions} &
+  \begin{itemize}
+    \item \textbf{E01: No data.} If no enrollments or payments exist for the selected period, the system returns empty metrics with a descriptive message.
+    \item \textbf{E02: Access denied.} If the instructor attempts to access analytics for a course they do not own, the system filters the data to include only owned courses.
+  \end{itemize} \\
+  \bottomrule
+\end{longtable}

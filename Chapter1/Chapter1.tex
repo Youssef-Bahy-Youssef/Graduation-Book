@@ -1,0 +1,19 @@
+% =============================================================================
+% Chapter 1: Introduction
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{Introduction}
+\label{ch:introduction}
+
+This chapter introduces \textbf{NexaLearn}, a production-oriented e-learning backend platform developed as the graduation project of the Department of Computer Engineering at Cairo University, Faculty of Engineering. NexaLearn is an AI-augmented, commerce-enabled learning platform backend implemented as a NestJS modular monolith in TypeScript, backed by PostgreSQL, Redis, and a suite of managed external services including Stripe, Mux, and AWS S3. The system is organised into sixteen domain bounded contexts and four infrastructure modules, grouped into three high-level capability areas: the \emph{Learning Core} (authentication, courses, enrollment, media, progress, assessment, certificates), \emph{Engagement \& Commerce} (discussion, reviews, streaks, notifications, payments, search), and \emph{Platform \& Operations} (instructor analytics, administration, audit logging, event infrastructure, AI pipeline orchestration, and shared data access).
+
+The purpose of this chapter is fivefold. First, it establishes \textit{why} such a platform is needed in the current e-learning market and why existing alternatives---commercial SaaS products, legacy open-source LMS platforms, and generic web boilerplates---fail to provide a cohesive reference for modern backend engineering. Second, it defines the \textit{problems} that NexaLearn explicitly sets out to solve, including unreliable asynchronous integrations, architectural erosion across many bounded contexts, financial and AI callback integrity, and privacy-preserving analytics. Third, it states measurable \textit{objectives} that govern design and implementation decisions throughout the project. Fourth, it enumerates the \textit{outcomes}---REST APIs, database schema, deployment stack, OpenAPI documentation, integration tests, and architecture records---that constitute the deliverable artefacts. Fifth, it explains how the remainder of this report is organised so that evaluators and future readers can navigate from market context through literature, detailed design, verification, and conclusions.
+
+NexaLearn is conceived not merely as a collection of REST endpoints, but as a \textit{reference architecture}: a codebase and accompanying documentation that demonstrate how Domain-Driven Design (DDD), Clean Architecture, CQRS-lite read/write separation, event-driven integration via a transactional outbox, and production reliability patterns (idempotency keys, optimistic concurrency control, HMAC-verified webhooks, refresh-token rotation) can be applied to the full vertical stack of an online learning marketplace. A student enrolling in a paid course, watching transcoded video lessons, attempting AI-generated quizzes, participating in moderated discussions, earning a certificate, and leaving a review triggers a coordinated chain of domain events spanning more than half of the bounded contexts in the system. Chapter~1 frames the engineering ambition required to implement such workflows correctly, setting the stage for the technical depth presented in subsequent chapters.
+
+\input{Chapter1/1-motivation}
+\input{Chapter1/2-problem_statement}
+\input{Chapter1/3-project_objectives}
+\input{Chapter1/4-project_outcomes}
+\input{Chapter1/5-document_organization}

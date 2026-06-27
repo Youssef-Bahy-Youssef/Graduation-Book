@@ -1,0 +1,47 @@
+% =============================================================================
+% Section 3.2: Background on Event-Driven Architecture and the Outbox Pattern
+% =============================================================================
+
+\section{Background on Event-Driven Architecture and the Outbox Pattern}
+\label{sec:event-driven-outbox}
+
+\subsection{Event-Driven Architecture in Distributed Systems}
+
+Event-Driven Architecture (EDA) is a software paradigm in which components communicate by producing and consuming \textit{events}---immutable records of something that has occurred, rather than by issuing direct command invocations~\cite{fowler2005eda}. In e-learning systems, events arise naturally from learner interactions (lesson viewed, quiz submitted, discussion post created), system state changes (enrolment activated, certificate issued), and external provider callbacks (payment succeeded, video ready). EDA decouples event producers from consumers: a single enrolment activation event may be consumed by the Progress context (to initialise progress projections), the Media context (to issue playback entitlements), the Notifications context (to send a welcome email), and the Search context (to update enrolment counts), all without the Enrollment context having any awareness of these downstream dependents.
+
+The principal challenge in EDA is reliable event delivery. When a domain operation both modifies the database and publishes an event, these two actions must be atomic: either both succeed or neither takes effect. Performing the database write first, then publishing the event, creates a window in which the database write is visible but the event is not published---if the application crashes between the two operations, or if the message broker is unreachable, the system enters an inconsistent state. Conversely, publishing the event first and then writing the database risks acting upon an event whose associated state does not yet exist. This is known as the \textbf{dual-write problem}.
+
+\subsection{The Transactional Outbox Pattern}
+
+The transactional outbox pattern, popularised by Richardson~\cite{richardson2018outbox} in the microservices community and independently described as the ``application events'' pattern in messaging literature, solves the dual-write problem by persisting events in the same database transaction as the domain mutation. Rather than publishing an event immediately to a message broker, the application inserts a row into an \texttt{outbox\_events} table within the same database transaction that updates the domain aggregates. A separate background process---the \textbf{outbox publisher}---polls the outbox table for unprocessed events, publishes them to the message broker (or a message queue), and marks them as processed.
+
+This design guarantees \textbf{at-least-once delivery}: an event may be published more than once if the publisher crashes after publishing but before marking the event as processed, but it will never be lost. Consumer applications use idempotency keys to achieve exactly-once semantics despite at-least-once transport.
+
+\subsection{NexaLearn's Outbox Implementation}
+
+NexaLearn implements a variant of the transactional outbox pattern using PostgreSQL as the event store and a dedicated NestJS \texttt{OutboxProcessorService} as the publisher. The key components are:
+
+\begin{itemize}
+  \item \textbf{OutboxEvent Entity.} A database table with columns: \texttt{id} (UUID primary key), \texttt{aggregate\_type}, \texttt{aggregate\_id}, \texttt{event\_type}, \texttt{payload} (JSONB), \texttt{created\_at}, \texttt{processed\_at} (nullable), and \texttt{retry\_count}.
+  \item \textbf{OutboxPublisher Service.} A domain service that receives a domain event and inserts a corresponding outbox row. This service is invoked by domain services or use-case interactors after successfully modifying domain aggregates.
+  \item \textbf{OutboxProcessorService.} A polling background worker (implemented as a NestJS \texttt{@Cron} scheduled task or a dedicated \texttt{@Processor} job queue consumer) that periodically queries \texttt{SELECT * FROM outbox\_events WHERE processed\_at IS NULL ORDER BY created\_at ASC LIMIT $n$ FOR UPDATE SKIP LOCKED}. The \texttt{FOR UPDATE SKIP LOCKED} clause ensures that multiple concurrent processor instances can work on different batches without contention---a critical property for horizontal scaling.
+\end{itemize}
+
+\subsection{Idempotency and Exactly-Once Processing}
+
+Idempotency ensures that processing the same event multiple times produces the same outcome. NexaLearn's \textbf{ProjectionEventLedger} table records which events have been applied to each read model. The ledger schema includes: \texttt{id} (UUID), \texttt{event\_id} (foreign key to outbox\_events), \texttt{projection\_type} (e.g., \texttt{course-progress-view}), \texttt{handler\_id} (the specific handler instance that processed the event), and \texttt{applied\_at}. Before applying an event to a projection, the handler attempts \texttt{INSERT INTO projection\_event\_ledger (event\_id, projection\_type, handler\_id) VALUES (\$1, \$2, \$3) ON CONFLICT (event\_id, projection\_type) DO NOTHING}. If the insert succeeds, the event has not been processed and the handler proceeds; if it returns zero rows (due to the conflict), the event was already processed and the handler skips it.
+
+This approach is inspired by the idempotency-key pattern used by Stripe~\cite{stripe2024api} for payment processing, adapted for internal event consumption. The combination of transactional outbox and idempotent projection handlers eliminates the dual-write problem without requiring distributed transactions, a two-phase commit coordinator, or an external message broker---a deliberate simplification discussed in Section~\ref{sec:implemented-approach}.
+
+\subsection{CQRS-Lite Read Models}
+
+While NexaLearn does not implement full Command Query Responsibility Segregation (CQRS)~\cite{fowler2011cqrs} with separate write and read databases, it adopts a ``CQRS-lite'' pattern: several bounded contexts maintain specialised read models that are updated asynchronously by outbox event handlers. These read models are optimised for specific query patterns that would require expensive joins or recomputation across the write-optimised domain schema. Examples include:
+
+\begin{itemize}
+  \item \textbf{CourseProgressView.} Denormalised per-learner progress summary showing total lessons, completed lessons, quiz scores, and streak data, updated reactively when \texttt{LessonCompleted}, \texttt{QuizAttemptSubmitted}, or \texttt{StreakUpdated} events are processed.
+  \item \textbf{ResumeView.} A materialised row per learner recording the most recently accessed lesson, percentage through the video, and the last active timestamp, enabling efficient ``resume where you left off'' endpoints without scanning progress logs.
+  \item \textbf{LessonAnalytics.} Aggregated view per lesson: total views, average completion rate, average quiz score, and discussion activity counts, computed from event streams rather than expensive OLAP queries on operational tables.
+  \item \textbf{CourseSearchIndex.} A denormalised table containing course title, description, instructor name, category, average rating, and enrolment count, used by the search endpoint instead of joining across five write-optimised tables on every request.
+\end{itemize}
+
+These projections are stored in the same PostgreSQL instance but in a separate \texttt{read\_models} schema, reinforcing the conceptual separation between write-optimised domain tables and read-optimised projection tables. The outbox processor guarantees that projections eventually converge to consistency with the write model, typically within milliseconds of the source event being committed. Mehta et al.~\cite{mehta2023eda} have demonstrated that this eventual-consistency approach scales to educational platforms processing millions of learner interaction events per day, with projection latency dominated by the outbox polling interval rather than database throughput.

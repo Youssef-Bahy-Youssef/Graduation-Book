@@ -1,0 +1,67 @@
+% =============================================================================
+% Section 4.11: Security Design
+% =============================================================================
+
+\section{Security Design}
+\label{sec:security-design}
+
+\subsection{HMAC Service-to-Service Authentication}
+
+NexaLearn uses HMAC-based authentication for internal service-to-service communication when external webhook callbacks are received. Three external services authenticate via HMAC: Stripe (webhook signatures using \texttt{stripe-webhook-secret}), Mux (webhook signatures using \texttt{mux-webhook-secret}), and the AI Pipeline (custom HMAC using a shared secret configured per deployment).
+
+The implementation uses a generic \texttt{HmacGuard} NestJS guard that extracts the signature from the request header, computes the expected HMAC using the request body and the configured secret for the service, and rejects requests that do not match within a time-tolerance window:
+
+\begin{lstlisting}[caption=Generic HMAC Webhook Guard,label=lst:hmac-guard]
+@Injectable()
+export class HmacWebhookGuard implements CanActivate {
+  constructor(
+    private readonly configService: ConfigService,
+    private readonly provider: 'stripe' | 'mux' | 'ai-pipeline',
+  ) {}
+
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const request = context.switchToHttp().getRequest();
+    const signature = request.headers[this.headerName()] as string;
+    const body = JSON.stringify(request.body);
+
+    if (!signature) return false;
+
+    const secret = this.configService.get<string>(
+      `${this.provider}_WEBHOOK_SECRET`
+    );
+
+    return this.verify(signature, body, secret);
+  }
+
+  private verify(signature: string, body: string, secret: string): boolean {
+    // Provider-specific verification (Stripe SDK, Mux SDK, or custom HMAC)
+    // ...
+  }
+}
+\end{lstlisting}
+
+This guards can be applied to specific controller routes via NestJS decorators: \texttt{@UseGuards(new HmacWebhookGuard('stripe'))}.
+
+\subsection{Rate Limiting}
+
+NexaLearn implements distributed rate limiting using the \texttt{@nestjs/throttler} module with a Redis-backed storage adapter. The rate limiter tracks request counts per IP address and per authenticated user ID, with separate limits for read endpoints (100 requests per minute per user) and write endpoints (20 requests per minute per user). Exceeding the limit returns HTTP 429 Too Many Requests with a \texttt{Retry-After} header.
+
+The Redis-backed ThrottlerModule uses a sliding window algorithm: each request increments a counter in Redis with a TTL equal to the window duration, and counters are checked before allowing the request. This design ensures that rate limits are consistent across multiple application instances (which is essential for the modular monolith if horizontally scaled behind a load balancer).
+
+Additional throttling is applied to sensitive endpoints: login (5 attempts per minute per IP), password reset (3 attempts per hour per user), and AI pipeline callbacks (no rate limit for internal callbacks, but validated by HMAC).
+
+\subsection{Audit Logging}
+
+The Audit module provides an immutable, queryable log of all state-changing operations across the platform. Each audit entry records:
+
+\begin{itemize}
+  \item \textbf{Actor.} The user ID and role that performed the operation (or \texttt{SYSTEM} for automated actions).
+  \item \textbf{Action.} A canonical action name (e.g., \texttt{enrollment.activate}, \texttt{course.publish}, \texttt{payment.refund}).
+  \item \textbf{Resource.} The aggregate type and ID affected by the action.
+  \item \textbf{Context.} The request IP, user agent, and correlation ID (propagated via a NestJS middleware that assigns a UUID to each incoming HTTP request).
+  \item \textbf{Diff.} A JSON snapshot of the relevant aggregate state before and after the operation (optional, configurable per action type).
+\end{itemize}
+
+Audit entries are written to a dedicated \texttt{audit\_log} PostgreSQL table. Writes are fire-and-forget (no outbox): if the audit write fails, the primary operation is not rolled back. This trade-off---audit loss in rare failure scenarios versus operational complexity---is acceptable because the financial trail is already guaranteed by the Payment module's event ledger.
+
+The audit log is exposed to administrators via a read-only REST endpoint with pagination and filtering by actor, action, resource type, and date range. Retention is configurable; the default policy retains audit logs for one year, after which they are archived to cold storage.

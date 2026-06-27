@@ -1,0 +1,265 @@
+\xpg@aux {}{english}
+\contentsline {chapter}{Abstract}{iii}{chapter*.1}%
+\contentsline {section}{Abstract (Arabic)}{v}{section*.2}%
+\xpg@aux {}{arabic}
+\xpg@aux {}{english}
+\contentsline {chapter}{Acknowledgment}{vi}{chapter*.3}%
+\contentsline {chapter}{Table of Contents}{vii}{section*.4}%
+\contentsline {chapter}{List of Figures}{xiv}{section*.5}%
+\contentsline {chapter}{List of Tables}{xvi}{section*.6}%
+\contentsline {chapter}{List of Abbreviations}{xviii}{chapter*.7}%
+\contentsline {chapter}{List of Symbols}{xix}{chapter*.8}%
+\contentsline {chapter}{Contacts}{xx}{chapter*.9}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation and Justification}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}The Post-COVID E-Learning Market}{2}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Fragmentation of Existing Open-Source and Template Solutions}{3}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Architectural Challenges Facing E-Learning Backend Developers}{4}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}The AI Imperative in Modern E-Learning}{5}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Justification of the NexaLearn Approach}{6}{subsection.1.1.5}%
+\contentsline {section}{\numberline {1.2}Project Objectives and Problem Definition}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Problem Definition}{7}{subsection.1.2.1}%
+\contentsline {subsubsection}{Lack of Complete Vertical Coverage in Open Backends}{7}{subsubsection*.13}%
+\contentsline {subsubsection}{Unreliable Asynchronous Event Processing}{8}{subsubsection*.14}%
+\contentsline {subsubsection}{Architectural Erosion Across Many Bounded Contexts}{9}{subsubsection*.15}%
+\contentsline {subsubsection}{Exactly-Once Semantics for Financial and AI Integrations}{9}{subsubsection*.16}%
+\contentsline {subsubsection}{Privacy-Preserving Instructor Analytics}{10}{subsubsection*.17}%
+\contentsline {subsubsection}{Stakeholder Expectations and Non-Functional Constraints}{10}{subsubsection*.18}%
+\contentsline {subsection}{\numberline {1.2.2}Project Objectives}{12}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Project Outcomes}{15}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Primary Software Artefact: NestJS REST API}{15}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}PostgreSQL Database Schema and Migration History}{16}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Deployment and Operations Stack}{17}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}OpenAPI Documentation and Developer Experience}{17}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.5}Automated Test Suite}{17}{subsection.1.3.5}%
+\contentsline {subsection}{\numberline {1.3.6}Architecture and Project Documentation}{18}{subsection.1.3.6}%
+\contentsline {subsection}{\numberline {1.3.7}Quantitative Summary of Deliverables}{18}{subsection.1.3.7}%
+\contentsline {section}{\numberline {1.4}Document Organization}{19}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Chapter 2: Market Visibility Study}{20}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Chapter 3: Literature Survey}{21}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Chapter 4: System Design and Architecture}{21}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}Chapter 5: System Testing and Verification}{22}{subsection.1.4.4}%
+\contentsline {subsection}{\numberline {1.4.5}Chapter 6: Conclusions and Future Work}{22}{subsection.1.4.5}%
+\contentsline {subsection}{\numberline {1.4.6}References and Appendices}{22}{subsection.1.4.6}%
+\contentsline {subsection}{\numberline {1.4.7}Reading Paths for Different Audiences}{23}{subsection.1.4.7}%
+\contentsline {chapter}{\numberline {2}Market Visibility Study}{24}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Targeted Customers}{24}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Primary Segment: EdTech Startups and Independent Developers}{25}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Secondary Segment: Universities and Educational Institutions}{26}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Tertiary Segment: Corporate Training and L\&D Departments}{27}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Segment Prioritisation and Go-to-Market Implications}{28}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Market Survey}{28}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Udemy for Business and Udemy-Like Marketplace Platforms}{29}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Teachable and Thinkific}{30}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Moodle (Open-Source LMS)}{31}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Coursera for Campus}{32}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}LearnDash (WordPress LMS Plugin)}{33}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Competitive Comparison Summary}{35}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Business Case and Financial Analysis}{36}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Business Case and Adoption Assumptions}{37}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Capital Expenditure (Capex)}{37}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Operating Expenditure (Opex)}{38}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Revenue Model and Year~1 Projection}{39}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Twenty-Four-Month Cash Flow Forecast}{40}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Break-Even Analysis}{41}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Financial Conclusions}{42}{subsection.2.3.7}%
+\contentsline {chapter}{\numberline {3}Literature Survey}{44}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Background on Domain-Driven Design and Clean Architecture}{44}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Domain-Driven Design Fundamentals}{44}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Clean Architecture Layers}{46}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Application to NexaLearn's Bounded Contexts}{47}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Background on Event-Driven Architecture and the Outbox Pattern}{48}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Event-Driven Architecture in Distributed Systems}{48}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}The Transactional Outbox Pattern}{48}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}NexaLearn's Outbox Implementation}{49}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Idempotency and Exactly-Once Processing}{49}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}CQRS-Lite Read Models}{50}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Background on AI in E-Learning}{51}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}OpenAI Whisper for Speech Recognition}{51}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}LLM-Based Quiz Generation}{52}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}HMAC-Signed Callback Authentication}{53}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Background on Video Streaming Technology}{53}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}HTTP Live Streaming (HLS)}{53}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Mux Video Platform}{54}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Video Asset Lifecycle in NexaLearn}{54}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}MP4 Renditions for the AI Pipeline}{55}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}Comparative Study of Previous Work}{55}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Dossena et al. (2022) --- DDD in E-Learning Platforms}{55}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Yang et al. (2023) --- Microservices for E-Learning}{56}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Kumar et al. (2023) --- LLM Quiz Generation}{56}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Mehta et al. (2023) --- Event-Driven Educational Analytics}{57}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}Synthesis and Gap Analysis}{57}{subsection.3.5.5}%
+\contentsline {section}{\numberline {3.6}Implemented Approach and Justification}{59}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Framework Selection: NestJS over Spring Boot and Django}{59}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}ORM Selection: Prisma over TypeORM}{59}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Transactional Outbox over Direct Message Queue Publication}{60}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Modular Monolith over Microservices}{61}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Summary of Architectural Decisions}{62}{subsection.3.6.5}%
+\contentsline {chapter}{\numberline {4}System Design and Architecture}{63}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Overview and Assumptions}{63}{section.4.1}%
+\contentsline {section}{\numberline {4.2}System Architecture}{64}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}High-Level Architecture Block Diagram}{64}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Module Dependency Graph}{65}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Module Summary}{66}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Authentication and Session Management Module}{69}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Functional Description}{69}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}JWT Token Architecture}{69}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Redis Session Store Design}{69}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Refresh Token Rotation and Reuse Detection}{70}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Course Management Module}{71}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Functional Description}{71}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}DDD Aggregate Design: Course--Module--Lesson Hierarchy}{72}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Optimistic Concurrency Control}{73}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Idempotency for Lesson and Module Operations}{74}{subsection.4.4.4}%
+\contentsline {section}{\numberline {4.5}Media and Video Processing Module}{74}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Functional Description}{74}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Mux Integration and VideoAsset State Machine}{75}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Signed Playback URL Generation}{76}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}AI Pipeline Integration Module}{76}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Functional Description}{76}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}HMAC Signature Verification}{77}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}HandleGenerationCallbackUseCase --- Exactly-Once Processing}{78}{subsection.4.6.3}%
+\contentsline {subsection}{\numberline {4.6.4}Quiz Review Workflow}{79}{subsection.4.6.4}%
+\contentsline {section}{\numberline {4.7}Assessment and Quiz Module}{79}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Functional Description}{79}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Quiz Authoring Aggregate}{79}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Quiz Attempt Lifecycle}{82}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Asynchronous Short-Answer Grading}{82}{subsection.4.7.4}%
+\contentsline {section}{\numberline {4.8}Payment Module}{83}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Functional Description}{83}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}Stripe Integration and Webhook Handling}{83}{subsection.4.8.2}%
+\contentsline {subsection}{\numberline {4.8.3}Payment Intent State Machine}{84}{subsection.4.8.3}%
+\contentsline {subsection}{\numberline {4.8.4}Reconciliation and Expiration Services}{84}{subsection.4.8.4}%
+\contentsline {section}{\numberline {4.9}Enrollment Module}{85}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Free vs. Paid Enrollment Flow}{85}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}Idempotency and Concurrent Enrollment Protection}{85}{subsection.4.9.2}%
+\contentsline {section}{\numberline {4.10}Discussion and Q\&A Module}{87}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Thread and Post Aggregate Design}{87}{subsection.4.10.1}%
+\contentsline {subsection}{\numberline {4.10.2}Instructor Reply Notifications}{89}{subsection.4.10.2}%
+\contentsline {section}{\numberline {4.11}Security Design}{89}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}HMAC Service-to-Service Authentication}{89}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}Rate Limiting}{90}{subsection.4.11.2}%
+\contentsline {subsection}{\numberline {4.11.3}Audit Logging}{91}{subsection.4.11.3}%
+\contentsline {chapter}{\numberline {5}System Testing and Validation}{92}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Testing Setup}{92}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Runtime and Toolchain}{92}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Test Environment Configuration}{93}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Testcontainers Integration}{93}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}HTTP Assertions}{94}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Testing Plan and Strategy}{95}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Testing Principles}{95}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Test Pyramid Distribution}{96}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Unit Testing}{97}{subsection.5.2.3}%
+\contentsline {subsubsection}{Covered Domain Entities}{97}{subsubsection*.46}%
+\contentsline {subsubsection}{Domain Service Test Scenarios}{98}{subsubsection*.48}%
+\contentsline {subsubsection}{Pure Function Tests}{99}{subsubsection*.49}%
+\contentsline {subsection}{\numberline {5.2.4}Integration Testing}{99}{subsection.5.2.4}%
+\contentsline {subsubsection}{Testcontainers-Based Database Testing}{100}{subsubsection*.50}%
+\contentsline {subsubsection}{Representative Integration Scenarios}{100}{subsubsection*.52}%
+\contentsline {subsubsection}{Transactional Outbox Integration}{102}{subsubsection*.53}%
+\contentsline {subsection}{\numberline {5.2.5}End-to-End Testing}{102}{subsection.5.2.5}%
+\contentsline {subsubsection}{E2E Test Organisation}{102}{subsubsection*.54}%
+\contentsline {subsubsection}{Representative E2E Flow: Student Enrollment}{103}{subsubsection*.56}%
+\contentsline {subsubsection}{Instructor Quiz Creation and AI Pipeline}{104}{subsubsection*.58}%
+\contentsline {section}{\numberline {5.3}Test Schedule}{105}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Comparative Results to Previous Work}{107}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Key Findings}{108}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Limitations of the Comparison}{109}{subsection.5.4.2}%
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{110}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Faced Challenges}{110}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Dual-Write Problem in Event Publishing}{110}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}BigInt Serialisation in JSON}{111}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Optimistic Concurrency Conflicts in Course Mutations}{112}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}AI Pipeline Callback Idempotency}{112}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Cross-Bounded-Context Communication Without Tight Coupling}{113}{subsection.6.1.5}%
+\contentsline {subsection}{\numberline {6.1.6}Refresh Token Reuse Detection Under Concurrent Requests}{113}{subsection.6.1.6}%
+\contentsline {subsection}{\numberline {6.1.7}Stripe Webhook Exactly-Once Processing}{114}{subsection.6.1.7}%
+\contentsline {subsection}{\numberline {6.1.8}Video MP4 Rendition Timing}{114}{subsection.6.1.8}%
+\contentsline {subsection}{\numberline {6.1.9}Rate Limiting State Across Multiple Instances}{115}{subsection.6.1.9}%
+\contentsline {subsection}{\numberline {6.1.10}Complex Quiz Grading with Async Short-Answer Questions}{115}{subsection.6.1.10}%
+\contentsline {section}{\numberline {6.2}Gained Experience}{115}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Domain-Driven Design in Practice}{116}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Event-Driven Architecture and Reliable Messaging}{117}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Third-Party API Integration}{117}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Designing for Idempotency and Exactly-Once Semantics}{118}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.5}Infrastructure and DevOps}{118}{subsection.6.2.5}%
+\contentsline {subsection}{\numberline {6.2.6}Team Collaboration and Version Control}{118}{subsection.6.2.6}%
+\contentsline {section}{\numberline {6.3}Conclusions}{119}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}What Was Achieved}{119}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Key Innovations}{119}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Limitations Acknowledged}{120}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}Validation Against Objectives}{121}{subsection.6.3.4}%
+\contentsline {section}{\numberline {6.4}Future Work}{121}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Microservices Extraction}{121}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}WebSocket-Based Real-Time Features}{122}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Redis-Backed Distributed Rate Limiting}{122}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}OAuth2 Social Login}{122}{subsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.4.5}Course Recommendation Engine}{123}{subsection.6.4.5}%
+\contentsline {subsection}{\numberline {6.4.6}Multi-Tenant Support}{123}{subsection.6.4.6}%
+\contentsline {subsection}{\numberline {6.4.7}Certificate Blockchain Verification}{124}{subsection.6.4.7}%
+\contentsline {subsection}{\numberline {6.4.8}Mobile Push Notifications}{124}{subsection.6.4.8}%
+\contentsline {subsection}{\numberline {6.4.9}React/Next.js Frontend}{124}{subsection.6.4.9}%
+\contentsline {subsection}{\numberline {6.4.10}GraphQL API Layer}{125}{subsection.6.4.10}%
+\contentsline {chapter}{References}{126}{section*.67}%
+\contentsline {chapter}{\numberline {A}Development Platforms and Tools}{128}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Hardware Platforms}{128}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Development Machines}{128}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}Deployment Server Specifications}{128}{subsection.A.1.2}%
+\contentsline {section}{\numberline {A.2}Software Tools}{129}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}Node.js 22 and NestJS 11}{129}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}PostgreSQL 16}{129}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Prisma ORM 6}{130}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.2.4}Redis 7}{130}{subsection.A.2.4}%
+\contentsline {subsection}{\numberline {A.2.5}Docker and Docker Compose}{131}{subsection.A.2.5}%
+\contentsline {subsection}{\numberline {A.2.6}Stripe API}{132}{subsection.A.2.6}%
+\contentsline {subsection}{\numberline {A.2.7}Mux Video API}{132}{subsection.A.2.7}%
+\contentsline {subsection}{\numberline {A.2.8}AWS S3}{133}{subsection.A.2.8}%
+\contentsline {subsection}{\numberline {A.2.9}Resend Email Service}{133}{subsection.A.2.9}%
+\contentsline {subsection}{\numberline {A.2.10}Jest and Testcontainers}{133}{subsection.A.2.10}%
+\contentsline {subsection}{\numberline {A.2.11}Swagger/OpenAPI}{134}{subsection.A.2.11}%
+\contentsline {chapter}{\numberline {B}Use Cases}{135}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Use Case Descriptions}{135}{section.B.1}%
+\contentsline {subsection}{\numberline {B.1.1}UC-01: Student Signup and Email Verification}{135}{subsection.B.1.1}%
+\contentsline {subsection}{\numberline {B.1.2}UC-02: Instructor Course Creation and Publishing}{137}{subsection.B.1.2}%
+\contentsline {subsection}{\numberline {B.1.3}UC-03: Student Enrollment in Paid Course}{139}{subsection.B.1.3}%
+\contentsline {subsection}{\numberline {B.1.4}UC-04: Video Upload and AI Quiz Generation}{141}{subsection.B.1.4}%
+\contentsline {subsection}{\numberline {B.1.5}UC-05: Student Takes Quiz Attempt}{143}{subsection.B.1.5}%
+\contentsline {subsection}{\numberline {B.1.6}UC-06: Instructor Reviews AI-Generated Quiz}{145}{subsection.B.1.6}%
+\contentsline {subsection}{\numberline {B.1.7}UC-07: Student Watches Video with Progress Tracking}{146}{subsection.B.1.7}%
+\contentsline {subsection}{\numberline {B.1.8}UC-08: Discussion Thread Creation and Instructor Reply}{148}{subsection.B.1.8}%
+\contentsline {subsection}{\numberline {B.1.9}UC-09: Certificate Generation After Course Completion}{149}{subsection.B.1.9}%
+\contentsline {subsection}{\numberline {B.1.10}UC-10: Instructor Views Revenue Analytics Dashboard}{151}{subsection.B.1.10}%
+\contentsline {chapter}{\numberline {C}User Guide}{153}{appendix.C}%
+\contentsline {section}{\numberline {C.1}API Authentication Guide}{153}{section.C.1}%
+\contentsline {subsection}{\numberline {C.1.1}Obtaining JWT Tokens}{153}{subsection.C.1.1}%
+\contentsline {subsection}{\numberline {C.1.2}Token Storage Best Practices}{155}{subsection.C.1.2}%
+\contentsline {section}{\numberline {C.2}Instructor Guide}{156}{section.C.2}%
+\contentsline {subsection}{\numberline {C.2.1}Creating a Course}{156}{subsection.C.2.1}%
+\contentsline {subsection}{\numberline {C.2.2}Adding Modules and Lessons}{156}{subsection.C.2.2}%
+\contentsline {subsection}{\numberline {C.2.3}Uploading Videos}{157}{subsection.C.2.3}%
+\contentsline {subsection}{\numberline {C.2.4}Managing AI-Generated Quizzes}{158}{subsection.C.2.4}%
+\contentsline {section}{\numberline {C.3}Student Guide}{158}{section.C.3}%
+\contentsline {subsection}{\numberline {C.3.1}Enrolling in a Course}{158}{subsection.C.3.1}%
+\contentsline {subsection}{\numberline {C.3.2}Watching Lessons and Tracking Progress}{159}{subsection.C.3.2}%
+\contentsline {subsection}{\numberline {C.3.3}Taking Quizzes}{160}{subsection.C.3.3}%
+\contentsline {subsection}{\numberline {C.3.4}Discussion}{160}{subsection.C.3.4}%
+\contentsline {section}{\numberline {C.4}Admin Guide}{161}{section.C.4}%
+\contentsline {subsection}{\numberline {C.4.1}Managing Categories}{161}{subsection.C.4.1}%
+\contentsline {subsection}{\numberline {C.4.2}Viewing Audit Logs}{161}{subsection.C.4.2}%
+\contentsline {subsection}{\numberline {C.4.3}Managing Instructor Applications}{162}{subsection.C.4.3}%
+\contentsline {chapter}{\numberline {D}Code Documentation}{163}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Key Design Patterns}{163}{section.D.1}%
+\contentsline {subsection}{\numberline {D.1.1}Transactional Outbox Publisher}{163}{subsection.D.1.1}%
+\contentsline {subsection}{\numberline {D.1.2}Projection Event Ledger for Idempotency}{164}{subsection.D.1.2}%
+\contentsline {subsection}{\numberline {D.1.3}Optimistic Concurrency Utility}{165}{subsection.D.1.3}%
+\contentsline {section}{\numberline {D.2}Domain Entity Design}{166}{section.D.2}%
+\contentsline {section}{\numberline {D.3}Use Case Structure}{169}{section.D.3}%
+\contentsline {chapter}{\numberline {E}Feasibility Study}{172}{appendix.E}%
+\contentsline {section}{\numberline {E.1}Technical Feasibility}{172}{section.E.1}%
+\contentsline {section}{\numberline {E.2}Operational Feasibility}{173}{section.E.2}%
+\contentsline {section}{\numberline {E.3}Economic Feasibility}{173}{section.E.3}%
+\contentsline {subsection}{\numberline {E.3.1}Development Costs}{173}{subsection.E.3.1}%
+\contentsline {subsection}{\numberline {E.3.2}Production Infrastructure Costs}{174}{subsection.E.3.2}%
+\contentsline {subsection}{\numberline {E.3.3}Licensing}{174}{subsection.E.3.3}%
+\contentsline {section}{\numberline {E.4}Schedule Feasibility}{174}{section.E.4}%
+\contentsline {section}{\numberline {E.5}Risk Analysis}{176}{section.E.5}%

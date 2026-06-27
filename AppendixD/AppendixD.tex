@@ -1,0 +1,324 @@
+% =============================================================================
+% Appendix D: Code Documentation
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{Code Documentation}
+\label{app:codedoc}
+
+This appendix documents the key design patterns, domain entities, and use case implementations that form the backbone of the NexaLearn codebase. All code examples are written in TypeScript and follow the NestJS framework conventions.
+
+\section{Key Design Patterns}
+\label{sec:app-patterns}
+
+\subsection{Transactional Outbox Publisher}
+
+The outbox pattern guarantees at-least-once event delivery. The \texttt{OutboxPublisher} service is injected into application services that need to publish domain events atomically with database state changes.
+
+\begin{lstlisting}[language=TypeStyle,caption=Transactional outbox publisher,label=lst:outbox-publisher]
+@Injectable()
+export class OutboxPublisher {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async publish<T extends Record<string, unknown>>(
+    aggregateType: string,
+    aggregateId: string,
+    eventType: string,
+    payload: T,
+    transaction?: Prisma.TransactionClient,
+  ): Promise<void> {
+    const client = transaction ?? this.prisma;
+    await client.outboxEvent.create({
+      data: {
+        aggregateType,
+        aggregateId,
+        eventType,
+        payload,
+        status: 'PENDING',
+      },
+    });
+  }
+}
+\end{lstlisting}
+
+The usage pattern within an application service:
+
+\begin{lstlisting}[language=TypeScript,caption=Using outbox in a use case,label=lst:outbox-usage]
+async createEnrollment(userId: string, courseId: string): Promise<Enrollment> {
+  return this.prisma.$transaction(async (tx) => {
+    const enrollment = await tx.enrollment.create({
+      data: { userId, courseId, status: 'ACTIVE' },
+    });
+
+    await this.outboxPublisher.publish(
+      'Enrollment',
+      enrollment.id,
+      'EnrollmentActivated',
+      { enrollmentId: enrollment.id, userId, courseId },
+      tx,
+    );
+
+    return enrollment;
+  });
+}
+\end{lstlisting}
+
+\subsection{Projection Event Ledger for Idempotency}
+
+The \texttt{tryBeginProjectionEvent} pattern ensures that each external callback (Stripe webhook, Mux webhook, AI pipeline callback) is processed exactly once.
+
+\begin{lstlisting}[language=TypeScript,caption=Projection event ledger,label=lst:proj-event-ledger]
+@Injectable()
+export class ProjectionEventLedger {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async tryBegin(
+    eventId: string,
+    handlerName: string,
+  ): Promise<boolean> {
+    try {
+      await this.prisma.projectionEventLedger.create({
+        data: {
+          eventId,
+          handlerName,
+          status: 'PROCESSING',
+          startedAt: new Date(),
+        },
+      });
+      return true;
+    } catch (err) {
+      if (err instanceof Prisma.PrismaClientKnownRequestError
+          && err.code === 'P2002') {
+        return false;
+      }
+      throw err;
+    }
+  }
+
+  async complete(
+    eventId: string,
+    handlerName: string,
+  ): Promise<void> {
+    await this.prisma.projectionEventLedger.update({
+      where: { eventId_handlerName: { eventId, handlerName } },
+      data: { status: 'COMPLETED', completedAt: new Date() },
+    });
+  }
+}
+\end{lstlisting}
+
+\subsection{Optimistic Concurrency Utility}
+
+The \texttt{withOptimisticRetry} utility wraps database operations that may fail due to optimistic concurrency version conflicts:
+
+\begin{lstlisting}[language=TypeScript,caption=Optimistic concurrency retry,label=lst:optimistic-retry-util]
+export async function withOptimisticRetry<T>(
+  operation: () => Promise<T>,
+  maxRetries = 3,
+): Promise<T> {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await operation();
+    } catch (err) {
+      if (
+        err instanceof Prisma.PrismaClientKnownRequestError
+        && err.code === 'P2025'
+        && attempt < maxRetries
+      ) {
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw new ConcurrencyConflictException('Max retries exceeded');
+}
+\end{lstlisting}
+
+\section{Domain Entity Design}
+\label{sec:app-entities}
+
+The \texttt{QuizEntity} aggregate root illustrates the DDD tactical patterns used throughout the codebase. The entity encapsulates its state and enforces invariants through public methods.
+
+\begin{lstlisting}[language=TypeScript,caption=QuizEntity aggregate root,label=lst:quiz-entity-code]
+@Entity()
+export class QuizEntity {
+  private constructor(
+    private readonly id: string,
+    private courseId: string,
+    private lessonId: string,
+    private title: string,
+    private status: QuizStatus,
+    private questions: QuestionEntity[],
+    private readonly createdAt: Date,
+    private updatedAt: Date,
+    private publishedAt: Date | null,
+    private attemptLimit: number,
+  ) {}
+
+  static create(props: CreateQuizProps): QuizEntity {
+    return new QuizEntity(
+      crypto.randomUUID(),
+      props.courseId,
+      props.lessonId,
+      props.title,
+      QuizStatus.DRAFT,
+      [],
+      new Date(),
+      new Date(),
+      null,
+      props.attemptLimit ?? 3,
+    );
+  }
+
+  addQuestion(question: QuestionEntity): void {
+    if (this.status !== QuizStatus.DRAFT) {
+      throw new DomainException(
+        'Cannot add questions to a non-draft quiz',
+      );
+    }
+    this.questions.push(question);
+    this.updatedAt = new Date();
+  }
+
+  publish(): void {
+    if (this.status !== QuizStatus.DRAFT) {
+      throw new DomainException(
+        'Only draft quizzes can be published',
+      );
+    }
+    if (this.questions.length === 0) {
+      throw new DomainException(
+        'Cannot publish a quiz with no questions',
+      );
+    }
+    this.status = QuizStatus.PUBLISHED;
+    this.publishedAt = new Date();
+    this.updatedAt = new Date();
+  }
+
+  archive(): void {
+    if (this.status === QuizStatus.ARCHIVED) {
+      throw new DomainException('Quiz is already archived');
+    }
+    this.status = QuizStatus.ARCHIVED;
+    this.updatedAt = new Date();
+  }
+
+  getStatus(): QuizStatus {
+    return this.status;
+  }
+
+  getQuestions(): readonly QuestionEntity[] {
+    return this.questions;
+  }
+
+  toPersistent(): QuizPersistent {
+    return {
+      id: this.id,
+      courseId: this.courseId,
+      lessonId: this.lessonId,
+      title: this.title,
+      status: this.status,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+      publishedAt: this.publishedAt,
+      attemptLimit: this.attemptLimit,
+    };
+  }
+}
+\end{lstlisting}
+
+Key design decisions in this entity:
+
+\begin{itemize}
+  \item \textbf{Private constructor.} The entity cannot be instantiated directly; it must be created via the static \texttt{create()} factory method or reconstituted from persistence via a repository.
+  \item \textbf{Immutable question list.} The \texttt{getQuestions()} method returns a \texttt{readonly} array to prevent external mutation of the aggregate's internal state.
+  \item \textbf{State machine enforcement.} The \texttt{publish()} method checks both the current status (only \texttt{DRAFT} can be published) and the business invariant (at least one question required).
+  \item \textbf{Separation of domain and persistence.} The \texttt{toPersistent()} method produces a plain object suitable for Prisma, while the entity itself remains free of ORM decorators.
+\end{itemize}
+
+\section{Use Case Structure}
+\label{sec:app-usecases-code}
+
+Use cases follow the NestJS application service pattern. Each use case is a single class with an \texttt{execute()} method that accepts a typed DTO and returns a typed result. The \texttt{HandleGenerationCallbackUseCase} demonstrates the pattern for webhook-driven AI pipeline interactions.
+
+\begin{lstlisting}[language=TypeScript,caption=HandleGenerationCallbackUseCase,label=lst:handle-callback]
+@Injectable()
+export class HandleGenerationCallbackUseCase {
+  constructor(
+    private readonly quizRepository: QuizRepository,
+    private readonly generationJobRepository: GenerationJobRepository,
+    private readonly ledger: ProjectionEventLedger,
+    private readonly outbox: OutboxPublisher,
+    private readonly prisma: PrismaService,
+  ) {}
+
+  async execute(dto: CallbackDto): Promise<void> {
+    const eventId = dto.jobId;
+    const handlerName = 'HandleGenerationCallback';
+
+    const isNew = await this.ledger.tryBegin(eventId, handlerName);
+    if (!isNew) {
+      return;
+    }
+
+    try {
+      const job = await this.generationJobRepository.findById(
+        dto.jobId,
+      );
+
+      if (!job) {
+        throw new NotFoundException(
+          `Generation job ${dto.jobId} not found`,
+        );
+      }
+
+      job.complete(dto.generatedQuiz);
+
+      const quiz = QuizEntity.create({
+        courseId: job.getCourseId(),
+        lessonId: job.getLessonId(),
+        title: `AI-Generated Quiz: ${job.getLessonTitle()}`,
+      });
+
+      for (const q of dto.generatedQuiz.questions) {
+        quiz.addQuestion(
+          QuestionEntity.create({
+            text: q.text,
+            type: q.type,
+            options: q.options,
+            correctAnswer: q.correctAnswer,
+          }),
+        );
+      }
+
+      await this.prisma.$transaction(async (tx) => {
+        await this.generationJobRepository.save(job, tx);
+        await this.quizRepository.save(quiz, tx);
+        await this.outbox.publish(
+          'Quiz',
+          quiz.id,
+          'QuizGeneratedByAI',
+          { quizId: quiz.id, lessonId: quiz.lessonId },
+          tx,
+        );
+      });
+
+      await this.ledger.complete(eventId, handlerName);
+    } catch (err) {
+      await this.ledger.fail(eventId, handlerName, err.message);
+      throw err;
+    }
+  }
+}
+\end{lstlisting}
+
+The use case pattern demonstrates several architectural principles:
+
+\begin{itemize}
+  \item \textbf{Dependency injection.} All dependencies are injected through the constructor, making the use case testable with mocked repositories.
+  \item \textbf{Idempotent entry.} The \texttt{ProjectionEventLedger.tryBegin()} guard ensures that duplicate callbacks are silently ignored.
+  \item \textbf{Transaction boundary.} The repository saves and the outbox publish occur within the same database transaction, ensuring atomicity.
+  \item \textbf{Error handling.} Failures are recorded in the ledger with the error message, enabling observability and manual retry.
+  \item \textbf{Business logic delegation.} The use case delegates state mutations to domain entities (\texttt{job.complete()}, \texttt{quiz.addQuestion()}) rather than manipulating data directly.
+\end{itemize}

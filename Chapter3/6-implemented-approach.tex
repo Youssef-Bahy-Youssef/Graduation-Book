@@ -1,0 +1,101 @@
+% =============================================================================
+% Section 3.6: Implemented Approach and Justification
+% =============================================================================
+
+\section{Implemented Approach and Justification}
+\label{sec:implemented-approach}
+
+This section synthesises the literature surveyed in Sections~\ref{sec:ddd-clean-arch} through~\ref{sec:comparative-study} into concrete technology and pattern decisions for NexaLearn. Each decision is justified against alternatives on technical merit, alignment with the problem statement (Chapter~1), and suitability for the primary target segments identified in Section~\ref{sec:targeted-customers}.
+
+\subsection{Framework Selection: NestJS over Spring Boot and Django}
+
+NexaLearn is implemented in \textbf{NestJS}\cite{nestjs2024}, a progressive Node.js framework that leverages TypeScript decorators for dependency injection, controller routing, middleware piping, and module organisation. Three considerations motivate this choice:
+
+\begin{enumerate}
+  \item \textbf{TypeScript ecosystem alignment.} The primary target segment---edtech startups and independent developers---operates predominantly in the TypeScript/JavaScript ecosystem. Choosing NestJS allows these developers to read, fork, and contribute to NexaLearn without learning a second programming language. Garcia et al.~\cite{garcia2022typescript} found that TypeScript adoption reduces production defect density by 15\% compared to equivalent JavaScript codebases, primarily through compile-time detection of type mismatches, null reference errors, and incorrect API usage.
+  \item \textbf{Decorator-based DDD mapping.} NestJS's decorator syntax maps naturally to DDD architectural layers. A controller is annotated with \texttt{@Controller()}, a provider with \texttt{@Injectable()}, and a module with \texttt{@Module()}. The framework provides no prescribed entity or aggregate base class---NexaLearn's domain entities are plain TypeScript classes---but the dependency injection container cleanly separates application-layer use cases from infrastructure adapters.
+  \item \textbf{Comparative framework analysis.} Zhang et al.~\cite{zhang2024nestjs} conducted a controlled experiment comparing NestJS, Spring Boot, and Django on throughput, memory consumption, and developer productivity for a representative CRUD+event API workload. NestJS achieved comparable throughput to Spring Boot (within 12\%) with 40\% lower memory consumption in containerised deployments, and developers with TypeScript experience completed identical implementation tasks 1.7\texttimes{} faster in NestJS than developers with Java experience in Spring Boot.
+\end{enumerate}
+
+\subsection{ORM Selection: Prisma over TypeORM}
+
+Prisma~\cite{prisma2024} was chosen as the object-relational mapping layer over TypeORM and MikroORM based on three criteria:
+
+\begin{enumerate}
+  \item \textbf{Type safety.} Prisma generates TypeScript types from the database schema declaration (\texttt{prisma/schema.prisma}). Every query returns a fully typed result set, eliminating the ``field does not exist on type'' runtime errors common with TypeORM's class-based entity approach. The generated types serve as a single source of truth for schema evolution.
+  \item \textbf{Migration management.} Prisma Migrate produces deterministic PostgreSQL migration files with rollback support, integrated into the development workflow via \texttt{prisma migrate dev} and deployment pipeline via \texttt{prisma migrate deploy}. TypeORM migrations, by contrast, require careful ordering and manual conflict resolution in team environments.
+  \item \textbf{Raw query support.} While Prisma's generated client covers 95\% of NexaLearn's data access patterns, the CQRS-lite read models (Section~\ref{subsec:revenue}) and analytics aggregations require window functions, lateral joins, and materialised view refreshes that benefit from raw SQL. Prisma exposes \texttt{prisma.\$queryRawUnsafe()} with parameterised inputs, allowing these queries without escaping the typed ORM layer.
+\end{enumerate}
+
+\subsection{Transactional Outbox over Direct Message Queue Publication}
+
+NexaLearn implements the transactional outbox pattern (Section~\ref{sec:event-driven-outbox}) using PostgreSQL as the event store, with no additional message broker such as RabbitMQ or Apache Kafka. This decision is motivated by the analysis of Mehta et al.~\cite{mehta2023eda} and the gap identified in Table~\ref{tab:lit-comparison}:
+
+\begin{enumerate}
+  \item \textbf{Deployment simplicity.} A PostgreSQL-only dependency means that NexaLearn deploys as a single Docker Compose stack (application containers, PostgreSQL, Redis for caching) rather than requiring a Kafka or RabbitMQ cluster. This is a first-class requirement for the primary customer segment: university IT departments and bootstrapped startups that may not have dedicated DevOps engineers to operate a distributed messaging infrastructure.
+  \item \textbf{Transactional guarantees.} The outbox pattern ensures that events are persisted atomically with the domain mutation, solving the dual-write problem without distributed transactions. A message broker introduces a separate transactional boundary: the application would need to write to the database and then publish to the broker, with the risk that one succeeds while the other fails.
+  \item \textbf{Acceptable latency.} NexaLearn's polling interval defaults to 500 ms with a batch size of 50 events. For the workload profile of an e-learning platform serving primarily synchronous (learner-facing) and asynchronous (instructor notification, search index update) consumers, this latency is well within acceptable bounds. Events such as \texttt{LessonCompleted} that trigger real-time progress UI updates are additionally written to Redis for immediate consumption, combining the outbox's durability with Redis's pub/sub latency.
+\end{enumerate}
+
+The trade-off is increased database load from polling and the lack of native fan-out, message broker, delayed-queue, or dead-letter features. For NexaLearn's current workload targets (tens of thousands of enrolled learners, hundreds of events per second at peak), PostgreSQL with appropriate indexing (\texttt{idx\_outbox\_unprocessed} on \texttt{(processed\_at NULLS FIRST, created\_at ASC)}) comfortably handles this volume. Should event throughput grow beyond this bound, the outbox publisher is designed to be replaced with a Kafka producer without changing any domain or application layer code---the outbox processor's only external contract is a \texttt{EventPublisher} interface that currently calls a local NestJS event bus but could be reimplemented to publish to Kafka.
+
+\subsection{Modular Monolith over Microservices}
+
+NexaLearn is deployed as a \textbf{modular monolith}: a single NestJS application process with multiple modules, rather than a distributed system of independently deployed microservices. The modular monolith is the deployment model recommended by Yang et al.~\cite{yang2023micro} for projects and teams at NexaLearn's scale, offering:
+
+\begin{enumerate}
+  \item \textbf{Reduced operational overhead.} A single application instance is simpler to deploy, monitor, and debug than sixteen microservices with their own deployment pipelines, health checks, and log aggregation. For a graduation project maintained by a small core team, minimising operational surface area is a practical necessity.
+  \item \textbf{No network overhead.} Inter-context communication within the same process uses in-memory method calls rather than HTTP/gRPC round-trips, reducing latency by several orders of magnitude for high-frequency interactions such as ``validate enrollment before returning lesson content.''
+  \item \textbf{Explicit bounded contexts.} The modular monolith does not relax DDD boundaries. Modules cannot import repository classes from other modules; cross-context communication is mediated through domain events (published via the in-process event bus and the outbox) or through dedicated query services exposed as NestJS providers registered in the importing module. This discipline ensures that extracting any context into an independent microservice---should scaling requirements eventually demand it---requires changing only the module's registration and the event publishing mechanism, not the domain logic.
+\end{enumerate}
+
+\subsection{Summary of Architectural Decisions}
+
+Table~\ref{tab:arch-decisions} summarises the key architectural decisions, the alternatives considered, and the primary justification for each choice.
+
+\begin{table}[H]
+  \centering
+  \caption{Architectural Decisions and Justification}
+  \label{tab:arch-decisions}
+  \small
+  \begin{tabular}{@{}p{3.0cm} p{2.5cm} p{2.5cm} p{4.5cm}@{}}
+    \toprule
+    \textbf{Decision} &
+    \textbf{Chosen} &
+    \textbf{Alternatives} &
+    \textbf{Primary Justification} \\
+    \midrule
+    Framework &
+    NestJS &
+    Spring Boot, Django &
+    TypeScript ecosystem alignment with target segment; decorator-based DI; lower memory in containers \\
+    \addlinespace
+    ORM &
+    Prisma &
+    TypeORM, MikroORM &
+    Generated type safety; deterministic migrations; raw query escape hatch \\
+    \addlinespace
+    Event transport &
+    Outbox (PostgreSQL) &
+    Kafka, RabbitMQ &
+    No broker dependency for simplified deployment; atomic dual-write guarantees \\
+    \addlinespace
+    Deployment model &
+    Modular monolith &
+    Microservices &
+    Reduced ops overhead; no network latency; extractable to microservices later \\
+    \addlinespace
+    AI pipeline invocation &
+    HMAC-signed async callback &
+    Polling, synchronous API &
+    Stripe-style security; decoupled processing; built-in replay prevention \\
+    \addlinespace
+    Video delivery &
+    Mux (HLS + signed URLs) &
+    Cloudflare Stream, self-hosted FFmpeg &
+    Managed transcoding; JWT-signed playback; webhook lifecycle events \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+These decisions, grounded in the literature surveyed throughout this chapter, collectively deliver an open-source e-learning backend that balances architectural rigour (DDD, Clean Architecture, outbox), practical deployability (modular monolith, PostgreSQL-only event store), and modern AI integration (Whisper, LLM quiz generation, HMAC security)---the three pillars that define NexaLearn's contribution relative to the prior work examined in Section~\ref{sec:comparative-study}.

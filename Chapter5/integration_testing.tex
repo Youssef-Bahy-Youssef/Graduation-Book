@@ -1,0 +1,75 @@
+% =============================================================================
+% Section 5.2.2: Integration Testing
+% =============================================================================
+
+\subsection{Integration Testing}
+\label{sec:integration-testing}
+
+Integration tests validate the interactions between modules and the correctness of data flow across infrastructure boundaries. Unlike unit tests, which mock all external dependencies, integration tests exercise real PostgreSQL and Redis instances managed by Testcontainers, as described in Section~\ref{sec:testing-setup}. Each integration test file targets a single bounded context while importing the real repositories, services, and controllers that participate in cross-module workflows.
+
+\subsubsection{Testcontainers-Based Database Testing}
+
+The decision to use Testcontainers rather than in-memory databases (such as \texttt{pg-mem} or \texttt{better-sqlite3}) was motivated by three considerations. First, SQL dialect differences between PostgreSQL and SQLite introduce subtle bugs: PostgreSQL's \texttt{JSONB} operators, \texttt{ARRAY} columns, and \texttt{ON CONFLICT} clause have no direct equivalents in SQLite. Second, Prisma migrations produce dialect-specific SQL; running migrations against a fake database provides no guarantee that the same migrations will succeed against production PostgreSQL. Third, constraint enforcement differs: PostgreSQL enforces foreign key constraints and check constraints at the database level, while in-memory substitutes often skip these validations.
+
+Table~\ref{tab:integration-files} lists the primary integration test files and the specific cross-module workflows each validates.
+
+\begin{table}[H]
+  \centering
+  \caption{Integration Test Files and Scope}\label{tab:integration-files}
+  \small
+  \begin{tabular}{lll}
+    \toprule
+    \textbf{Test File}                     & \textbf{Modules Involved}         & \textbf{Workflow Under Test} \\
+    \midrule
+    \texttt{auth.int-spec.ts}              & Auth, User (shared)               & Full signup $\rightarrow$ login $\rightarrow$ refresh $\rightarrow$ logout cycle \\
+    \texttt{courses.int-spec.ts}           & Courses, Media                    & Course create $\rightarrow$ add module $\rightarrow$ add lesson with video \\
+    \texttt{assessment.int-spec.ts}        & Assessment, AI Pipeline           & Quiz create $\rightarrow$ AI grade $\rightarrow$ score persistence \\
+    \texttt{media.int-spec.ts}             & Media, AI Pipeline                & Video upload $\rightarrow$ transcription $\rightarrow$ transcription callback \\
+    \texttt{ai-pipeline.int-spec.ts}       & AI Pipeline, Assessment, Media    & Full pipeline: video $\rightarrow$ transcript $\rightarrow$ quiz generation \\
+    \texttt{payment.int-spec.ts}           & Payment, Stripe (mock webhook)    & Payment intent $\rightarrow$ stripe webhook $\rightarrow$ enrollment activation \\
+    \texttt{outbox.int-spec.ts}            & Outbox (shared infrastructure)    & Event write $\rightarrow$ outbox poll $\rightarrow$ event delivery \\
+    \texttt{enrollment.int-spec.ts}        & Enrollment, Payment, Auth         & Enroll $\rightarrow$ pay $\rightarrow$ access granted flow \\
+    \midrule
+    \textbf{Total: 8 files, 89 test cases} & (15 bounded contexts)             & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection{Representative Integration Scenarios}
+
+\textbf{Authentication lifecycle (auth.int-spec.ts).} This test file validates the complete authentication lifecycle against real PostgreSQL and Redis instances. The test seeds a user record directly into the database via Prisma, then issues a sequence of HTTP requests through the AuthController: login, access token validation, token refresh, simultaneous token reuse, and logout. The test asserts that:
+
+\begin{enumerate}
+  \item A valid login returns HTTP 200 with both tokens and sets the refresh token as an HTTPOnly cookie.
+  \item Subsequent access token validation via the \texttt{AuthGuard} succeeds for the issued access token.
+  \item The refresh endpoint returns a new token pair and invalidates the previous refresh token.
+  \item A concurrent second request with the same (now-stale) refresh token returns HTTP 401.
+  \item Logout deletes the Redis session; any subsequent token refresh attempt returns HTTP 401.
+\end{enumerate}
+
+The test verifies Redis state directly by querying the session store (\texttt{KEYS session:*}) to confirm that exactly one session exists during normal operation and zero sessions exist after logout.
+
+\textbf{Payment webhook idempotency (payment.int-spec.ts).} Stripe delivers webhooks with at-least-once semantics; the integration test verifies that processing the same \texttt{payment\_intent.succeeded} event twice does not create duplicate enrollments. The test performs the following sequence:
+
+\begin{enumerate}
+  \item Creates a \texttt{PaymentIntent} record in \texttt{PENDING} status.
+  \item Simulates the Stripe webhook call by posting the event payload (including the HMAC signature) to the \texttt{/webhooks/stripe} endpoint.
+  \item Asserts that the \texttt{PaymentIntent} transitions to \texttt{SUCCEEDED} and an \texttt{Enrollment} record is created in \texttt{ACTIVE} status.
+  \item Replays the identical webhook payload.
+  \item Asserts that no duplicate enrollment record exists and the \texttt{PaymentIntent} remains in \texttt{SUCCEEDED}.
+\end{enumerate}
+
+This test exposed an early bug in which the payment webhook handler used \texttt{prisma.paymentIntent.update()} without an idempotency guard, causing a unique constraint violation on the enrollment table when replayed.
+
+\subsubsection{Transactional Outbox Integration}
+
+The outbox processor is a critical piece of shared infrastructure that guarantees at-least-once event delivery without requiring a message broker (Section~\ref{sec:event-driven-outbox}). The \texttt{outbox.int-spec.ts} test validates the full lifecycle of an outbox event:
+
+\begin{itemize}
+  \item An event record is inserted into the \texttt{OutboxEvent} table within the same database transaction as the originating business operation.
+  \item The outbox poller (running as a background job via \texttt{@nestjs/schedule}) reads unprocessed events at a configurable interval.
+  \item Each event is dispatched to the registered handler (e.g., \texttt{EnrollmentCreatedHandler}) and the \texttt{processedAt} timestamp is set.
+  \item If the handler throws an exception, the event is retried up to three times with exponential backoff before being moved to a dead-letter queue (DLQ) table.
+\end{itemize}
+
+The test creates an outbox event by performing a business operation---registering a new user---and then invokes the outbox processor synchronously (bypassing the cron schedule) to verify delivery. It then manipulates the event payload to simulate a handler failure and confirms that the retry mechanism and DLQ behaviour operate correctly.

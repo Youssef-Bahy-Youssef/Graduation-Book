@@ -1,0 +1,201 @@
+% =============================================================================
+% Appendix A: Development Platforms and Tools
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{Development Platforms and Tools}
+\label{app:platforms}
+
+This appendix documents the hardware and software platforms used in the development, testing, and deployment of the NexaLearn platform.
+
+\section{Hardware Platforms}
+\label{sec:app-hardware}
+
+\subsection{Development Machines}
+
+The project was developed on Apple Silicon and x86\_64 workstations to ensure cross-platform compatibility of the Docker-based development environment:
+
+\begin{itemize}
+  \item \textbf{Primary development machine:} MacBook Pro (14-inch, 2023), Apple M3 Pro with 18 GB unified memory, running macOS Sonoma 14.5. This machine hosted the NestJS development server, PostgreSQL 16 via Docker, Redis 7 via Docker, and the VS Code editor with the ESLint, Prettier, and Prisma extensions.
+  \item \textbf{Secondary development machine:} Dell XPS 15 (2022), Intel Core i7-12700H, 32 GB RAM, running Ubuntu 22.04 via WSL2 on Windows 11. Used for testing the Docker Compose deployment, Nginx configuration, and cross-platform compatibility of the test suite.
+  \item \textbf{CI runner:} GitHub Actions Ubuntu 22.04 runner with 4 vCPUs and 16 GB RAM. The CI pipeline executes the full test suite in parallel shards using Testcontainers with Docker-in-Docker.
+\end{itemize}
+
+\subsection{Deployment Server Specifications}
+
+The target production deployment is designed for a virtual private server (VPS) with the following minimum specifications:
+
+\begin{itemize}
+  \item \textbf{CPU:} 4 vCPUs (x86\_64 or ARM64)
+  \item \textbf{RAM:} 8 GB
+  \item \textbf{Storage:} 100 GB SSD (expandable)
+  \item \textbf{OS:} Ubuntu 24.04 LTS
+  \item \textbf{Docker:} Docker Engine 27+ with Docker Compose plugin
+  \item \textbf{Network:} 1 Gbps port, public IPv4 address
+\end{itemize}
+
+The application, database, and cache all run as Docker containers on a single host for the minimum viable deployment. Horizontal scaling to multiple hosts is supported by the modular monolith architecture (see Section~\ref{subsec:module-dependency}) and documented in Section~\ref{sec:future-work}.
+
+\section{Software Tools}
+\label{sec:app-software}
+
+\subsection{Node.js 22 and NestJS 11}
+\label{subsec:app-nodejs}
+
+Node.js 22 LTS was chosen as the runtime for several reasons:
+
+\begin{itemize}
+  \item \textbf{Single-language stack.} TypeScript on both server and (future) client simplifies knowledge transfer and code sharing. DTOs, validation schemas, and enum definitions can be shared between the NestJS backend and a TypeScript frontend via a shared package.
+  \item \textbf{Ecosystem maturity.} NestJS 11 provides robust abstractions for dependency injection, guards, interceptors, pipes, and modules that map naturally to DDD tactical patterns. The \texttt{@nestjs/testing} module provides first-class support for integration testing with the \texttt{Test.createTestingModule} builder.
+  \item \textbf{Community and documentation.} NestJS has the largest community among TypeScript backend frameworks, with extensive documentation, 75,000+ GitHub stars, and an active Discord community. The framework follows Angular-inspired conventions that are familiar to many developers.
+\end{itemize}
+
+The alternative considered was Spring Boot (Java 21), which was rejected due to the higher boilerplate overhead, slower iterative development cycle (compilation times), and less natural fit for the target audience of JavaScript/TypeScript developers who would contribute to an open-source project.
+
+\subsection{PostgreSQL 16}
+\label{subsec:app-postgresql}
+
+PostgreSQL 16 serves as the primary data store. The choice over MySQL was motivated by:
+
+\begin{itemize}
+  \item \textbf{Advanced JSON support.} PostgreSQL's \texttt{JSONB} type with indexing via GIN (Generalized Inverted Index) enables efficient querying of event payloads stored in the outbox and projection ledger tables without requiring a separate document database.
+  \item \textbf{Partial and unique indexes.} Complex partial unique indexes---such as \texttt{CREATE UNIQUE INDEX idx\_single\_active\_enrollment ON enrollments (user\_id, course\_id) WHERE status = 'ACTIVE'}---enforce business invariants at the database level.
+  \item \textbf{Extension ecosystem.} The \texttt{pgcrypto} extension provides \texttt{gen\_random\_uuid()}, \texttt{crypt()}, and \texttt{gen\_salt()} functions used for secure token generation.
+  \item \textbf{Transaction isolation.} PostgreSQL's \texttt{SERIALIZABLE} isolation level, while not used for performance reasons, is available for the outbox poller's \texttt{SELECT FOR UPDATE SKIP LOCKED} queries.
+\end{itemize}
+
+\subsection{Prisma ORM 6}
+\label{subsec:app-prisma}
+
+Prisma ORM version 6 (at time of writing) provides the data access layer. Key advantages:
+
+\begin{itemize}
+  \item \textbf{Generated type safety.} The Prisma Client is generated from the schema file, producing TypeScript types for every model, relation, and query result. This eliminates the runtime errors that plague raw SQL or loosely-typed ORMs.
+  \item \textbf{Declarative migrations.} Prisma Migrate generates SQL migration files from schema changes, enabling deterministic and reversible database schema evolution. Each migration is a plain SQL file that can be reviewed, modified, and committed to version control.
+  \item \textbf{Relation management.} Prisma's relational model maps directly to the aggregate relationships defined in DDD: a \texttt{Course} has many \texttt{CourseModule}s, each of which has many \texttt{Lesson}s. The generated client provides type-safe nested writes (\texttt{prisma.course.create({ data: { ..., modules: { create: [...] }} })}).
+\end{itemize}
+
+The alternative considered was TypeORM, which was rejected due to less reliable type inference, decorator-based entity definitions that couple domain entities to the ORM, and a history of breaking changes between major versions.
+
+\subsection{Redis 7}
+\label{subsec:app-redis}
+
+Redis 7 is used for three distinct purposes:
+
+\begin{itemize}
+  \item \textbf{Session store.} Refresh token sessions are stored in Redis with TTL-based expiration (Section~\ref{sec:auth-module}). The \texttt{GETDEL} atomic operation prevents token reuse race conditions.
+  \item \textbf{Rate limiting.} The \texttt{@nestjs/throttler} package with \texttt{ThrottlerStorageRedisService} enforces global API rate limits across all application instances.
+  \item \textbf{Idempotency cache.} Stripe webhook idempotency keys and AI pipeline callback IDs are cached in Redis with a 24-hour TTL to reject duplicate requests before they reach the database.
+\end{itemize}
+
+Redis was chosen over alternative caching solutions (Memcached, KeyDB) for its support of complex data structures (hashes, sorted sets for leaderboards) and the availability of persistence (AOF + RDB) for the session store.
+
+\subsection{Docker and Docker Compose}
+\label{subsec:app-docker}
+
+The entire application is containerised using Docker and orchestrated with Docker Compose. The \texttt{docker-compose.yml} file defines four services:
+
+\begin{lstlisting}[caption=NexaLearn Docker Compose services,label=lst:docker-compose]
+services:
+  app:
+    build: .
+    ports: ['3000:3000']
+    depends_on: [db, redis]
+    environment:
+      DATABASE_URL: postgresql://nexalearn:${DB_PASSWORD}@db:5432/nexalearn
+      REDIS_URL: redis://redis:6379/0
+
+  db:
+    image: postgis/postgis:16-3.4
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    environment:
+      POSTGRES_USER: nexalearn
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: nexalearn
+
+  redis:
+    image: redis:7-alpine
+    volumes: [redis_data:/data]
+
+  nginx:
+    image: nginx:alpine
+    ports: ['80:80', '443:443']
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on: [app]
+\end{lstlisting}
+
+Docker Compose was chosen over Kubernetes for the initial deployment due to its simplicity, lower resource overhead, and suitability for single-host deployments. The migration path to Kubernetes is documented in the deployment guide.
+
+\subsection{Stripe API}
+\label{subsec:app-stripe}
+
+Stripe handles all payment processing. The integration spans three areas:
+
+\begin{itemize}
+  \item \textbf{Payment Intents API.} The server creates a \texttt{PaymentIntent} with the course price and currency through Stripe's REST API. The \texttt{client\_secret} is returned to the frontend, which completes the payment using Stripe Elements or Stripe Checkout.
+  \item \textbf{Webhook events.} Stripe delivers \texttt{payment\_intent.succeeded}, \texttt{payment\_intent.payment\_failed}, and \texttt{charge.refunded} events to the \texttt{/webhooks/stripe} endpoint. Each event is verified using the \texttt{Stripe-Signature} header and the webhook signing secret.
+  \item \textbf{Idempotency keys.} The Stripe API supports idempotency keys via the \texttt{Idempotency-Key} header, which the system uses for retry-safe payment intent creation.
+\end{itemize}
+
+Stripe was chosen over PayPal, Braintree, and Paddle for its developer-friendly API, comprehensive webhook system, and support for the Egyptian market via Stripe Connect.
+
+\subsection{Mux Video API}
+\label{subsec:app-mux}
+
+Mux provides video uploading, transcoding, and streaming functionality:
+
+\begin{itemize}
+  \item \textbf{Direct upload.} The server generates a Mux upload URL via the \texttt{/video/uploads} API. The browser uploads the video file directly to Mux, bypassing the server and reducing bandwidth costs.
+  \item \textbf{Asset lifecycle.} Mux fires webhooks for asset state transitions: \texttt{video.asset.created}, \texttt{video.asset.ready}, \texttt{video.asset.errored}, and \texttt{video.asset.mp4\_rendition.ready}. Each webhook is verified using the \texttt{Mux-Signature} header.
+  \item \textbf{Signed playback.} Playback IDs are signed using Mux's JWT-based signing keys, restricting access to authorised users. The signing key and key ID are configured via environment variables.
+\end{itemize}
+
+Mux was chosen over self-hosted solutions (FFmpeg + S3 + CloudFront) and alternative providers (Cloudflare Stream, Vimeo API) for its straightforward upload API, reliable webhook delivery, and transparent per-minute pricing.
+
+\subsection{AWS S3}
+\label{subsec:app-s3}
+
+Amazon S3 is used for persistent file storage outside the video pipeline:
+
+\begin{itemize}
+  \item \textbf{Certificate PDFs.} Completed course certificates are generated as PDFs and stored in an S3 bucket with server-side encryption (SSE-S3). Presigned URLs with 1-hour expiration are provided to learners for download.
+  \item \textbf{Course thumbnails.} Course cover images are uploaded via presigned POST URLs and served through CloudFront for low-latency delivery.
+  \item \textbf{AI pipeline artefacts.} Intermediate files from the AI pipeline---Whisper transcriptions in SRT format, LLM-generated quiz drafts---are stored in S3 with lifecycle policies that transition infrequently accessed objects to S3 Glacier after 90 days.
+\end{itemize}
+
+\subsection{Resend Email Service}
+\label{subsec:app-resend}
+
+Resend provides transactional email delivery with a modern REST API. The integration covers:
+
+\begin{itemize}
+  \item \textbf{Email verification.} A verification email with a signed token link is sent to new users during registration.
+  \item \textbf{Password reset.} A password reset email with a time-limited token is sent on request.
+  \item \textbf{Notifications.} Email notifications for quiz availability, discussion replies, and certificate issuance.
+\end{itemize}
+
+Resend was chosen over SendGrid, SES, and Mailgun for its TypeScript-native SDK, straightforward template API using React Email components, and generous free tier (100 emails/day).
+
+\subsection{Jest and Testcontainers}
+\label{subsec:app-jest}
+
+Jest 29 serves as the test framework, complemented by Testcontainers for integration testing:
+
+\begin{itemize}
+  \item \textbf{Jest configuration.} Tests are organized in three tiers: unit tests (\texttt{*.spec.ts}), integration tests (\texttt{*.int-spec.ts}), and E2E tests (\texttt{*.e2e-spec.ts}). The \texttt{jest.config.ts} file uses \texttt{ts-jest} for TypeScript compilation and \texttt{collectCoverageFrom} patterns to exclude modules and interfaces from coverage requirements.
+  \item \textbf{Testcontainers.} Integration tests use \texttt{@testcontainers/postgresql} and \texttt{@testcontainers/redis} to spin up disposable Docker containers. This approach was chosen over mocking the Prisma client or using an in-memory SQLite database because: (1) SQL dialect differences between PostgreSQL and SQLite cause false negatives, (2) Prisma migrations produce PostgreSQL-specific SQL, and (3) constraint enforcement (foreign keys, check constraints, unique indexes) differs between databases.
+\end{itemize}
+
+\subsection{Swagger/OpenAPI}
+\label{subsec:app-swagger}
+
+API documentation is auto-generated using the \texttt{@nestjs/swagger} package, which produces an OpenAPI 3.1 specification from decorators on controllers and DTOs:
+
+\begin{itemize}
+  \item Each controller class is annotated with \texttt{@ApiTags('auth')}, grouping endpoints by bounded context.
+  \item Each endpoint method is annotated with \texttt{@ApiOperation({ summary: '...', description: '...' })} and \texttt{@ApiResponse({ status: 201, description: '...', type: ... })}.
+  \item DTO classes use \texttt{@ApiProperty()} decorators to document request and response schemas.
+  \item The generated specification is served at \texttt{/api/docs} via the Swagger UI interface, allowing interactive API exploration and testing.
+\end{itemize}

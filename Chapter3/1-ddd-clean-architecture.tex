@@ -1,0 +1,48 @@
+% =============================================================================
+% Section 3.1: Background on Domain-Driven Design and Clean Architecture
+% =============================================================================
+
+\section{Background on Domain-Driven Design and Clean Architecture}
+\label{sec:ddd-clean-arch}
+
+\subsection{Domain-Driven Design Fundamentals}
+
+Domain-Driven Design (DDD), as originally formulated by Evans~\cite{evans2003ddd}, provides a set of strategic and tactical modelling patterns for managing complexity in software systems whose value derives from intricate domain logic. The central premise is that the \textit{domain model}---a software embodiment of the business concepts, rules, and invariants---must be the primary artefact driving design decisions, rather than implementation technology or database schemas. Evans introduces the concept of a \textbf{ubiquitous language}: a shared vocabulary used by domain experts, developers, and all project stakeholders, embedded consistently in code, diagrams, and documentation. This language prevents the translation errors that arise when business concepts are renamed or restructured between specification documents and implementation.
+
+At the strategic level, DDD prescribes decomposing large problem spaces into \textbf{bounded contexts}---explicit boundaries within which a particular ubiquitous language applies. Each bounded context owns its domain model, database schema, and internal logic; communication with other contexts occurs through well-defined integration contracts. A \textbf{context map} documents the relationships between bounded contexts, specifying whether the relationship is upstream/downstream (customer-supplier), conformist (the downstream adopts the upstream model without change), or shared-kernel (two contexts share a subset of the domain model). This decomposition prevents the architectural erosion described in Section~\ref{subsubsec:bounded-context-erosion} by enforcing that code in one context cannot directly access repositories or entities owned by another.
+
+At the tactical level, DDD defines a vocabulary of building blocks:
+
+\begin{description}
+  \item[\textbf{Entity.}] An object defined by its identity rather than its attributes. Two entities with identical field values are distinguishable by their identifier. In NexaLearn, \texttt{CourseEntity} and \texttt{QuizEntity} are entities whose identity persists across state changes.
+  \item[\textbf{Value Object.}] An immutable object defined solely by the values of its attributes. \texttt{QuestionOption}, \texttt{Address}, or monetary amounts are typical value objects. Equality is structural rather than identity-based.
+  \item[\textbf{Aggregate.}] A cluster of entities and value objects treated as a single consistency boundary. Aggregates have a root entity (the \textbf{aggregate root}) that enforces invariants and mediates all external access to the aggregate's internals. In NexaLearn, \texttt{QuizEntity} is the aggregate root for a graph that includes \texttt{QuestionEntity} children and \texttt{QuestionOption} value objects; all operations that add, remove, or reorder questions must go through the quiz aggregate root, ensuring invariants such as ``a quiz must have at least one question'' and ``question ordering within a quiz is contiguous.''
+  \item[\textbf{Domain Event.}] A record of something that happened in the domain that domain experts care about. \texttt{EnrollmentActivated}, \texttt{LessonCompleted}, and \texttt{PaymentSettled} are domain events in NexaLearn. Events are immutable facts published to interested contexts or external subscribers.
+  \item[\textbf{Repository.}] A mechanism for encapsulating storage, retrieval, and search behaviour, presenting a collection-like interface to the domain layer. Repositories per aggregate root abstract the underlying database technology---PostgreSQL, Redis, or in-memory---from domain logic.
+  \item[\textbf{Domain Service.}] A stateless operation that does not naturally belong to an entity or value object. Domain services orchestrate multiple aggregates or coordinate with external systems while keeping business rules in the domain layer.
+\end{description}
+
+NexaLearn's codebase applies these tactical patterns systematically. The \texttt{QuizEntity} aggregate root, for example, owns a list of \texttt{questions}, enforces the invariant that minimum passing score is between 0 and 100, and exposes behaviour methods such as \texttt{addQuestion()} rather than allowing direct mutation of the questions array.
+
+\subsection{Clean Architecture Layers}
+
+Martin's Clean Architecture~\cite{martin2017clean} refines the layering concerns earlier expressed in the Hexagonal Architecture and Onion Architecture patterns. The defining principle is the \textbf{Dependency Rule}: source code dependencies must point \textit{inward}, from outer layers toward inner layers. Nothing in an inner layer can know about anything in an outer layer.
+
+Applied to NexaLearn, the four layers are:
+
+\begin{enumerate}
+  \item \textbf{Domain Layer (innermost).} Contains entities, value objects, aggregate roots, domain events, and repository \textit{interfaces} (ports). This layer has zero dependencies on frameworks, databases, or external libraries. The ubiquitous language lives here: \texttt{Course}, \texttt{Enrollment}, \texttt{Payment}, \texttt{VideoAsset} are expressed as pure TypeScript classes with behaviour and invariants.
+  \item \textbf{Application Layer.} Contains use-case interactors that orchestrate domain objects to fulfil a single user story. Each use case (e.g., \texttt{SubmitQuizAttemptUseCase}, \texttt{ActivateEnrollmentUseCase}) depends on repository interfaces from the domain layer but has no knowledge of how those repositories are implemented. The application layer may also define application-specific DTOs and events.
+  \item \textbf{Infrastructure Layer.} Implements the repository interfaces declared in the domain layer. Prisma-based repository implementations, Mux API clients, Stripe SDK wrappers, and RabbitMQ message producers all reside here. This is also where the transactional outbox publisher, job queues, and scheduled task processors live.
+  \item \textbf{Presentation Layer (outermost).} Controllers, HTTP request/response DTOs, validation pipes, guards, and interceptors. NestJS controllers in NexaLearn are thin: they parse HTTP input, delegate to an application use case, and format the response. No business logic resides in controllers.
+\end{enumerate}
+
+The Dependency Rule is enforced through TypeScript's module system and a Nx monorepo configuration that prevents cross-module imports that violate layer boundaries. A custom ESLint rule in the NexaLearn codebase disallows infrastructure-layer modules from importing any NestJS decorator or Prisma client code into domain or application layer files.
+
+\subsection{Application to NexaLearn's Bounded Contexts}
+
+NexaLearn decomposes its domain into sixteen bounded contexts, each mapped to a NestJS module (or set of related modules). The decomposition follows Dossena et al.'s~\cite{dossena2022ddd} recommendations for applying DDD to e-learning platforms, where enrolment, assessment, content management, and analytics each form natural bounded contexts because they involve distinct stakeholders, disparate lifecycle rules, and different persistence trade-offs. The \textbf{Courses} context, for example, owns course catalogue data, curriculum structure, and lesson content. It exposes read-only projections for the \textbf{Progress} context via materialised views and reacts to \texttt{EnrollmentActivated} events published by the \textbf{Enrollment} context. The \textbf{Assessment} context owns quizzes, questions, attempts, and scoring logic; its aggregate root (\texttt{QuizEntity}) enforces invariants such as maximum attempts per learner and question ordering. This bounded-context-per-module approach, combined with Clean Architecture layering within each module, yields a codebase where a developer can understand the Quiz domain entirely within the Assessment module without traversing cross-cutting infrastructure concerns.
+
+The modular monolith deployment strategy (detailed in Section~\ref{sec:implemented-approach}) packages all sixteen contexts into a single NestJS application process, but the DDD boundaries and Clean Architecture layers ensure that the system remains maintainable as it grows. Each context can be extracted into an independent microservice with minimal refactoring if scaling or team autonomy requirements change, following the split-pattern described by Yang et al.~\cite{yang2023micro}.
+
+Ultimately, DDD and Clean Architecture provide NexaLearn with three benefits directly motivated by the problem statement of Chapter~1. First, \textbf{testability}: domain entities with no framework dependencies can be unit-tested without NestJS test containers or database connections. Second, \textbf{maintainability}: a developer can reason about the Enrollment aggregate without understanding Stripe webhook processing details. Third, \textbf{bounded context isolation}: the Courses context can evolve its schema and domain logic without cascading changes to Discussion or Streak, provided the published event contracts remain stable.

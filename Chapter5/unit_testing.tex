@@ -1,0 +1,66 @@
+% =============================================================================
+% Section 5.2.1: Unit Testing
+% =============================================================================
+
+\subsection{Unit Testing}
+\label{sec:unit-testing}
+
+Unit tests form the foundation of the NexaLearn testing strategy. Every domain entity, value object, domain service, and pure utility function in the codebase is covered by at least one unit test. The tests are designed to run in isolation: external dependencies (database, Redis, HTTP clients, file system) are replaced with test doubles using the Jest mocking framework. This guarantees sub-millisecond execution per test and zero reliance on external infrastructure.
+
+\subsubsection{Covered Domain Entities}
+
+Table~\ref{tab:unit-coverage} lists the unit test coverage for the core domain entities across each bounded context. The coverage percentage is calculated as the ratio of executable lines exercised by the test suite to total executable lines, as reported by the Jest \texttt{--coverage} reporter. The minimum acceptable coverage threshold is 90\% for domain entities and 80\% for application services.
+
+\begin{table}[H]
+  \centering
+  \caption{Unit Test Coverage Summary}\label{tab:unit-coverage}
+  \small
+  \begin{tabular}{llrrr}
+    \toprule
+    \textbf{Module}    & \textbf{Test File}                  & \textbf{Cases} & \textbf{Lines} & \textbf{Cov. \%} \\
+    \midrule
+    Auth               & \texttt{user.entity.spec.ts}        & 12             & 98             & 100.0 \\
+    Auth               & \texttt{session.entity.spec.ts}      & 8              & 72             & 100.0 \\
+    Auth               & \texttt{hmac-signature.service.spec.ts} & 10         & 85             & 97.6 \\
+    Courses            & \texttt{course.entity.spec.ts}       & 14             & 156            & 98.1 \\
+    Courses            & \texttt{module.entity.spec.ts}       & 6              & 64             & 100.0 \\
+    Courses            & \texttt{lesson.entity.spec.ts}       & 8              & 81             & 95.1 \\
+    Media              & \texttt{video-asset.entity.spec.ts}  & 10             & 112            & 96.4 \\
+    AI Pipeline        & \texttt{transcription-job.entity.spec.ts} & 8          & 74             & 100.0 \\
+    AI Pipeline        & \texttt{quiz-generation-job.entity.spec.ts} & 8        & 76             & 100.0 \\
+    Assessment         & \texttt{quiz.entity.spec.ts}         & 16             & 198            & 99.5 \\
+    Assessment         & \texttt{question.entity.spec.ts}     & 8              & 62             & 100.0 \\
+    Assessment         & \texttt{quiz-attempt.entity.spec.ts} & 10             & 134            & 97.0 \\
+    Assessment         & \texttt{quiz-grading.service.spec.ts} & 12            & 156            & 98.7 \\
+    Payment            & \texttt{payment-intent.entity.spec.ts} & 10           & 118            & 96.6 \\
+    Enrollment         & \texttt{enrollment.entity.spec.ts}   & 8              & 92             & 100.0 \\
+    Enrollment         & \texttt{streak.service.spec.ts}      & 6              & 48             & 100.0 \\
+    Discussion         & \texttt{discussion-thread.entity.spec.ts} & 8         & 86             & 95.3 \\
+    Reviews            & \texttt{review.entity.spec.ts}       & 6              & 52             & 100.0 \\
+    Reviews            & \texttt{review-eligibility.service.spec.ts} & 5         & 44             & 100.0 \\
+    \midrule
+    \textbf{Total}     & (19 files)                          & \textbf{173}   & \textbf{1794}  & \textbf{98.5} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection{Domain Service Test Scenarios}
+
+Beyond entity-level tests, the unit test suite covers critical domain services with scenario-based test cases. Three representative examples illustrate the depth of the validation:
+
+\textbf{QuizEntity.publish() invariant.} The method \texttt{QuizEntity.publish()} transitions the quiz from \texttt{DRAFT} to \texttt{PUBLISHED} only if the aggregate has at least one question. The unit test verifies that calling \texttt{publish()} on a quiz with zero questions throws a \texttt{DomainException} with the message "Cannot publish a quiz with no questions." The test strategy uses the Arrange--Act--Assert (AAA) pattern: a fresh \texttt{QuizEntity} is instantiated (no questions added), the \texttt{publish()} method is invoked, and the exception is caught via \texttt{expect().toThrow()}. A second test case creates a quiz with five questions spanning different types (multiple-choice, true/false, short answer) and asserts that \texttt{publish()} succeeds and updates the status to \texttt{PUBLISHED}.
+
+\textbf{Refresh token reuse detection.} The HMAC signature service unit test validates that when two concurrent requests present the same refresh token, only the first succeeds. The test simulates this by calling \texttt{SessionService.refreshTokens()} twice with identical arguments and asserting that the first call returns a valid token pair while the second throws \texttt{UnauthorizedException}. This test was instrumental in identifying a race condition during the initial implementation, where the token rotation logic deleted the old session before atomically creating the new one, creating a window in which concurrent requests could both succeed.
+
+\textbf{Enrollment state machine transitions.} The \texttt{EnrollmentEntity} enforces a strict state machine with four states: \texttt{PENDING\_PAYMENT}, \texttt{ACTIVE}, \texttt{COMPLETED}, and \texttt{CANCELLED}. Unit tests verify each legal transition---for instance, that an enrollment can transition from \texttt{ACTIVE} to \texttt{COMPLETED} only when the learner's progress exceeds the course completion threshold (80\% of lessons completed). Illegal transitions, such as \texttt{PENDING\_PAYMENT} to \texttt{COMPLETED}, are verified to throw \texttt{DomainException}.
+
+\subsubsection{Pure Function Tests}
+
+The following pure functions---functions with no side effects and deterministic outputs---are tested with parameterised test suites that enumerate edge cases:
+
+\begin{itemize}
+  \item \texttt{gradeQuizAttempt(answers: Answer[], answerKey: AnswerKey[]): Score}: Computes the raw score, percentage, and per-question breakdown. Test cases cover all-correct, all-incorrect, partial credit for multi-select questions, and empty submissions.
+  \item \texttt{calculateGradeFromStoredAnswers(rawScore: number, totalQuestions: number): Grade}: Maps the percentage to a letter grade using the configured grading scale. Edge cases include boundary values (e.g., 89.5\% rounding to A-- at the instructor's discretion).
+  \item \texttt{computeNextStreak(currentStreak: Streak, lessonCompletedAt: Date): Streak}: Calculates the updated streak counter based on the time delta between consecutive completions. The test verifies that a completion within 24 hours increments the streak, while a gap exceeding 48 hours resets it to 1.
+  \item \texttt{checkReviewEligibility(enrollment: Enrollment, course: Course): EligibilityResult}: Determines whether a learner may submit a review. The function enforces three rules: the enrollment must be in \texttt{COMPLETED} state, no existing review from the same user must exist, and at least 72 hours must have elapsed since completion. Each rule is tested independently.
+\end{itemize}

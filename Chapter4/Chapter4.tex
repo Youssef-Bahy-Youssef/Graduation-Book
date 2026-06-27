@@ -1,0 +1,25 @@
+% =============================================================================
+% Chapter 4: System Design and Architecture
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{System Design and Architecture}
+\label{ch:system-design}
+
+This chapter presents the complete system design and architectural blueprint of the NexaLearn platform. The design is grounded in the Domain-Driven Design and Clean Architecture principles surveyed in Chapter~3, and directly addresses the problem sub-problems identified in Chapter~1: lack of vertical coverage in open backends, unreliable asynchronous event processing, architectural erosion across many bounded contexts, and exactly-once semantics for financial and AI integrations.
+
+The chapter begins with a high-level overview and the assumptions that constrain the design space (Section~\ref{sec:overview-assumptions}). Section~\ref{sec:sys-arch} presents the layered architecture block diagram and the module dependency graph, including a comprehensive summary table of all fifteen bounded contexts. The subsequent sections examine each module in depth: authentication (Section~\ref{sec:auth-module}), course management (Section~\ref{sec:course-module}), media and video processing (Section~\ref{sec:media-module}), AI pipeline integration (Section~\ref{sec:ai-pipeline-module}), assessment and quizzes (Section~\ref{sec:assessment-module}), payments (Section~\ref{sec:payment-module}), enrollment (Section~\ref{sec:enrollment-module}), and discussion (Section~\ref{sec:discussion-module}). Each module section follows a consistent structure: functional description, state machine, data flow, key entities, and design decisions. Section~\ref{sec:security-design} concludes the chapter with cross-cutting security mechanisms including HMAC service-to-service authentication, rate limiting, and audit logging.
+
+Every module description includes a state machine diagram and references to the corresponding implementation artefacts in the NestJS codebase. Code listings highlight the domain entity behaviours that enforce business invariants at the aggregate root level.
+
+\input{Chapter4/introduction}
+\input{Chapter4/system_architecture}
+\input{Chapter4/auth_module}
+\input{Chapter4/course_module}
+\input{Chapter4/media_module}
+\input{Chapter4/ai_pipeline_module}
+\input{Chapter4/assessment_module}
+\input{Chapter4/payment_module}
+\input{Chapter4/enrollment_module}
+\input{Chapter4/discussion_module}
+\input{Chapter4/security}

@@ -1,0 +1,152 @@
+% =============================================================================
+% Appendix E: Feasibility Study
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{Feasibility Study}
+\label{app:feasibility}
+
+This appendix presents a multi-dimensional feasibility analysis of the NexaLearn project, examining technical, operational, economic, and schedule considerations, along with a risk assessment.
+
+\section{Technical Feasibility}
+\label{sec:app-tech-feasibility}
+
+The project is technically feasible for the following reasons:
+
+\begin{itemize}
+  \item \textbf{Mature technology stack.} All technologies chosen (Node.js 22 LTS, NestJS 11, PostgreSQL 16, Prisma 6, Redis 7, Docker 27) are stable, well-documented, and widely adopted in production environments. Node.js has been the dominant server-side JavaScript runtime for over a decade, and NestJS has accumulated 75,000+ GitHub stars since its initial release in 2017.
+  \item \textbf{Open-source licensing.} Every software component used in the project--from the runtime and framework to the database and caching layer--is open-source and free to use. No paid licenses are required for development or production deployment.
+  \item \textbf{Team competency.} The project team possesses the required skills: TypeScript/Node.js development, relational database design, REST API design, Docker containerisation, and Git version control. The DDD and Clean Architecture patterns were learned through literature and applied iteratively during development.
+  \item \textbf{Third-party API maturity.} Stripe, Mux, AWS S3, and Resend are well-established services with comprehensive SDKs, documentation, and free tiers suitable for development and small-scale deployment.
+  \item \textbf{Cloud deployment readiness.} The Docker Compose-based deployment model is directly compatible with all major cloud providers (AWS ECS, Google Cloud Run, Azure Container Instances, DigitalOcean App Platform) and can be migrated to Kubernetes with minimal changes.
+\end{itemize}
+
+\section{Operational Feasibility}
+\label{sec:app-ops-feasibility}
+
+The project is operationally feasible for the following reasons:
+
+\begin{itemize}
+  \item \textbf{Containerised deployment.} The entire application, including the database and cache, runs in Docker containers managed by Docker Compose. This eliminates environment-specific configuration issues and simplifies deployment to any Linux server with Docker installed.
+  \item \textbf{Automated CI/CD.} The GitHub Actions CI pipeline runs tests on every pull request, builds the Docker image, and pushes it to a container registry. Production deployment can be automated with a single command: \texttt{docker compose up -d}.
+  \item \textbf{Monitoring and observability.} NestJS provides built-in logging via the \texttt{Logger} service, and the application exposes health check endpoints (\texttt{GET /health}) for container orchestration systems. Structured logging in JSON format is compatible with log aggregation tools (ELK Stack, Grafana Loki).
+  \item \textbf{Backup and restore.} PostgreSQL backups are automated via \texttt{pg\_dump} with daily cron jobs. Redis persistence is configured with AOF (Append-Only File) for crash recovery. The S3 bucket for certificate PDFs has cross-region replication enabled.
+  \item \textbf{Scalability path.} The modular monolith architecture supports vertical scaling (larger server) for the initial deployment and horizontal scaling (multiple application instances behind a load balancer) for growth. The outbox pattern and Redis-backed rate limiting are designed to work across multiple instances.
+\end{itemize}
+
+\section{Economic Feasibility}
+\label{sec:app-econ-feasibility}
+
+\subsection{Development Costs}
+
+Development costs were limited to hardware and infrastructure:
+
+\begin{itemize}
+  \item \textbf{Development hardware:} Existing laptops (MacBook Pro, Dell XPS) at no incremental cost.
+  \item \textbf{Infrastructure:} GitHub Actions free tier (2,000 minutes/month, sufficient for the project). Docker Desktop free tier.
+  \item \textbf{Third-party services:} Stripe test mode (free). Mux development tier (free up to 1,000 minutes of encoded video). Resend free tier (100 emails/day). AWS S3 free tier (5 GB storage, 20,000 GET requests).
+  \item \textbf{Total development cost:} Approximately \$0 (using free tiers of all services).
+\end{itemize}
+
+\subsection{Production Infrastructure Costs}
+
+Table~\ref{tab:app-infra-cost} estimates the monthly infrastructure cost for a medium-scale deployment serving 1,000 active learners.
+
+\begin{table}[H]
+  \centering
+  \caption{Estimated Monthly Infrastructure Costs (Medium Deployment)}\label{tab:app-infra-cost}
+  \small
+  \begin{tabular}{lrrr}
+    \toprule
+    \textbf{Component} & \textbf{Specification} & \textbf{Monthly Cost} & \textbf{Notes} \\
+    \midrule
+    VPS (application + DB + cache) & 4 vCPU, 8 GB RAM, 100 GB SSD & \$80 & Hetzner CX32 or equivalent \\
+    Domain name                    & \texttt{nexalearn.app}          & \$2  & Annual: \$24                \\
+    SSL certificate                & Let's Encrypt                   & \$0  & Automated via Certbot       \\
+    Mux Video                      & 500 min encoded / 5 TB served  & \$50 & Estimated for 1,000 learners\\
+    AWS S3                         & 10 GB storage, 50 GB transfer   & \$2  & Certificate PDFs + uploads  \\
+    Resend Email                   & 5,000 emails/month             & \$15 & Transactional emails        \\
+    Stripe                         & 2.9\% + \$0.30 per transaction  & Variable & Deducted from revenue  \\
+    \midrule
+    \textbf{Total (excl. Stripe)}  &                                & \textbf{\$149} & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+At an average course price of \$49 and 200 enrollments per month, the gross revenue would be approximately \$9,800/month, with Stripe fees of approximately \$320/month. The net revenue comfortably covers the infrastructure costs.
+
+\subsection{Licensing}
+
+NexaLearn is released under the MIT open-source license. There are no paid framework licenses, royalty fees, or per-seat licensing costs. The MIT license permits commercial use, modification, and redistribution, enabling both self-hosted deployments and commercial SaaS offerings.
+
+\section{Schedule Feasibility}
+\label{sec:app-sched-feasibility}
+
+The project was completed over two academic semesters (approximately 10 months). Table~\ref{tab:app-schedule} presents the timeline with phases, milestones, and deliverables.
+
+\begin{table}[H]
+  \centering
+  \caption{Project Timeline and Milestones}\label{tab:app-schedule}
+  \small
+  \begin{tabular}{lp{2.2cm}p{2.2cm}p{5.5cm}}
+    \toprule
+    \textbf{Phase} & \textbf{Start} & \textbf{End} & \textbf{Deliverables} \\
+    \midrule
+    \textbf{Semester 1} & & & \\
+    Literature review & Week 1 & Week 4 & Survey of e-learning platforms, DDD literature review, technology comparison \\
+    Requirements analysis & Week 3 & Week 6 & Problem statement, target customer segments, use case specification \\
+    Architecture design & Week 5 & Week 8 & System architecture diagram, module dependency graph, state machine designs \\
+    Database schema design & Week 7 & Week 10 & Prisma schema (\texttt{schema.prisma}), migration plan, seed data scripts \\
+    Auth module implementation & Week 9 & Week 12 & User registration, JWT token issuance, Redis session store, login/logout \\
+    Course module implementation & Week 11 & Week 14 & Course CRUD, module/lesson hierarchy, category management, publishing flow \\
+    Media module implementation & Week 13 & Week 16 & Mux upload integration, video asset lifecycle, HLS playback URLs \\
+    Assessment module (basic) & Week 15 & Week 18 & Quiz CRUD, question types, manual quiz attempt grading \\
+    \midrule
+    \textbf{Semester 2} & & & \\
+    AI pipeline integration & Week 19 & Week 22 & Whisper transcription, LLM quiz generation, HMAC callback auth \\
+    Payment module & Week 21 & Week 24 & Stripe payment intents, webhook processing, enrollment activation \\
+    Advanced assessment & Week 23 & Week 26 & Short-answer AI grading, per-question grading status, async grading flow \\
+    Discussion module & Week 25 & Week 27 & Thread creation, replies, instructor roles, rate limiting \\
+    Certificate module & Week 26 & Week 28 & PDF generation, S3 storage, verification URLs \\
+    Instructor analytics & Week 27 & Week 28 & Revenue dashboard, enrollment metrics, quiz score aggregation \\
+    Testing (unit + integration) & Week 20 & Week 28 & Jest test suite, Testcontainer setup, CI pipeline \\
+    \midrule
+    \textbf{Final phase} & & & \\
+    Documentation & Week 29 & Week 30 & Swagger API docs, deployment guide, developer README \\
+    Report writing & Week 28 & Week 32 & Graduation project book (this document) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The schedule was realistic: core modules (Auth, Courses) were completed in the first semester, while integration-heavy modules (AI Pipeline, Payments, Assessments with async grading) were completed in the second semester. Testing was conducted in parallel with development, following the schedule in Section~\ref{sec:test-schedule}.
+
+\section{Risk Analysis}
+\label{sec:app-risk}
+
+Table~\ref{tab:app-risk} identifies and analyses the key risks to project success, along with mitigation strategies.
+
+\begin{longtable}{lp{2cm}p{2cm}p{5cm}}
+  \caption{Risk Assessment Matrix}\label{tab:app-risk} \\
+  \toprule
+  \textbf{Risk} & \textbf{Probability} & \textbf{Impact} & \textbf{Mitigation} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  R1: Third-party API breaking changes & Low & High & API version pinning (Stripe: 2024-06-20, Mux: v1). All external API calls are wrapped in adapter classes that can be updated independently of domain logic. Integration tests verify API contract compliance. \\
+  \addlinespace
+  R2: Database performance degradation under load & Medium & High & PostgreSQL connection pooling via PgBouncer. Index analysis via \texttt{EXPLAIN ANALYZE}. Query optimisation using Prisma's \texttt{raw} queries for complex joins. Read replicas planned for analytics queries. \\
+  \addlinespace
+  R3: AI pipeline latency or failure & Medium & High & Asynchronous processing with timeout (30 minutes). Dead-letter queue for failed jobs. Instructor notification and manual retry. Fallback to manual quiz creation if AI pipeline is unavailable. \\
+  \addlinespace
+  R4: Security vulnerability (JWT theft, XSS, SQL injection) & Medium & Critical & RS256 JWT with short expiration (15 min). Refresh token rotation with reuse detection. Prisma parameterised queries prevent SQL injection. NestJS Helmet middleware for HTTP security headers. Regular dependency updates with Dependabot. \\
+  \addlinespace
+  R5: Scope creep (feature expansion beyond available time) & High & Medium & Strict prioritisation: core DDD modules first (Auth, Courses, Assessment), AI and payments second, analytics and certificates third. Use cases scoped to minimum viable product. Non-critical features deferred to future work. \\
+  \addlinespace
+  R6: Team member unavailability & Low & High & Git-based collaboration allows asynchronous contribution. Module ownership is documented in the architecture guide. Code review requirements ensure knowledge sharing across the team. \\
+  \addlinespace
+  R7: Docker image size and cold start time & Medium & Low & Multi-stage Docker build with distroless production image (final image size: 180 MB). Node.js 22 startup time under 2 seconds. Docker layer caching in CI pipeline. \\
+  \addlinespace
+  R8: Stripe/Mux webhook delivery reliability & Medium & Medium & At-least-once handling with idempotency via \texttt{ProjectionEventLedger}. Retry with exponential backoff (3 attempts). Dead-letter queue for events that exceed max retries. Manual replay available via admin dashboard. \\
+  \bottomrule
+\end{longtable}

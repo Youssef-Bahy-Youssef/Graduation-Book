@@ -1,0 +1,16 @@
+% =============================================================================
+% Chapter 3: Literature Survey
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{Literature Survey}
+\label{ch:literature-survey}
+
+This chapter surveys the foundational technologies, architectural patterns, and academic literature underpinning the NexaLearn platform. The survey is organised into six thematic sections that correspond to the principal technical pillars of the system. Section~\ref{sec:ddd-clean-arch} reviews Domain-Driven Design (DDD) and Clean Architecture, establishing the decomposition strategy used to partition NexaLearn into sixteen bounded contexts with explicit dependency rules. Section~\ref{sec:event-driven-outbox} examines event-driven architecture and the transactional outbox pattern, which together guarantee reliable asynchronous integration across contexts and with external providers. Section~\ref{sec:ai-elearning} surveys recent advances in AI-assisted e-learning---specifically OpenAI Whisper for speech-to-text transcription and large language model (LLM) pipelines for automated quiz generation---detailing how these technologies reduce instructor workload while maintaining content quality through human-in-the-loop review. Section~\ref{sec:video-streaming} covers HTTP Live Streaming (HLS), the Mux video platform, and signed URL access control, which collectively enable adaptive-bitrate playback and fine-grained entitlement enforcement. Section~\ref{sec:comparative-study} presents a structured comparison of prior academic and industrial e-learning backend approaches, highlighting gaps in domain modelling, event reliability, and AI integration that NexaLearn addresses. Finally, Section~\ref{sec:implemented-approach} justifies the specific technology and pattern choices---NestJS, Prisma, the outbox pattern, and modular monolith deployment---synthesising the surveyed literature into a coherent architectural rationale.
+
+\input{Chapter3/1-ddd-clean-architecture}
+\input{Chapter3/2-event-driven-outbox}
+\input{Chapter3/3-ai-elearning}
+\input{Chapter3/4-video-streaming}
+\input{Chapter3/5-comparative-study}
+\input{Chapter3/6-implemented-approach}

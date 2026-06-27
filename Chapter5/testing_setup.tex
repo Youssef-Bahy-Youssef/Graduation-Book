@@ -1,0 +1,98 @@
+% =============================================================================
+% Section 5.1: Testing Setup
+% =============================================================================
+
+\section{Testing Setup}
+\label{sec:testing-setup}
+
+\subsection{Runtime and Toolchain}
+
+The NexaLearn test suite targets Node.js 22 LTS (Long-Term Support) and is built on the Jest testing framework (v29.x), configured with the \texttt{ts-jest} transformer for TypeScript compilation. The decision to use Jest over alternatives (Mocha, Vitest) was driven by its snapshot testing capabilities, built-in code coverage reporting via \texttt{istanbul}, and the maturity of its watch-mode for test-driven development. All test files follow the \texttt{*.spec.ts} naming convention for unit and integration tests and \texttt{*.e2e-spec.ts} for end-to-end tests, consistent with the NestJS community conventions.
+
+The \texttt{@nestjs/testing} package provides the \texttt{Test.createTestingModule} builder, which allows constructing lightweight module references without bootstrapping the full application. This enables unit and integration tests to import only the providers they need, avoiding unnecessary initialisation of unrelated modules.
+
+\begin{lstlisting}[caption=Jest configuration excerpt for unit and integration tests,label=lst:jest-config]
+// jest.config.ts
+export default {
+  moduleFileExtensions: ['js', 'json', 'ts'],
+  rootDir: '.',
+  testRegex: '.*\\.spec\\.ts$',
+  transform: { '^.+\\.(t|j)s$': 'ts-jest' },
+  collectCoverageFrom: [
+    '**/*.(t|j)s',
+    '!**/*.module.ts',
+    '!**/*.interface.ts',
+    '!**/main.ts',
+  ],
+  coverageDirectory: './coverage',
+  testEnvironment: 'node',
+  setupFilesAfterSetup: ['./test/setup.ts'],
+};
+\end{lstlisting}
+
+\subsection{Test Environment Configuration}
+
+A separate \texttt{.env.test} file provides database credentials, Redis connection strings, and third-party API keys for the test environment. The \texttt{ConfigModule.forRoot({ envFilePath: '.env.test' })} directive in each test bootstrap ensures that tests never connect to production resources. Sensible defaults are defined for CI environments where \texttt{.env.test} may be absent:
+
+\begin{lstlisting}[caption=Test environment variables,label=lst:env-test]
+# .env.test
+DATABASE_URL=postgresql://nexalearn:nexalearn@localhost:5432/nexalearn_test
+REDIS_URL=redis://localhost:6379/1
+STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxx
+MUX_TOKEN_ID=test-token-id
+MUX_TOKEN_SECRET=test-token-secret
+AI_PIPELINE_WEBHOOK_SECRET=test-hmac-secret
+NODE_ENV=test
+LOG_LEVEL=error
+\end{lstlisting}
+
+\subsection{Testcontainers Integration}
+
+For integration tests that require a real database, the test suite uses \texttt{@testcontainers/postgresql} and \texttt{@testcontainers/redis}, which launch disposable Docker containers programmatically. This approach eliminates the need for a pre-installed PostgreSQL instance on the developer machine or CI runner and ensures test isolation: each test suite or parallel shard obtains a fresh database.
+
+\begin{lstlisting}[caption=Testcontainers lifecycle for integration tests,label=lst:testcontainers]
+import { PostgreSqlContainer } from '@testcontainers/postgresql';
+import { RedisContainer } from '@testcontainers/redis';
+
+let postgresContainer: PostgreSqlContainer;
+let redisContainer: RedisContainer;
+
+beforeAll(async () => {
+  postgresContainer = await new PostgreSqlContainer('postgis/postgis:16-3.4')
+    .withDatabase('nexalearn_test')
+    .withUsername('nexalearn')
+    .withPassword('nexalearn')
+    .start();
+
+  redisContainer = await new RedisContainer('redis:7-alpine')
+    .start();
+
+  process.env.DATABASE_URL = postgresContainer.getConnectionUri();
+  process.env.REDIS_URL = `redis://${redisContainer.getHost()}:${redisContainer.getMappedPort(6379)}`;
+}, 60_000);
+\end{lstlisting}
+
+\subsection{HTTP Assertions}
+
+End-to-end tests use the \texttt{supertest} library for HTTP-level assertions. The NestJS application is bootstrapped as an \texttt{INestApplication} instance via \texttt{Test.createTestingModule}, bound to a random port (port 0), and the resulting \texttt{supertest} agent is reused across all tests in the suite. This pattern reduces startup overhead and enables parallel execution of independent E2E suites.
+
+\begin{lstlisting}[caption=E2E application bootstrap,label=lst:e2e-bootstrap]
+let app: INestApplication;
+let request: SuperTest<Test>;
+
+beforeAll(async () => {
+  const moduleFixture = await Test.createTestingModule({
+    imports: [AppModule],
+  }).compile();
+
+  app = moduleFixture.createNestApplication();
+  await app.init();
+
+  const httpServer = app.getHttpServer();
+  request = supertest(httpServer);
+});
+
+afterAll(async () => {
+  await app.close();
+});
+\end{lstlisting}

@@ -1,0 +1,19 @@
+% =============================================================================
+% Chapter 5: System Testing and Validation
+% NexaLearn Graduation Project — Cairo University, Faculty of Engineering
+% =============================================================================
+
+\chapter{System Testing and Validation}
+\label{ch:testing}
+
+This chapter presents the testing methodology, infrastructure, and results that validate the correctness, reliability, and performance of the NexaLearn platform described in Chapter~4. The testing strategy follows the IEEE 829--2008 standard for software test documentation and adopts a layered approach: unit tests verify domain logic in isolation, integration tests validate inter-module contracts against real database instances, and end-to-end tests exercise complete user workflows through the HTTP API.
+
+Section~\ref{sec:testing-setup} describes the toolchain and environment configuration. Section~\ref{sec:testing-strategy} outlines the three-tier testing pyramid and the rationale for each level. Sections~\ref{sec:unit-testing} through~\ref{sec:e2e-testing} present detailed coverage tables, representative test scenarios, and code-level examples. Section~\ref{sec:test-schedule} documents the testing timeline across the development lifecycle. Section~\ref{sec:comparative-results} compares the NexaLearn testing approach against open-source LMS backends including Moodle, Totara, and Open edX.
+
+\input{Chapter5/testing_setup}
+\input{Chapter5/testing_strategy}
+\input{Chapter5/unit_testing}
+\input{Chapter5/integration_testing}
+\input{Chapter5/e2e_testing}
+\input{Chapter5/test_schedule}
+\input{Chapter5/comparative_results}

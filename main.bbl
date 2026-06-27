@@ -1,0 +1,875 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{evans2003ddd}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=a8034da9731f447121ee0dbad3354a82}{%
+           family={Evans},
+           familyi={E\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston, MA}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{a8034da9731f447121ee0dbad3354a82}
+      \strng{fullhash}{a8034da9731f447121ee0dbad3354a82}
+      \strng{fullhashraw}{a8034da9731f447121ee0dbad3354a82}
+      \strng{bibnamehash}{a8034da9731f447121ee0dbad3354a82}
+      \strng{authorbibnamehash}{a8034da9731f447121ee0dbad3354a82}
+      \strng{authornamehash}{a8034da9731f447121ee0dbad3354a82}
+      \strng{authorfullhash}{a8034da9731f447121ee0dbad3354a82}
+      \strng{authorfullhashraw}{a8034da9731f447121ee0dbad3354a82}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0321125217}
+      \field{title}{Domain-Driven Design: Tackling Complexity in the Heart of Software}
+      \field{year}{2003}
+    \endentry
+    \entry{martin2017clean}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=6f41df64eb0dc4855be70172368604c2}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Robert\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Upper Saddle River, NJ}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall}%
+      }
+      \strng{namehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{fullhash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{fullhashraw}{6f41df64eb0dc4855be70172368604c2}
+      \strng{bibnamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authorbibnamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authornamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authorfullhash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authorfullhashraw}{6f41df64eb0dc4855be70172368604c2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0134494166}
+      \field{title}{Clean Architecture: A Craftsman's Guide to Software Structure and Design}
+      \field{year}{2017}
+    \endentry
+    \entry{dossena2022ddd}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=277bb53185a419e3d63f6c34fc11b62b}{%
+           family={Dossena},
+           familyi={D\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a852dd9d96f3df1d3452eb5f013c66b7}{%
+           family={Fugini},
+           familyi={F\bibinitperiod},
+           given={Mariagrazia},
+           giveni={M\bibinitperiod}}}%
+        {{hash=247d94847a1827ee386a1f6129f51c30}{%
+           family={Peroni},
+           familyi={P\bibinitperiod},
+           given={Lucrezia},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{e76664f2bc588727813f03ef0bfb3e3a}
+      \strng{fullhash}{e76664f2bc588727813f03ef0bfb3e3a}
+      \strng{fullhashraw}{e76664f2bc588727813f03ef0bfb3e3a}
+      \strng{bibnamehash}{e76664f2bc588727813f03ef0bfb3e3a}
+      \strng{authorbibnamehash}{e76664f2bc588727813f03ef0bfb3e3a}
+      \strng{authornamehash}{e76664f2bc588727813f03ef0bfb3e3a}
+      \strng{authorfullhash}{e76664f2bc588727813f03ef0bfb3e3a}
+      \strng{authorfullhashraw}{e76664f2bc588727813f03ef0bfb3e3a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 24th International Conference on Information Integration and Web-Based Applications \& Services (iiWAS)}
+      \field{note}{Applying DDD tactical patterns and context mapping to university LMS design}
+      \field{title}{Domain-Driven Design in E-Learning Platforms: A Bounded Context Approach}
+      \field{year}{2022}
+      \field{pages}{198\bibrangedash 207}
+      \range{pages}{10}
+    \endentry
+    \entry{yang2023micro}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=ed0dad96b068228301c3b531f5b84623}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Jinghua},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e7b7a2010a7d5e2313bee7c60145b7ec}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Xiao},
+           giveni={X\bibinitperiod}}}%
+        {{hash=b32f17655743d3556256719fa250cd60}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Yuning},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c130918fb0089dfc50212e900a517607}
+      \strng{fullhash}{c130918fb0089dfc50212e900a517607}
+      \strng{fullhashraw}{c130918fb0089dfc50212e900a517607}
+      \strng{bibnamehash}{c130918fb0089dfc50212e900a517607}
+      \strng{authorbibnamehash}{c130918fb0089dfc50212e900a517607}
+      \strng{authornamehash}{c130918fb0089dfc50212e900a517607}
+      \strng{authorfullhash}{c130918fb0089dfc50212e900a517607}
+      \strng{authorfullhashraw}{c130918fb0089dfc50212e900a517607}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{note}{Comprehensive review of microservice decomposition strategies, communication patterns, and data management in educational systems}
+      \field{title}{Microservices Architecture for Scalable E-Learning Platforms: A Systematic Review}
+      \field{volume}{11}
+      \field{year}{2023}
+      \field{pages}{78345\bibrangedash 78368}
+      \range{pages}{24}
+    \endentry
+    \entry{fowler2005eda}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=312ac886938a9b2be4f8eb607567fe4c}{%
+           family={Fowler},
+           familyi={F\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{fullhash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{fullhashraw}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{bibnamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorbibnamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authornamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorfullhash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorfullhashraw}{312ac886938a9b2be4f8eb607567fe4c}
+      \field{extraname}{1}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pattern overview from \emph{Patterns of Enterprise Application Architecture}}
+      \field{title}{Event-Driven Architecture}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2005}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://martinfowler.com/eaaDev/EventDrivenArchitecture.html
+      \endverb
+      \verb{url}
+      \verb https://martinfowler.com/eaaDev/EventDrivenArchitecture.html
+      \endverb
+    \endentry
+    \entry{richardson2018outbox}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=d0740bcf48754b8fa2cd3549a1d73461}{%
+           family={Richardson},
+           familyi={R\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d0740bcf48754b8fa2cd3549a1d73461}
+      \strng{fullhash}{d0740bcf48754b8fa2cd3549a1d73461}
+      \strng{fullhashraw}{d0740bcf48754b8fa2cd3549a1d73461}
+      \strng{bibnamehash}{d0740bcf48754b8fa2cd3549a1d73461}
+      \strng{authorbibnamehash}{d0740bcf48754b8fa2cd3549a1d73461}
+      \strng{authornamehash}{d0740bcf48754b8fa2cd3549a1d73461}
+      \strng{authorfullhash}{d0740bcf48754b8fa2cd3549a1d73461}
+      \strng{authorfullhashraw}{d0740bcf48754b8fa2cd3549a1d73461}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Reliable event publishing by atomically storing events in the same database transaction as business data}
+      \field{title}{Transactional Outbox Pattern}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://microservices.io/patterns/data/transactional-outbox.html
+      \endverb
+      \verb{url}
+      \verb https://microservices.io/patterns/data/transactional-outbox.html
+      \endverb
+    \endentry
+    \entry{stripe2024api}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=f4e3fabc55d11a5d2532c6cb097ae0ff}{%
+           family={{Stripe, Inc.}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{f4e3fabc55d11a5d2532c6cb097ae0ff}
+      \strng{fullhash}{f4e3fabc55d11a5d2532c6cb097ae0ff}
+      \strng{fullhashraw}{f4e3fabc55d11a5d2532c6cb097ae0ff}
+      \strng{bibnamehash}{f4e3fabc55d11a5d2532c6cb097ae0ff}
+      \strng{authorbibnamehash}{f4e3fabc55d11a5d2532c6cb097ae0ff}
+      \strng{authornamehash}{f4e3fabc55d11a5d2532c6cb097ae0ff}
+      \strng{authorfullhash}{f4e3fabc55d11a5d2532c6cb097ae0ff}
+      \strng{authorfullhashraw}{f4e3fabc55d11a5d2532c6cb097ae0ff}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{REST API documentation for payments, subscriptions, and webhooks}
+      \field{title}{Stripe API Reference}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://stripe.com/docs/api
+      \endverb
+      \verb{url}
+      \verb https://stripe.com/docs/api
+      \endverb
+    \endentry
+    \entry{fowler2011cqrs}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=312ac886938a9b2be4f8eb607567fe4c}{%
+           family={Fowler},
+           familyi={F\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{fullhash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{fullhashraw}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{bibnamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorbibnamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authornamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorfullhash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorfullhashraw}{312ac886938a9b2be4f8eb607567fe4c}
+      \field{extraname}{2}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Command Query Responsibility Segregation: separating read and write models}
+      \field{title}{{CQRS}}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2011}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://martinfowler.com/bliki/CQRS.html
+      \endverb
+      \verb{url}
+      \verb https://martinfowler.com/bliki/CQRS.html
+      \endverb
+    \endentry
+    \entry{mehta2023eda}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=7bdfd8953ede5421fb774adfe6d548a9}{%
+           family={Mehta},
+           familyi={M\bibinitperiod},
+           given={Rohan},
+           giveni={R\bibinitperiod}}}%
+        {{hash=5cd9393082226f38de6e1f5b25c33ff3}{%
+           family={Soni},
+           familyi={S\bibinitperiod},
+           given={Priya},
+           giveni={P\bibinitperiod}}}%
+        {{hash=c359cc0d5ce1a36a419ba26ecad4dcf5}{%
+           family={Thakkar},
+           familyi={T\bibinitperiod},
+           given={Dev},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{bfe1130d41cc5f69cb548a41b71a4574}
+      \strng{fullhash}{bfe1130d41cc5f69cb548a41b71a4574}
+      \strng{fullhashraw}{bfe1130d41cc5f69cb548a41b71a4574}
+      \strng{bibnamehash}{bfe1130d41cc5f69cb548a41b71a4574}
+      \strng{authorbibnamehash}{bfe1130d41cc5f69cb548a41b71a4574}
+      \strng{authornamehash}{bfe1130d41cc5f69cb548a41b71a4574}
+      \strng{authorfullhash}{bfe1130d41cc5f69cb548a41b71a4574}
+      \strng{authorfullhashraw}{bfe1130d41cc5f69cb548a41b71a4574}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2023 IEEE International Conference on Advanced Learning Technologies (ICALT)}
+      \field{note}{Architectural patterns for processing learner interaction events at scale}
+      \field{title}{Event-Driven Architecture Patterns for Real-Time Educational Analytics}
+      \field{year}{2023}
+      \field{pages}{112\bibrangedash 117}
+      \range{pages}{6}
+    \endentry
+    \entry{radford2023whisper}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=a812c46caad94fc8701be37871f303ba}{%
+           family={Radford},
+           familyi={R\bibinitperiod},
+           given={Alec},
+           giveni={A\bibinitperiod}}}%
+        {{hash=37a96525bc70870f8509160f7eccf4b7}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Jong\bibnamedelima Wook},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=1eed631dd35845a607a45dd35d948203}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Tao},
+           giveni={T\bibinitperiod}}}%
+        {{hash=7ae2a0efeaf9c031f9b420bcb1c19e54}{%
+           family={Brockman},
+           familyi={B\bibinitperiod},
+           given={Greg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=6d3e5097d8af9c8bdf8388f00d5179ac}{%
+           family={McLeavey},
+           familyi={M\bibinitperiod},
+           given={Christine},
+           giveni={C\bibinitperiod}}}%
+        {{hash=8d569d1d5b8b5a7836017a98b430f959}{%
+           family={Sutskever},
+           familyi={S\bibinitperiod},
+           given={Ilya},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{ca3baa5a22057195db1c71be39b4c922}
+      \strng{fullhash}{e202abc1ca19ec84987f68e0aec49fa3}
+      \strng{fullhashraw}{e202abc1ca19ec84987f68e0aec49fa3}
+      \strng{bibnamehash}{e202abc1ca19ec84987f68e0aec49fa3}
+      \strng{authorbibnamehash}{e202abc1ca19ec84987f68e0aec49fa3}
+      \strng{authornamehash}{ca3baa5a22057195db1c71be39b4c922}
+      \strng{authorfullhash}{e202abc1ca19ec84987f68e0aec49fa3}
+      \strng{authorfullhashraw}{e202abc1ca19ec84987f68e0aec49fa3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 40th International Conference on Machine Learning (ICML)}
+      \field{note}{OpenAI Whisper: automatic speech recognition trained on diverse audio}
+      \field{title}{Robust Speech Recognition via Large-Scale Weak Supervision}
+      \field{year}{2023}
+      \field{pages}{28492\bibrangedash 28518}
+      \range{pages}{27}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2212.04356
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2212.04356
+      \endverb
+    \endentry
+    \entry{panthel2024whisper}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=76160fb9d0f0f95849ff3f97dc2dcefe}{%
+           family={Panthel},
+           familyi={P\bibinitperiod},
+           given={Kristof},
+           giveni={K\bibinitperiod}}}%
+        {{hash=04a61613a52f974a66af4b9d56d9ea88}{%
+           family={Schaffer},
+           familyi={S\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=ea7d52762d306ab648dd5a42f5962cb4}{%
+           family={Ruck},
+           familyi={R\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SciTePress}%
+      }
+      \strng{namehash}{ad06e01f4c8e60ac8870d764d70007a3}
+      \strng{fullhash}{ad06e01f4c8e60ac8870d764d70007a3}
+      \strng{fullhashraw}{ad06e01f4c8e60ac8870d764d70007a3}
+      \strng{bibnamehash}{ad06e01f4c8e60ac8870d764d70007a3}
+      \strng{authorbibnamehash}{ad06e01f4c8e60ac8870d764d70007a3}
+      \strng{authornamehash}{ad06e01f4c8e60ac8870d764d70007a3}
+      \strng{authorfullhash}{ad06e01f4c8e60ac8870d764d70007a3}
+      \strng{authorfullhashraw}{ad06e01f4c8e60ac8870d764d70007a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 16th International Conference on Computer Supported Education (CSEDU)}
+      \field{note}{Empirical evaluation of Whisper transcription quality in university lecture contexts}
+      \field{title}{Evaluating Whisper for Educational Video Transcription and Subtitling}
+      \field{volume}{1}
+      \field{year}{2024}
+      \field{pages}{345\bibrangedash 356}
+      \range{pages}{12}
+    \endentry
+    \entry{kumar2023llmquiz}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=4aa07d56d415835f73cc31ee275e71ad}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Arjun},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c5cfae5fbf45cb62b63377c3ec645963}{%
+           family={Barrios},
+           familyi={B\bibinitperiod},
+           given={Luis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=f6fd7e5bae5532acf8d410c6b54ba774}{%
+           family={Haridas},
+           familyi={H\bibinitperiod},
+           given={Neha},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{45236a992643a1b431071b85725f554a}
+      \strng{fullhash}{45236a992643a1b431071b85725f554a}
+      \strng{fullhashraw}{45236a992643a1b431071b85725f554a}
+      \strng{bibnamehash}{45236a992643a1b431071b85725f554a}
+      \strng{authorbibnamehash}{45236a992643a1b431071b85725f554a}
+      \strng{authornamehash}{45236a992643a1b431071b85725f554a}
+      \strng{authorfullhash}{45236a992643a1b431071b85725f554a}
+      \strng{authorfullhashraw}{45236a992643a1b431071b85725f554a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Artificial Intelligence in Education}
+      \field{note}{End-to-end pipeline for generating assessments from transcribed lecture content}
+      \field{number}{4}
+      \field{title}{Automated Quiz Generation from Lecture Transcripts Using Large Language Models}
+      \field{volume}{33}
+      \field{year}{2023}
+      \field{pages}{789\bibrangedash 812}
+      \range{pages}{24}
+    \endentry
+    \entry{pantos2022hls}{report}{}{}
+      \name{author}{2}{}{%
+        {{hash=fa5100c95ba0b556dc172db749550757}{%
+           family={Pantos},
+           familyi={P\bibinitperiod},
+           given={Roger},
+           giveni={R\bibinitperiod}}}%
+        {{hash=52bb360d0d0a8c2da0a9b85999493f3e}{%
+           family={May},
+           familyi={M\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force (IETF)}%
+      }
+      \strng{namehash}{605214e13bb04f8e3763075ded1e0b30}
+      \strng{fullhash}{605214e13bb04f8e3763075ded1e0b30}
+      \strng{fullhashraw}{605214e13bb04f8e3763075ded1e0b30}
+      \strng{bibnamehash}{605214e13bb04f8e3763075ded1e0b30}
+      \strng{authorbibnamehash}{605214e13bb04f8e3763075ded1e0b30}
+      \strng{authornamehash}{605214e13bb04f8e3763075ded1e0b30}
+      \strng{authorfullhash}{605214e13bb04f8e3763075ded1e0b30}
+      \strng{authorfullhashraw}{605214e13bb04f8e3763075ded1e0b30}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{note}{Standards Track; defines the HLS protocol for adaptive bitrate streaming over HTTP}
+      \field{number}{RFC 8216}
+      \field{title}{{HTTP Live Streaming (HLS)}}
+      \field{type}{techreport}
+      \field{year}{2022}
+    \endentry
+    \entry{mux2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=a21ef57d2e721f46ea69df4d0ce109d8}{%
+           family={{Mux, Inc.}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{a21ef57d2e721f46ea69df4d0ce109d8}
+      \strng{fullhash}{a21ef57d2e721f46ea69df4d0ce109d8}
+      \strng{fullhashraw}{a21ef57d2e721f46ea69df4d0ce109d8}
+      \strng{bibnamehash}{a21ef57d2e721f46ea69df4d0ce109d8}
+      \strng{authorbibnamehash}{a21ef57d2e721f46ea69df4d0ce109d8}
+      \strng{authornamehash}{a21ef57d2e721f46ea69df4d0ce109d8}
+      \strng{authorfullhash}{a21ef57d2e721f46ea69df4d0ce109d8}
+      \strng{authorfullhashraw}{a21ef57d2e721f46ea69df4d0ce109d8}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{API documentation for video upload, encoding, streaming, and playback}
+      \field{title}{Mux Video Platform Documentation}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.mux.com/
+      \endverb
+      \verb{url}
+      \verb https://docs.mux.com/
+      \endverb
+    \endentry
+    \entry{jones2015jwt}{report}{}{}
+      \name{author}{3}{}{%
+        {{hash=bfa19f15a98d15831cd377b8813e6672}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Michael\bibnamedelima B.},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=81e40ae87af997090fa9a9696e364c65}{%
+           family={Bradley},
+           familyi={B\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=34e6848475fd66697bfcb80787f2aef0}{%
+           family={Sakimura},
+           familyi={S\bibinitperiod},
+           given={Nat},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force (IETF)}%
+      }
+      \strng{namehash}{8456e57585316c5ad570515143f00129}
+      \strng{fullhash}{8456e57585316c5ad570515143f00129}
+      \strng{fullhashraw}{8456e57585316c5ad570515143f00129}
+      \strng{bibnamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authorbibnamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authornamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authorfullhash}{8456e57585316c5ad570515143f00129}
+      \strng{authorfullhashraw}{8456e57585316c5ad570515143f00129}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{note}{Standards Track; defines compact, URL-safe means of representing claims between parties}
+      \field{number}{RFC 7519}
+      \field{title}{{JSON Web Token (JWT)}}
+      \field{type}{techreport}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://www.rfc-editor.org/rfc/rfc7519
+      \endverb
+      \verb{url}
+      \verb https://www.rfc-editor.org/rfc/rfc7519
+      \endverb
+    \endentry
+    \entry{nestjs2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=5328a9211442ed59c8275f20f7a84661}{%
+           family={{NestJS}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{5328a9211442ed59c8275f20f7a84661}
+      \strng{fullhash}{5328a9211442ed59c8275f20f7a84661}
+      \strng{fullhashraw}{5328a9211442ed59c8275f20f7a84661}
+      \strng{bibnamehash}{5328a9211442ed59c8275f20f7a84661}
+      \strng{authorbibnamehash}{5328a9211442ed59c8275f20f7a84661}
+      \strng{authornamehash}{5328a9211442ed59c8275f20f7a84661}
+      \strng{authorfullhash}{5328a9211442ed59c8275f20f7a84661}
+      \strng{authorfullhashraw}{5328a9211442ed59c8275f20f7a84661}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Official framework documentation for building scalable Node.js server-side applications}
+      \field{title}{NestJS Documentation}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.nestjs.com/
+      \endverb
+      \verb{url}
+      \verb https://docs.nestjs.com/
+      \endverb
+    \endentry
+    \entry{garcia2022typescript}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=826ad00c7883be971c97058edf2fb1b4}{%
+           family={Garcia},
+           familyi={G\bibinitperiod},
+           given={Miguel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c8b205b9e1458df78f6602668b5d593e}{%
+           family={Oliveira},
+           familyi={O\bibinitperiod},
+           given={Bruno},
+           giveni={B\bibinitperiod}}}%
+        {{hash=a68102b3dfe726285f90344b3b6a372f}{%
+           family={Pereira},
+           familyi={P\bibinitperiod},
+           given={Carla},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{4deefcf4d865d953abbb5c8f429517d4}
+      \strng{fullhash}{4deefcf4d865d953abbb5c8f429517d4}
+      \strng{fullhashraw}{4deefcf4d865d953abbb5c8f429517d4}
+      \strng{bibnamehash}{4deefcf4d865d953abbb5c8f429517d4}
+      \strng{authorbibnamehash}{4deefcf4d865d953abbb5c8f429517d4}
+      \strng{authornamehash}{4deefcf4d865d953abbb5c8f429517d4}
+      \strng{authorfullhash}{4deefcf4d865d953abbb5c8f429517d4}
+      \strng{authorfullhashraw}{4deefcf4d865d953abbb5c8f429517d4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 44th International Conference on Software Engineering (ICSE)}
+      \field{note}{Empirical study on TypeScript adoption, type safety benefits, and impact on defect density}
+      \field{title}{TypeScript in Practice: A Field Study on Type Safety and Developer Productivity}
+      \field{year}{2022}
+      \field{pages}{1123\bibrangedash 1134}
+      \range{pages}{12}
+    \endentry
+    \entry{zhang2024nestjs}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=614fdf51ce9628d993d9e0dc779c15a2}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Yifan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=592821507f234e183a728005f3d24d2d}{%
+           family={Khalid},
+           familyi={K\bibinitperiod},
+           given={Hammad},
+           giveni={H\bibinitperiod}}}%
+        {{hash=b8fec91887b72b48fb4013c6ce81de77}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Seungwoo},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{92b2c968b70bd3df442b5951b535e19c}
+      \strng{fullhash}{92b2c968b70bd3df442b5951b535e19c}
+      \strng{fullhashraw}{92b2c968b70bd3df442b5951b535e19c}
+      \strng{bibnamehash}{92b2c968b70bd3df442b5951b535e19c}
+      \strng{authorbibnamehash}{92b2c968b70bd3df442b5951b535e19c}
+      \strng{authornamehash}{92b2c968b70bd3df442b5951b535e19c}
+      \strng{authorfullhash}{92b2c968b70bd3df442b5951b535e19c}
+      \strng{authorfullhashraw}{92b2c968b70bd3df442b5951b535e19c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Systems and Software}
+      \field{note}{Performance and developer productivity comparison across three major web frameworks}
+      \field{title}{Comparative Analysis of Backend Frameworks for Cloud-Native Applications: Spring Boot, Django, and NestJS}
+      \field{volume}{209}
+      \field{year}{2024}
+      \field{pages}{111925}
+      \range{pages}{1}
+    \endentry
+    \entry{prisma2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=ee10f79aa18f7cf1c69142450a809181}{%
+           family={{Prisma}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{ee10f79aa18f7cf1c69142450a809181}
+      \strng{fullhash}{ee10f79aa18f7cf1c69142450a809181}
+      \strng{fullhashraw}{ee10f79aa18f7cf1c69142450a809181}
+      \strng{bibnamehash}{ee10f79aa18f7cf1c69142450a809181}
+      \strng{authorbibnamehash}{ee10f79aa18f7cf1c69142450a809181}
+      \strng{authornamehash}{ee10f79aa18f7cf1c69142450a809181}
+      \strng{authorfullhash}{ee10f79aa18f7cf1c69142450a809181}
+      \strng{authorfullhashraw}{ee10f79aa18f7cf1c69142450a809181}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Next-generation ORM for Node.js and TypeScript}
+      \field{title}{Prisma ORM Documentation}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.prisma.io/docs
+      \endverb
+      \verb{url}
+      \verb https://www.prisma.io/docs
+      \endverb
+    \endentry
+    \entry{fowler2012testpyramid}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=312ac886938a9b2be4f8eb607567fe4c}{%
+           family={Fowler},
+           familyi={F\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{fullhash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{fullhashraw}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{bibnamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorbibnamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authornamehash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorfullhash}{312ac886938a9b2be4f8eb607567fe4c}
+      \strng{authorfullhashraw}{312ac886938a9b2be4f8eb607567fe4c}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Blog post describing the test automation pyramid concept attributed to Mike Cohn}
+      \field{title}{TestPyramid}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://martinfowler.com/bliki/TestPyramid.html
+      \endverb
+      \verb{url}
+      \verb https://martinfowler.com/bliki/TestPyramid.html
+      \endverb
+    \endentry
+    \entry{testcontainers2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=075a4413221aae236a54adde3a481fa0}{%
+           family={{Testcontainers}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{075a4413221aae236a54adde3a481fa0}
+      \strng{fullhash}{075a4413221aae236a54adde3a481fa0}
+      \strng{fullhashraw}{075a4413221aae236a54adde3a481fa0}
+      \strng{bibnamehash}{075a4413221aae236a54adde3a481fa0}
+      \strng{authorbibnamehash}{075a4413221aae236a54adde3a481fa0}
+      \strng{authornamehash}{075a4413221aae236a54adde3a481fa0}
+      \strng{authorfullhash}{075a4413221aae236a54adde3a481fa0}
+      \strng{authorfullhashraw}{075a4413221aae236a54adde3a481fa0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Official documentation for Testcontainers Node.js module providing disposable Docker containers for testing}
+      \field{title}{Testcontainers for Node.js Documentation}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://node.testcontainers.org/
+      \endverb
+      \verb{url}
+      \verb https://node.testcontainers.org/
+      \endverb
+    \endentry
+    \entry{istqb2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=91fb0f0b07a67b23a010137dd0746685}{%
+           family={{International Software Testing Qualifications Board}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {ISTQB}%
+      }
+      \strng{namehash}{91fb0f0b07a67b23a010137dd0746685}
+      \strng{fullhash}{91fb0f0b07a67b23a010137dd0746685}
+      \strng{fullhashraw}{91fb0f0b07a67b23a010137dd0746685}
+      \strng{bibnamehash}{91fb0f0b07a67b23a010137dd0746685}
+      \strng{authorbibnamehash}{91fb0f0b07a67b23a010137dd0746685}
+      \strng{authornamehash}{91fb0f0b07a67b23a010137dd0746685}
+      \strng{authorfullhash}{91fb0f0b07a67b23a010137dd0746685}
+      \strng{authorfullhashraw}{91fb0f0b07a67b23a010137dd0746685}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Reference syllabus for advanced test automation and analysis}
+      \field{title}{ISTQB Advanced Level Syllabus: Test Analyst}
+      \field{type}{techreport}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.istqb.org/downloads/send/7-advanced-level-syllabus/
+      \endverb
+      \verb{url}
+      \verb https://www.istqb.org/downloads/send/7-advanced-level-syllabus/
+      \endverb
+    \endentry
+    \entry{openedx2024testing}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=80a3496b572201ea00b456f5103625bd}{%
+           family={{Open edX}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {edX Inc.}%
+      }
+      \strng{namehash}{80a3496b572201ea00b456f5103625bd}
+      \strng{fullhash}{80a3496b572201ea00b456f5103625bd}
+      \strng{fullhashraw}{80a3496b572201ea00b456f5103625bd}
+      \strng{bibnamehash}{80a3496b572201ea00b456f5103625bd}
+      \strng{authorbibnamehash}{80a3496b572201ea00b456f5103625bd}
+      \strng{authornamehash}{80a3496b572201ea00b456f5103625bd}
+      \strng{authorfullhash}{80a3496b572201ea00b456f5103625bd}
+      \strng{authorfullhashraw}{80a3496b572201ea00b456f5103625bd}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Testing infrastructure documentation for the Open edX platform}
+      \field{title}{Open edX Testing Guide}
+      \field{type}{techreport}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://edx.readthedocs.io/projects/edx-developer-docs/en/latest/testing/index.html
+      \endverb
+      \verb{url}
+      \verb https://edx.readthedocs.io/projects/edx-developer-docs/en/latest/testing/index.html
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

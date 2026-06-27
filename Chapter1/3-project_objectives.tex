@@ -1,0 +1,83 @@
+% =============================================================================
+% Section 1.2 (Part B): Project Objectives
+% =============================================================================
+
+\subsection{Project Objectives}
+\label{subsec:project-objectives}
+
+In direct response to the problems defined in Section~\ref{subsec:problem-definition}, NexaLearn pursues eight primary objectives. Each objective is stated as an implementable goal, accompanied by success criteria verifiable through code inspection, automated tests, or API demonstration. Objectives map to bounded contexts and cross-cutting mechanisms described in detail in Chapter~4.
+
+\begin{enumerate}
+  \item \textbf{Implement a secure, JWT-based authentication system with refresh token rotation and Redis session management.}
+
+  The Auth bounded context shall deliver complete identity lifecycle management: user signup with email verification tokens, password reset via time-limited secrets, login issuing short-lived access JWTs and opaque refresh tokens, logout invalidating refresh token families, and token refresh with \textit{rotation}---each refresh retires the previous token and detects reuse indicative of theft.
+
+  \textit{Success criteria:} Argon2 password hashing; refresh tokens stored as hashes; Redis-backed session metadata and optional blocklists; global rate limiting via \texttt{@nestjs/throttler} with Redis storage; RBAC roles (\texttt{STUDENT}, \texttt{INSTRUCTOR}, \texttt{ADMIN}) enforced by guards on protected routes; integration tests covering login, refresh rotation, and reuse detection.
+
+  \item \textbf{Build a course management system with DDD aggregates supporting modules, lessons, and optimistic concurrency.}
+
+  The Courses context shall model \texttt{Course} as an aggregate root containing ordered \texttt{Module} entities, each containing ordered \texttt{Lesson} entities with publication states (\texttt{DRAFT}, \texttt{PUBLISHED}, \texttt{ARCHIVED}). Use cases include create/update course metadata, add/reorder modules and lessons, attach prerequisites, and publish revisions visible to enrolled students.
+
+  \textit{Success criteria:} Domain invariants enforced in entities (e.g., cannot publish empty course); optimistic concurrency via \texttt{version} column-throws on conflict; domain events (\texttt{CoursePublished}, \texttt{LessonAdded}) emitted to outbox; instructor ownership validated on every mutation; no direct Prisma calls from controllers.
+
+  \item \textbf{Integrate the Mux video platform for upload, transcoding, and signed playback URLs.}
+
+  The Media context shall orchestrate Mux direct uploads, persist \texttt{VideoAsset} entities tracking provider identifiers and status (\texttt{WAITING}, \texttt{PROCESSING}, \texttt{READY}, \texttt{ERROR}), process signed Mux webhooks idempotently, associate ready assets with lessons, and issue signed playback tokens restricted to enrolled students.
+
+  \textit{Success criteria:} Webhook signature verification; idempotent handler keyed by Mux event identifier; playback authorisation integrated with Enrollment/Progress guards; instructor dashboard listing assets with error diagnostics; integration test simulating webhook delivery.
+
+  \item \textbf{Build an AI pipeline integration for automatic quiz generation and transcript creation using Whisper.}
+
+  The AI Pipeline context shall accept instructor-initiated jobs bound to lesson video assets, submit HMAC-signed requests to external transcription (Whisper) and LLM question-generation workers, track job status transitions, and process asynchronous callbacks idempotently to create or update Assessment entities (transcripts, draft questions) without duplicating content on retries.
+
+  \textit{Success criteria:} \texttt{PipelineJob} entity with lifecycle states; correlation IDs linking jobs to lessons and instructors; callback authentication; instructor review gate before student-visible quiz publication; failure records with retry policy.
+
+  \item \textbf{Implement a full payment flow using Stripe with webhook handling and idempotency.}
+
+  The Payments and Enrollment contexts shall cooperate in a documented saga: create \texttt{PENDING} enrollment, initiate Stripe PaymentIntent or Checkout Session with metadata (\texttt{enrollmentId}, \texttt{courseId}, \texttt{userId}), transition to \texttt{ACTIVE} upon verified \texttt{payment\_intent.succeeded} webhook, support refunds and expiration of unpaid pending enrollments, and persist idempotency keys on all mutating client endpoints.
+
+  \textit{Success criteria:} Stripe webhook signature validation; processed-event deduplication table; enrollment activation exactly once per payment; refund revokes access; Testcontainers integration test covering full payment flow.
+
+  \item \textbf{Create a discussion and Q\&A system with real-time notifications.}
+
+  The Discussion context shall provide threaded conversations scoped to lessons, with instructor moderation workflows (\texttt{PENDING}, \texttt{ACCEPTED}, \texttt{REJECTED} post states), @mention parsing, and domain events triggering Notifications for replies and moderation outcomes via email (Resend) and persistent in-app notification records.
+
+  \textit{Success criteria:} Students cannot view unmoderated posts from peers where policy requires acceptance; instructors notified within outbox-driven pipeline; spam rate limits applied; audit trail for moderation decisions.
+
+  \item \textbf{Provide instructor analytics with course performance, revenue breakdown, and student engagement metrics.}
+
+  The Instructor context shall expose aggregated dashboards per owned course: enrollment counts by status, lesson completion percentages, quiz score distributions (aggregated, not row-level unless admin), gross revenue and refund totals from Payments read models, streak participation rates, and review rating summaries---all scoped by authenticated instructor identity.
+
+  \textit{Success criteria:} No cross-instructor data leakage in queries; response times acceptable via indexed read models or parallel aggregation; admin-only endpoints separated from instructor routes.
+
+  \item \textbf{Ensure production-grade reliability: transactional outbox, idempotency keys, and optimistic locking.}
+
+  Cross-cutting infrastructure shall persist domain events in an \texttt{OutboxMessage} table within the same ACID transaction as state changes; process messages via concurrent workers using \texttt{SELECT FOR UPDATE SKIP LOCKED}; mark processed handlers with deduplication keys; apply \texttt{Idempotency-Key} HTTP header support on mutating endpoints; employ optimistic locking on contested aggregates in Courses, Enrollment, and Payments.
+
+  \textit{Success criteria:} Integration test demonstrating concurrent outbox workers without duplicate side effects; documented idempotency semantics in OpenAPI; zero known lost-event paths in payment and enrollment flows.
+\end{enumerate}
+
+Table~\ref{tab:objectives-mapping} traces each objective to the primary bounded context(s) and the verification artefact type used in Chapter~5.
+
+\begin{table}[H]
+  \centering
+  \caption{Mapping of Project Objectives to Bounded Contexts and Verification Methods}
+  \label{tab:objectives-mapping}
+  \small
+  \begin{tabular}{@{}clp{3.8cm}p{3.5cm}@{}}
+    \toprule
+    \textbf{\#} & \textbf{Objective (abbrev.)} & \textbf{Primary Context(s)} & \textbf{Verification} \\
+    \midrule
+    1 & JWT auth + Redis sessions & Auth & Integration + E2E tests \\
+    2 & Course aggregates + OCC & Courses & Unit + integration tests \\
+    3 & Mux video lifecycle & Media, Enrollment & Webhook integration test \\
+    4 & AI quiz/transcript pipeline & AI Pipeline, Assessment & Callback idempotency test \\
+    5 & Stripe payment saga & Payments, Enrollment & Payment flow int-spec \\
+    6 & Discussion + notifications & Discussion, Notifications & Event handler tests \\
+    7 & Instructor analytics & Instructor, Payments & Authorisation + query tests \\
+    8 & Outbox + idempotency & Events (infra) & Concurrent outbox int-spec \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Collectively, these objectives define a backend that is feature-complete for a representative e-learning marketplace and exemplifies the non-functional qualities---security, consistency, observability, and maintainability---expected of production systems. Section~\ref{sec:project-outcomes} maps objectives to tangible deliverables; Chapters~4 and~5 supply design rationale and empirical verification evidence.

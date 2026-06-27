@@ -1,0 +1,20 @@
+% =============================================================================
+% Section 4.1: Overview and Assumptions
+% =============================================================================
+
+\section{Overview and Assumptions}
+\label{sec:overview-assumptions}
+
+NexaLearn is designed as a \textbf{modular monolith}: a single NestJS application process that hosts fifteen bounded contexts, each mapped to a NestJS module (or a coherent group of modules) following the DDD tactical patterns and Clean Architecture layering described in Section~\ref{sec:ddd-clean-arch}. The system is deployed via Docker Compose with PostgreSQL as the primary data store and Redis as the session cache, rate-limiter backing store, and real-time pub/sub channel for progress events.
+
+The following assumptions constrain the design and are validated by the target customer segments identified in Section~\ref{sec:targeted-customers}:
+
+\begin{enumerate}
+  \item \textbf{Concurrent learner count.} The platform is designed for 500--5,000 concurrently active learners per deployment instance, corresponding to a mid-size university department or a growth-stage edtech startup. Peak read load is estimated at 1,000 requests per second; peak write load at 200 events per second. This profile justifies the modular monolith deployment model over a microservices architecture, as the expected throughput does not require independent horizontal scaling per service.
+  \item \textbf{Course catalogue size.} The system supports up to 500 active courses, each containing up to 50 lessons. Total video asset storage is assumed to be under 5 TB, managed by Mux's cloud transcoding and CDN delivery rather than self-hosted storage.
+  \item \textbf{Network reliability.} External provider webhooks (Stripe, Mux, AI pipeline callbacks) may be delivered at-least-once, potentially with duplicates or out-of-order delivery. The system must tolerate these without producing incorrect state.
+  \item \textbf{Instructor technical literacy.} Instructors are assumed to be domain experts (professors, corporate trainers) who can upload video files and review AI-generated quizzes via a web dashboard, but are not expected to write code, manage servers, or configure infrastructure.
+  \item \textbf{Idempotency requirement.} All external-facing write endpoints and event handlers must be idempotent, allowing safe retry by clients or webhook senders.
+\end{enumerate}
+
+These assumptions shape the architectural decisions presented throughout this chapter. Where an assumption is violated by a specific deployment scenario (e.g., a large university with 50,000 students), the architecture provides documented migration paths: extracting the modular monolith into microservices (Section~\ref{sec:implemented-approach}), adding a message broker for higher event throughput, and deploying read replicas for analytics queries.

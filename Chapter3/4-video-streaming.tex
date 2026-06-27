@@ -1,0 +1,40 @@
+% =============================================================================
+% Section 3.4: Background on Video Streaming Technology
+% =============================================================================
+
+\section{Background on Video Streaming Technology}
+\label{sec:video-streaming}
+
+\subsection{HTTP Live Streaming (HLS)}
+
+HTTP Live Streaming (HLS), standardised as RFC 8216~\cite{pantos2022hls}, is the dominant adaptive-bitrate streaming protocol used by major video platforms including YouTube, Twitch, and Netflix. HLS works by segmenting a source video into short (typically 2--10 second) chunks encoded at multiple bitrates and resolutions. A \textbf{manifest file} (the \texttt{.m3u8} playlist) enumerates the available renditions and their segment URLs. The client---a web browser or mobile app---dynamically selects the highest bitrate segment that its current network conditions can sustain, switching to a lower bitrate when bandwidth drops and back to a higher bitrate when bandwidth recovers. This adaptive behaviour eliminates buffering interruptions while maximising playback quality.
+
+The HLS specification defines a hierarchical playlist structure. A \textit{master playlist} lists all variant streams (e.g., 360p, 720p, 1080p) and auxiliary media such as subtitles and alternate audio tracks. Each variant stream has its own \textit{media playlist} containing the sequence of segment URIs and their durations. The protocol supports encryption via AES-128 or SAMPLE-AES, allowing content access control through key delivery authorisation.
+
+\subsection{Mux Video Platform}
+
+Mux~\cite{mux2024} is a video API platform that abstracts the complexity of video ingestion, transcoding, storage, and delivery. NexaLearn integrates with Mux through the \textbf{Media} bounded context, which manages the full lifecycle of video assets. Mux provides:
+
+\begin{itemize}
+  \item \textbf{Direct Uploads.} The client uploads a video file directly to Mux's storage via a \textit{direct upload endpoint}, obtaining a \texttt{upload\_id} and a playback ID. The upload is initiated by NexaLearn's backend, which requests a signed upload URL from Mux and returns it to the client; the client then PUTs the file directly to Mux, avoiding double-hop through the NexaLearn server.
+  \item \textbf{Transcoding Pipeline.} Upon receiving a complete upload, Mux transcodes the source video into multiple HLS renditions (typically 360p, 480p, 720p, and 1080p) with configurable video codec (H.264), audio codec (AAC), and segment duration.
+  \item \textbf{Webhook Notifications.} Mux sends webhooks to NexaLearn for lifecycle events: \texttt{video.upload.asset\_created}, \texttt{video.asset.ready}, \texttt{video.asset.errored}, \texttt{video.asset.deleted}. These webhooks drive the video asset state machine.
+  \item \textbf{Playback IDs and Signed URLs.} Each transcoded asset receives a playback ID. For gated content, Mux supports \textit{signed playback URLs} using JSON Web Tokens (JWT)~\cite{jones2015jwt}. The NexaLearn backend generates a JWT containing the playback ID, an expiration time, and optional access restrictions (e.g., referrer whitelist, IP allowlist), signed with a Mux-specific signing key. The client embeds this signed JWT in the playback URL; Mux's delivery infrastructure verifies the signature and expiration before serving segments.
+\end{itemize}
+
+\subsection{Video Asset Lifecycle in NexaLearn}
+
+The Media bounded context implements a state machine for each \texttt{VideoAsset} entity. The states are:
+
+\begin{description}
+  \item[\texttt{AWAITING\_UPLOAD}.] Initial state. A \texttt{Video} or \texttt{Lesson} entity has been created with an association to a new video, but the instructor has not yet uploaded the file. No Mux resource exists.
+  \item[\texttt{TRANSCODING}.] The instructor has initiated an upload and Mux has confirmed receipt and begun transcoding. The NexaLearn backend creates a \texttt{GenerationJob} entity for the AI pipeline (Section~\ref{sec:ai-elearning}) in a pending state, awaiting the completed transcript.
+  \item[\texttt{READY}.] Mux sends \texttt{video.asset.ready}, indicating that all HLS renditions are available. NexaLearn updates the \texttt{VideoAsset} with the playback ID and signed URL expiration policy. The AI pipeline receives a \texttt{VideoTranscodingCompleted} event via the outbox, triggering the transcript-generation workflow.
+  \item[\texttt{ERROR}.] Transcoding failed. NexaLearn logs the Mux error code and message, notifies the instructor, and makes the upload available for retry.
+\end{description}
+
+\subsection{MP4 Renditions for the AI Pipeline}
+
+While HLS is the delivery format for learner playback, the Whisper transcription model (Section~\ref{sec:ai-elearning}) requires a contiguous audio or video file, not segmented HLS chunks. Mux provides a static MP4 rendition for each asset, accessible through a separate signed URL with an extended expiration window---sufficient for the AI pipeline to download the file, extract the audio track using FFmpeg, and feed it to Whisper. This dual-delivery strategy---HLS for learners, MP4 for automated processing---is transparent to the instructor, who uploads a single source file.
+
+The interplay between video lifecycle and the AI pipeline exemplifies NexaLearn's event-driven design: a single external event (\texttt{video.asset.ready}) propagates through the outbox to trigger transcript generation, quiz creation, instructor notification, and search index updates, all without explicit orchestration code in the Media context.

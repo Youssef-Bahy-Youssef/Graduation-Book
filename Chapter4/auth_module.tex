@@ -16,8 +16,8 @@ All authentication flows assume HTTPS transport. Tokens are opaque to clients in
 The system issues two token types:
 
 \begin{description}
-  \item[\textbf{Access Token.}] A short-lived (15-minute) JWT signed with an RS256 private key. The token encodes: \texttt{sub} (user ID), \texttt{role} (student, instructor, admin), \texttt{iat} (issued at), and \texttt{exp} (expiration). The access token is transmitted as \texttt{Authorization: Bearer <token>}. It is validated by a NestJS \texttt{AuthGuard} that verifies the RS256 signature using the corresponding public key, checks expiration, and attaches the decoded payload to the request context. No database lookup is performed on access token validation, enabling O(1) verification.
-  \item[\textbf{Refresh Token.}] A 64-character cryptographically random string generated via \texttt{crypto.randomBytes(48)}. The refresh token is hashed using SHA-256 before storage; the raw token is returned to the client exactly once. The hashed token, along with the user ID, device metadata, and expiration timestamp (7 days), is stored in Redis under key \texttt{session:<hashed\_token>} with an appropriate TTL.
+  \item[\textbf{Access Token.}] A short-lived (15-minute) JWT signed with the configured JWT secret (HS256). The token encodes: \texttt{sub} (user ID), \texttt{roles} (student, instructor, admin), \texttt{iat} (issued at), and \texttt{exp} (expiration). The access token is transmitted as \texttt{Authorization: Bearer <token>}. It is validated by a NestJS \texttt{JwtAuthGuard} that verifies the HS256 signature using the configured secret, checks expiration, and attaches the decoded payload to the request context. No database lookup is performed on access token validation, enabling O(1) verification.
+  \item[\textbf{Refresh Token.}] A 64-character cryptographically random string generated via \texttt{crypto.randomBytes(32)}. The refresh token is hashed using SHA-256 before storage; the raw token is returned to the client exactly once. The hashed token, along with the user ID, device metadata, and expiration timestamp (7 days), is stored in Redis under key \texttt{session:<hashed\_token>} with an appropriate TTL.
 \end{description}
 
 The separation of concerns mirrors the pattern used by Auth0 and Firebase Authentication: the access token is a stateless assertion verified by any service without a central session store, while the refresh token enables long-lived sessions without storing secrets on the client beyond the browser's secure, HTTPOnly cookie storage.
@@ -49,13 +49,13 @@ async function refreshTokens(rawToken: string): Promise<TokenPair> {
   await redis.del(`session:${hash}`);
 
   // Issue new tokens
-  const newRawToken = crypto.randomBytes(48).toString('hex');
+  const newRawToken = crypto.randomBytes(32).toString('hex');
   const newHash = sha256(newRawToken);
   await redis.set(`session:${newHash}`, session, 'EX', 604800);
 
   const accessToken = await this.jwtService.signAsync({
     sub: session.userId,
-    role: session.role,
+    roles: session.roles,
   });
 
   return { accessToken, refreshToken: newRawToken };
@@ -68,7 +68,7 @@ The state machine diagram (Figure~\ref{fig:auth-statemachine}) illustrates the s
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.65\textwidth]{images/statemachines/auth_session_statemachine.png}
+  \includegraphics[width=0.65\textwidth]{images/statemachines/auth_session_statemachine.pdf}
   \caption{Auth Session State Machine}
   \label{fig:auth-statemachine}
 \end{figure}

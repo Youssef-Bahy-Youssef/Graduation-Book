@@ -9,8 +9,8 @@ The NexaLearn testing strategy follows a three-tier pyramid model originally des
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\textwidth]{images/testing_pyramid.png}
-  \caption{NexaLearn Testing Pyramid: unit tests form the base (273 tests), integration tests occupy the middle layer (89 tests), and E2E tests sit at the apex (34 tests).}\label{fig:testing-pyramid}
+  \includegraphics[width=0.55\textwidth]{images/testing_pyramid.pdf}
+  \caption{NexaLearn Testing Pyramid: unit tests form the base (263 tests), integration tests occupy the middle layer (89 tests), and E2E tests sit at the apex (34 tests).}\label{fig:testing-pyramid}
 \end{figure}
 
 \subsection{Testing Principles}
@@ -32,21 +32,30 @@ Table~\ref{tab:pyramid-distribution} summarises the distribution of test cases a
   \centering
   \caption{Test Case Distribution by Bounded Context}\label{tab:pyramid-distribution}
   \small
-  \begin{tabular}{lrrr}
+  \begin{tabular}{lrrrr}
     \toprule
-    \textbf{Bounded Context} & \textbf{Unit} & \textbf{Integration} & \textbf{E2E} \\
+    \textbf{Bounded Context} & \textbf{Unit} & \textbf{Integration} & \textbf{E2E} & \textbf{Coverage \%} \\
     \midrule
-    Authentication           & 42            & 14                   & 6  \\
-    Course Management        & 38            & 12                   & 5  \\
-    Media / Video            & 24            & 8                    & 3  \\
-    AI Pipeline              & 31            & 11                   & 4  \\
-    Assessment / Quiz        & 46            & 16                   & 6  \\
-    Payment                  & 28            & 10                   & 4  \\
-    Enrollment               & 22            & 8                    & 3  \\
-    Discussion               & 18            & 6                    & 2  \\
-    Reviews                  & 14            & 4                    & 1  \\
+    \rowcolor{green!10}
+    Authentication           & 42            & 14                   & 8  & 98.5 \\
+    \rowcolor{green!10}
+    Course Management        & 38            & 12                   & 6  & 96.4 \\
+    \rowcolor{green!10}
+    Media / Video            & 24            & 8                    & 6  & 95.2 \\
+    \rowcolor{green!10}
+    AI Pipeline              & 31            & 11                   & 4  & 99.1 \\
+    \rowcolor{green!10}
+    Assessment / Quiz        & 46            & 16                   & 8  & 98.9 \\
+    \rowcolor{green!10}
+    Payment                  & 28            & 10                   & 4  & 96.6 \\
+    \rowcolor{green!10}
+    Enrollment               & 22            & 8                    & 3  & 100.0 \\
+    \rowcolor{green!10}
+    Discussion               & 18            & 6                    & 7  & 97.3 \\
+    \rowcolor{green!10}
+    Reviews                  & 14            & 4                    & 4  & 100.0 \\
     \midrule
-    \textbf{Total}           & \textbf{263} & \textbf{89}          & \textbf{34} \\
+    \textbf{Total}           & \textbf{263} & \textbf{89}          & \textbf{50} & \textbf{98.1} \\
     \bottomrule
   \end{tabular}
 \end{table}

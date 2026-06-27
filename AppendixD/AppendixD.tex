@@ -15,7 +15,7 @@ This appendix documents the key design patterns, domain entities, and use case i
 
 The outbox pattern guarantees at-least-once event delivery. The \texttt{OutboxPublisher} service is injected into application services that need to publish domain events atomically with database state changes.
 
-\begin{lstlisting}[language=TypeStyle,caption=Transactional outbox publisher,label=lst:outbox-publisher]
+\begin{lstlisting}[language=TypeScript,caption=Transactional outbox publisher,label=lst:outbox-publisher]
 @Injectable()
 export class OutboxPublisher {
   constructor(private readonly prisma: PrismaService) {}

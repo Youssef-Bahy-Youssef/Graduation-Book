@@ -6,33 +6,41 @@
 % ---- Body text: 12pt (documentclass), justified, 1.5 line spacing ----
 \justifying
 \onehalfspacing
-\setlength{\emergencystretch}{1.5em}
+\setlength{\emergencystretch}{3em}
 \uchyph=1
 \hbadness=2000
 
-% ---- Chapter titles: bold, 24pt, centered, "Chapter N:" prefix ----
+% ---- Chapter titles: bold, 24pt, centered, "Chapter N:" prefix, horizontal rule ----
 \titleformat{\chapter}[display]
   {\normalfont\fontsize{24}{28}\bfseries\centering}
-  {Chapter \thechapter:}
+  {\chaptertitlename\ \thechapter:}
   {0.75em}
-  {}
+  {{\hrule width \textwidth height 0.5pt}\vspace{0.5em}}
 \titlespacing*{\chapter}{0pt}{0pt}{24pt}
 
-% ---- Section titles: bold, 18pt, left-aligned ----
+% ---- Chapter* titles (unnumbered): centered, bold, horizontal rule ----
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\fontsize{24}{28}\bfseries\centering}
+  {}
+  {0pt}
+  {{\hrule width \textwidth height 0.5pt}\vspace{0.5em}}
+\titlespacing*{name=\chapter,numberless}{0pt}{0pt}{24pt}
+
+% ---- Section titles: bold, 14pt, left-aligned ----
 \titleformat{\section}
-  {\normalfont\fontsize{18}{22}\bfseries}
+  {\normalfont\fontsize{14}{17}\bfseries}
   {\thesection.}
   {0.75em}
   {}
-\titlespacing*{\section}{0pt}{18pt}{12pt}
+\titlespacing*{\section}{0pt}{14pt}{8pt}
 
-% ---- Subsection titles: bold, 14pt ----
+% ---- Subsection titles: bold, 12pt ----
 \titleformat{\subsection}
-  {\normalfont\fontsize{14}{17}\bfseries}
+  {\normalfont\fontsize{12}{14}\bfseries}
   {\thesubsection.}
   {0.75em}
   {}
-\titlespacing*{\subsection}{0pt}{12pt}{8pt}
+\titlespacing*{\subsection}{0pt}{10pt}{6pt}
 
 % ---- Figure captions below; table captions above (Figure X.Y / Table X.Y) ----
 \captionsetup[figure]{
@@ -47,14 +55,12 @@
   labelsep=colon,
   font=small
 }
-\captionsetup[sub]{
-  font=small
-}
 
 % ---- References: 10pt ----
 \renewcommand*{\bibfont}{\fontsize{10}{12}\selectfont}
 
 % ---- Headers & footers: chapter name in header, page number centered in footer ----
+\setlength{\headheight}{28pt}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[C]{\leftmark}
@@ -63,7 +69,11 @@
 \renewcommand{\footrulewidth}{0pt}
 
 \renewcommand{\chaptermark}[1]{%
-  \markboth{\MakeUppercase{\chaptername\ \thechapter: #1}}{}%
+  \ifnum\value{chapter}>0\relax
+    \markboth{\MakeUppercase{\chaptername\ \thechapter: #1}}{}%
+  \else
+    \markboth{\MakeUppercase{#1}}{}%
+  \fi
 }
 
 % Plain style for chapter opening pages (footer page number only)
@@ -74,7 +84,7 @@
   \renewcommand{\footrulewidth}{0pt}%
 }
 
-% ---- Hyperref: green theme matching university cover ----
+% ---- Hyperref: colored links for digital reading ----
 \hypersetup{
   colorlinks=true,
   linkcolor=CUGreen,

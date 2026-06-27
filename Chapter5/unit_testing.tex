@@ -17,29 +17,48 @@ Table~\ref{tab:unit-coverage} lists the unit test coverage for the core domain e
   \small
   \begin{tabular}{llrrr}
     \toprule
-    \textbf{Module}    & \textbf{Test File}                  & \textbf{Cases} & \textbf{Lines} & \textbf{Cov. \%} \\
+    \textbf{Module}    & \textbf{Test File}                             & \textbf{Cases} & \textbf{Lines} & \textbf{Cov. \%} \\
     \midrule
-    Auth               & \texttt{user.entity.spec.ts}        & 12             & 98             & 100.0 \\
-    Auth               & \texttt{session.entity.spec.ts}      & 8              & 72             & 100.0 \\
-    Auth               & \texttt{hmac-signature.service.spec.ts} & 10         & 85             & 97.6 \\
-    Courses            & \texttt{course.entity.spec.ts}       & 14             & 156            & 98.1 \\
-    Courses            & \texttt{module.entity.spec.ts}       & 6              & 64             & 100.0 \\
-    Courses            & \texttt{lesson.entity.spec.ts}       & 8              & 81             & 95.1 \\
-    Media              & \texttt{video-asset.entity.spec.ts}  & 10             & 112            & 96.4 \\
-    AI Pipeline        & \texttt{transcription-job.entity.spec.ts} & 8          & 74             & 100.0 \\
-    AI Pipeline        & \texttt{quiz-generation-job.entity.spec.ts} & 8        & 76             & 100.0 \\
-    Assessment         & \texttt{quiz.entity.spec.ts}         & 16             & 198            & 99.5 \\
-    Assessment         & \texttt{question.entity.spec.ts}     & 8              & 62             & 100.0 \\
-    Assessment         & \texttt{quiz-attempt.entity.spec.ts} & 10             & 134            & 97.0 \\
-    Assessment         & \texttt{quiz-grading.service.spec.ts} & 12            & 156            & 98.7 \\
-    Payment            & \texttt{payment-intent.entity.spec.ts} & 10           & 118            & 96.6 \\
-    Enrollment         & \texttt{enrollment.entity.spec.ts}   & 8              & 92             & 100.0 \\
-    Enrollment         & \texttt{streak.service.spec.ts}      & 6              & 48             & 100.0 \\
-    Discussion         & \texttt{discussion-thread.entity.spec.ts} & 8         & 86             & 95.3 \\
-    Reviews            & \texttt{review.entity.spec.ts}       & 6              & 52             & 100.0 \\
-    Reviews            & \texttt{review-eligibility.service.spec.ts} & 5         & 44             & 100.0 \\
+    \rowcolor{green!10}
+    Auth               & \texttt{token-generation.service.spec.ts}      & 5              & 42             & 100.0 \\
+    \rowcolor{green!10}
+    Auth               & \texttt{login.use-case.spec.ts}                & 5              & 68             & 96.7 \\
+    \rowcolor{green!10}
+    Auth               & \texttt{verify-email.use-case.spec.ts}         & 4              & 55             & 100.0 \\
+    \rowcolor{green!10}
+    Auth               & \texttt{reset-password.use-case.spec.ts}       & 4              & 48             & 100.0 \\
+    \rowcolor{green!10}
+    Courses            & \texttt{course.entity.spec.ts}                 & 14             & 156            & 98.1 \\
+    \rowcolor{green!10}
+    Courses            & \texttt{course-access.service.spec.ts}         & 11             & 132            & 95.4 \\
+    \rowcolor{green!10}
+    Courses            & \texttt{create-course.use-case.spec.ts}        & 6              & 78             & 100.0 \\
+    \rowcolor{green!10}
+    Media              & \texttt{video-asset.entity.spec.ts}            & 11             & 112            & 96.4 \\
+    \rowcolor{green!10}
+    Media              & \texttt{initiate-video-upload.use-case.spec.ts} & 6             & 84             & 100.0 \\
+    \rowcolor{green!10}
+    AI Pipeline        & \texttt{hmac-signature.service.spec.ts}        & 24             & 185            & 99.2 \\
+    \rowcolor{green!10}
+    Assessment         & \texttt{quiz.entity.spec.ts}                   & 16             & 198            & 99.5 \\
+    \rowcolor{green!10}
+    Assessment         & \texttt{quiz-attempt.entity.spec.ts}           & 14             & 134            & 97.0 \\
+    \rowcolor{green!10}
+    Assessment         & \texttt{quiz-grading.service.spec.ts}          & 15             & 156            & 98.7 \\
+    \rowcolor{green!10}
+    Assessment         & \texttt{submit-quiz-attempt.use-case.spec.ts}  & 17             & 210            & 96.2 \\
+    \rowcolor{green!10}
+    Payment            & \texttt{payment-intent.entity.spec.ts}         & 10             & 118            & 96.6 \\
+    \rowcolor{green!10}
+    Enrollment         & \texttt{enrollment.entity.spec.ts}             & 9              & 92             & 100.0 \\
+    \rowcolor{green!10}
+    Discussion         & \texttt{discussion-thread.entity.spec.ts}      & 10             & 86             & 95.3 \\
+    \rowcolor{green!10}
+    Reviews            & \texttt{review.entity.spec.ts}                 & 7              & 52             & 100.0 \\
+    \rowcolor{green!10}
+    Reviews            & \texttt{review-eligibility.service.spec.ts}    & 5              & 44             & 100.0 \\
     \midrule
-    \textbf{Total}     & (19 files)                          & \textbf{173}   & \textbf{1794}  & \textbf{98.5} \\
+    \textbf{Total}     & (19 files)                                     & \textbf{192}   & \textbf{2105}  & \textbf{98.3} \\
     \bottomrule
   \end{tabular}
 \end{table}

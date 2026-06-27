@@ -22,7 +22,7 @@ In direct response to the problems defined in Section~\ref{subsec:problem-defini
 
   \item \textbf{Integrate the Mux video platform for upload, transcoding, and signed playback URLs.}
 
-  The Media context shall orchestrate Mux direct uploads, persist \texttt{VideoAsset} entities tracking provider identifiers and status (\texttt{WAITING}, \texttt{PROCESSING}, \texttt{READY}, \texttt{ERROR}), process signed Mux webhooks idempotently, associate ready assets with lessons, and issue signed playback tokens restricted to enrolled students.
+  The Media context shall orchestrate Mux direct uploads, persist \texttt{VideoAsset} entities tracking provider identifiers and status (\texttt{AWAITING\_UPLOAD}, \texttt{UPLOADED}, \texttt{TRANSCODING}, \texttt{READY}, \texttt{FAILED}), process signed Mux webhooks idempotently, associate ready assets with lessons, and issue signed playback tokens restricted to enrolled students.
 
   \textit{Success criteria:} Webhook signature verification; idempotent handler keyed by Mux event identifier; playback authorisation integrated with Enrollment/Progress guards; instructor dashboard listing assets with error diagnostics; integration test simulating webhook delivery.
 

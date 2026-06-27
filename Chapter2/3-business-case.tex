@@ -24,7 +24,7 @@ The \$5,000/year enterprise tier aligns with support pricing for specialised inf
 \subsection{Capital Expenditure (Capex)}
 \label{subsec:capex}
 
-One-time capital expenditure occurs primarily in Month~1 during commercial entity setup and production infrastructure provisioning:
+One-time capital expenditure occurs primarily in Month~1 during commercial entity setup and production infrastructure provisioning, as detailed in Table~\ref{tab:capex-breakdown}:
 
 \begin{table}[H]
   \centering
@@ -56,7 +56,7 @@ Capex excludes graduation-project development labour (sunk academic cost). Comme
 \subsection{Operating Expenditure (Opex)}
 \label{subsec:opex}
 
-Recurring monthly operating expenditure comprises cloud infrastructure, video encoding pass-through costs, payment processing fees, and---under the commercialised scenario---developer salaries:
+Recurring monthly operating expenditure comprises cloud infrastructure, video encoding pass-through costs, payment processing fees, and---under the commercialised scenario---developer salaries, as shown in Table~\ref{tab:opex-breakdown}:
 
 \begin{table}[H]
   \centering
@@ -106,6 +106,7 @@ Sales ramp assumes gradual enterprise procurement cycles: two contracts in Month
 
 Table~\ref{tab:cashflow-24m} presents the monthly cash-flow forecast for Months~1--24. \textbf{Revenue} includes annual prepayments from new enterprise contracts signed that month (\$5,000 per new client). \textbf{Expenses} include Opex and, in Month~1, Capex. \textbf{Net Cash Flow} equals Revenue minus Expenses; \textbf{Cumulative Cash Flow} tracks running profitability. Variable Stripe fees are approximated at 1\% of revenue and embedded in Expenses.
 
+\small
 \begin{longtable}{@{}r r r r r r r@{}}
   \caption{Twenty-Four-Month Cash Flow Forecast (USD)} \label{tab:cashflow-24m} \\
   \toprule
@@ -168,12 +169,20 @@ Table~\ref{tab:cashflow-24m} presents the monthly cash-flow forecast for Months~
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.88\textwidth]{images/break_even_chart.png}
+  \includegraphics[width=0.88\textwidth]{images/break_even_chart.pdf}
   \caption{Break-Even Analysis: Cumulative Cash Flow over Twenty-Four Months (Figure 2.1)}
   \label{fig:break-even}
 \end{figure}
 
 Figure~\ref{fig:break-even} illustrates the cumulative cash-flow trajectory: initial Capex and pre-revenue months produce a trough of approximately \$20,450 (Month~5), followed by recovery as enterprise prepayments accelerate in Months~6--8. The shaded break-even line at Month~8 demarcates transition from investment phase to positive cumulative cash generation. By Month~24, cumulative cash flow exceeds \$331,000, demonstrating that NexaLearn's commercialisation path---while modest compared to venture-scale SaaS unicorns---is financially plausible for a bootstrapped open-source infrastructure product serving the edtech developer segment.
+
+Figure~\ref{fig:revenue-projection} summarises the three-year financial trajectory. Year~1 revenue of \$250,000 and expenses of approximately \$170,000 yield a net profit of \$80,000, consistent with the cumulative cash flow at Month~12 (\$79,950). Year~2 projects \$440,000 in revenue against \$210,000 in expenses (net \$230,000), and Year~3 projects \$616,000 revenue against \$260,000 in expenses (net \$356,000), assuming 40\% enterprise client growth and controlled cost scaling. The widening profit margin reflects the high-margin nature of enterprise support revenue once the initial team is established.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{images/revenue_projection.pdf}
+  \caption{Revenue Projection: Years 1--3 (Enterprise Support Model). Revenue assumes \$5,000/contract with 50, 70, and 73 cumulative clients respectively; expenses include Capex amortisation, Opex, and staff costs as detailed in Tables~\ref{tab:capex-breakdown} and~\ref{tab:opex-breakdown}.}\label{fig:revenue-projection}
+\end{figure}
 
 \subsection{Financial Conclusions}
 \label{subsec:financial-conclusions}

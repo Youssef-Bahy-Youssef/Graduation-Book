@@ -48,7 +48,7 @@ LOG_LEVEL=error
 
 \subsection{Testcontainers Integration}
 
-For integration tests that require a real database, the test suite uses \texttt{@testcontainers/postgresql} and \texttt{@testcontainers/redis}, which launch disposable Docker containers programmatically. This approach eliminates the need for a pre-installed PostgreSQL instance on the developer machine or CI runner and ensures test isolation: each test suite or parallel shard obtains a fresh database.
+For integration tests that require a real database, the test suite uses \texttt{@testcontainers/postgresql} and \texttt{@testcontainers/redis}, which launch disposable Docker containers programmatically. This approach eliminates the need for a pre-installed PostgreSQL instance on the developer machine or CI runner and ensures test isolation:\linebreak[3] each test suite or parallel shard obtains a fresh database.
 
 \begin{lstlisting}[caption=Testcontainers lifecycle for integration tests,label=lst:testcontainers]
 import { PostgreSqlContainer } from '@testcontainers/postgresql';

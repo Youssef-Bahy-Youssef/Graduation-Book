@@ -30,7 +30,7 @@ async execute(dto: CreateEnrollmentDto): Promise<Enrollment> {
       where: {
         learnerId: dto.learnerId,
         courseId: dto.courseId,
-        status: { in: ['ACTIVE', 'COMPLETED'] },
+        status: { in: ['ACTIVE', 'REFUNDED'] },
       },
     });
 
@@ -68,9 +68,18 @@ Figure~\ref{fig:enrollment-statemachine} shows the enrollment lifecycle.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{images/statemachines/enrollment_statemachine.png}
+  \includegraphics[width=0.6\textwidth]{images/statemachines/enrollment_statemachine.pdf}
   \caption{Enrollment State Machine}
   \label{fig:enrollment-statemachine}
 \end{figure}
 
-Enrollments transition from PENDING to ACTIVE (payment confirmed or free enrollment), from ACTIVE to COMPLETED (all curriculum requirements satisfied), from PENDING to CANCELLED (learner abandoned checkout or manually cancelled), and from ACTIVE to EXPIRED (course access duration limit exceeded, if configured).
+Figure~\ref{fig:seq-enrollment-flow} illustrates the full interaction for a paid enrollment. The learner first browses the course catalogue, then sends an enrollment request. The Enrollment module checks the course price and creates a PENDING enrollment. The Payment module creates a Stripe Payment Intent; the learner completes payment on the frontend. Stripe sends a webhook to the Payment module, which marks the intent as SUCCEEDED. An outbox event triggers the Enrollment module to activate the enrollment. The learner's next poll sees the enrollment in ACTIVE status and gains access to course content.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{images/seq_enrollment_flow.pdf}
+  \caption{Sequence Diagram: Paid Enrollment Flow}
+  \label{fig:seq-enrollment-flow}
+\end{figure}
+
+Enrollments transition from PENDING to ACTIVE (payment confirmed or free enrollment), from ACTIVE to CANCELLED (learner or instructor cancelled), from PENDING to CANCELLED (learner abandoned checkout or manually cancelled), and from ACTIVE to REFUNDED (payment refunded).

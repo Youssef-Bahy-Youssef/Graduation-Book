@@ -16,10 +16,10 @@ Both workflows follow an asynchronous callback pattern: NexaLearn dispatches a r
 All callbacks from the AI pipeline include an \texttt{X-Pipeline-Signature} header with format \texttt{t=<unix-timestamp>,v1=<hex-digest>}. The recipient controller verifies the signature before processing:
 
 \begin{lstlisting}[caption=HMAC Callback Verification,label=lst:hmac-verify]
-@Post('callbacks/transcript')
-async handleTranscriptCallback(
+@Post()
+async handleGenerationCallback(
   @Headers('x-pipeline-signature') signature: string,
-  @Body() payload: TranscriptCallbackDto,
+  @Body() payload: GenerationCallbackDto,
 ): Promise<void> {
   this.hmacService.verify(signature, payload);
   await this.useCase.execute(payload);
@@ -50,7 +50,7 @@ The timestamp tolerance (300 seconds) prevents replay attacks without requiring 
 The callback handler must be idempotent: the AI service may retry callbacks if it does not receive a 200 response. The \texttt{HandleGenerationCallbackUseCase} uses the \texttt{GenerationJob} aggregate to ensure each callback is processed exactly once:
 
 \begin{lstlisting}[caption=Exactly-Once Callback Processing,label=lst:exactly-once]
-async execute(dto: TranscriptCallbackDto): Promise<void> {
+async execute(dto: GenerationCallbackDto): Promise<void> {
   await this.prisma.$transaction(async (tx) => {
     const job = await tx.generationJob.findUniqueOrThrow({
       where: { id: dto.jobId },
@@ -61,8 +61,8 @@ async execute(dto: TranscriptCallbackDto): Promise<void> {
     await tx.generationJob.update({
       where: { id: dto.jobId },
       data: {
-        status: 'CALLBACK_RECEIVED',
-        result: dto.transcript,
+        status: 'READY_FOR_REVIEW',
+        result: dto.result,
         completedAt: new Date(),
       },
     });
@@ -71,8 +71,8 @@ async execute(dto: TranscriptCallbackDto): Promise<void> {
       data: {
         aggregateType: 'GenerationJob',
         aggregateId: dto.jobId,
-        eventType: 'TranscriptGenerated',
-        payload: { transcript: dto.transcript, videoAssetId: job.videoAssetId },
+        eventType: 'GenerationJobCompleted',
+        payload: { result: dto.result, videoAssetId: job.videoAssetId },
       },
     });
   });
@@ -83,11 +83,20 @@ The guard clause (\texttt{if (job.status !== 'PROCESSING') return}) ensures that
 
 \subsection{Quiz Review Workflow}
 
-Generated quizzes transition through three statuses: \texttt{READY\_FOR\_REVIEW} (initial, awaiting instructor action), \texttt{APPROVED} (instructor accepted), and \texttt{REJECTED} (instructor rejected with feedback). The instructor reviews each proposed question in a dashboard, edits the stem or options, and either approves or rejects the entire quiz. Only upon approval does the quiz become available to learners. This human-in-the-loop workflow, illustrated in Figure~\ref{fig:ai-job-statemachine}, ensures quality control without requiring the instructor to author questions from scratch.
+Generated quizzes transition through \texttt{READY\_FOR\_REVIEW} status once the AI pipeline completes processing. The instructor reviews each proposed question in a dashboard, edits the stem or options, and manually publishes the quiz to make it available to learners. The \texttt{GenerationJob} aggregate tracks the statuses \texttt{QUEUED} (awaiting dispatch), \texttt{PROCESSING} (AI service working), \texttt{READY\_FOR\_REVIEW} (results available for instructor review), and \texttt{FAILED} (processing error). This human-in-the-loop workflow, illustrated in Figure~\ref{fig:ai-job-statemachine}, ensures quality control without requiring the instructor to author questions from scratch.
+
+Figure~\ref{fig:seq-ai-pipeline} details the asynchronous orchestration. The instructor uploads a video through the Media module, which requests a Mux upload URL and returns it to the client. The client uploads directly to Mux. When Mux signals the asset is created, the Media module transitions the VideoAsset to UPLOADED and emits a domain event consumed by the AI Pipeline module. The pipeline creates a GenerationJob (QUEUED), dispatches audio to Whisper ASR for transcription, and---once the transcript is ready---dispatches the transcript text to an LLM for quiz question generation. Both callbacks are HMAC-authenticated and idempotent (Section~\ref{lst:exactly-once}). The final quiz questions are persisted with status READY\_FOR\_REVIEW, and the instructor is notified.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{images/statemachines/ai_job_statemachine.png}
+  \includegraphics[width=0.85\textwidth]{images/seq_ai_pipeline.pdf}
+  \caption{Sequence Diagram: AI Pipeline --- Transcript \& Quiz Generation}
+  \label{fig:seq-ai-pipeline}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{images/statemachines/ai_job_statemachine.pdf}
   \caption{AI Generation Job State Machine}
   \label{fig:ai-job-statemachine}
 \end{figure}

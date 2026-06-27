@@ -2,15 +2,24 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 
+plt.style.use('seaborn-v0_8-whitegrid')
+
+PALETTE = {
+    'blue': '#2E86AB', 'purple': '#A23B72', 'orange': '#F18F01',
+    'green': '#43AA8B', 'teal': '#577590', 'red': '#D62828',
+    'dark': '#333333', 'gray': '#888888', 'light_gray': '#CCCCCC',
+}
+
 plt.rcParams.update({
     'font.family': 'sans-serif',
-    'font.size': 10,
+    'font.size': 11,
     'axes.facecolor': '#FAFAFA',
     'figure.facecolor': 'white',
-    'axes.edgecolor': '#CCCCCC',
+    'axes.edgecolor': PALETTE['light_gray'],
 })
 
 OUT = '/Users/youssefbahy/Documents/Training/NexaLearnFullProject/newbook/images'
+DPI = 300
 
 # ============================================================
 # Figure 6.1: Skills Radar Chart
@@ -34,22 +43,22 @@ values += values[:1]
 angles += angles[:1]
 
 fig, ax = plt.subplots(figsize=(7, 7), subplot_kw={'polar': True})
-ax.fill(angles, values, color='#2980B9', alpha=0.25)
-ax.plot(angles, values, color='#2980B9', linewidth=2, marker='o', markersize=8)
+ax.fill(angles, values, color=PALETTE['blue'], alpha=0.25)
+ax.plot(angles, values, color=PALETTE['blue'], linewidth=2, marker='o', markersize=8)
 
 ax.set_xticks(angles[:-1])
-ax.set_xticklabels(categories, fontsize=9, fontweight='bold')
+ax.set_xticklabels(categories, fontsize=10, fontweight='bold')
 ax.set_ylim(0, 5)
 ax.set_yticks([1, 2, 3, 4, 5])
-ax.set_yticklabels(['1', '2', '3', '4', '5'], fontsize=8, color='#888')
+ax.set_yticklabels(['1', '2', '3', '4', '5'], fontsize=9, color=PALETTE['gray'])
 ax.grid(True, alpha=0.3)
 
-ax.set_title('Skills Gained — Self Assessment', fontsize=14, fontweight='bold', pad=20)
+ax.set_title('Skills Gained — Self Assessment', fontsize=15, fontweight='bold', pad=20)
 plt.tight_layout()
-plt.savefig(f'{OUT}/skills_radar.png', dpi=180, bbox_inches='tight')
+plt.savefig(f'{OUT}/skills_radar.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUT}/skills_radar.pdf', bbox_inches='tight')
 plt.close()
-print('Generated skills_radar.png')
-
+print('skills_radar.png/pdf')
 
 # ============================================================
 # Figure 6.2: Video Rendition State Machine
@@ -73,14 +82,12 @@ for x, y, name, ec, fc in states:
                                     boxstyle="round,pad=0.1",
                                     facecolor=fc, ec=ec, lw=2.5)
     ax.add_patch(rect)
-    ax.text(x, y, name, ha='center', va='center', fontsize=8, fontweight='bold', color=ec)
+    ax.text(x, y, name, ha='center', va='center', fontsize=9, fontweight='bold', color=ec)
 
-# Initial arrow
 ax.annotate('', xy=(1.5-0.8, 2.0), xytext=(0.1, 2.0),
-            arrowprops=dict(arrowstyle='->', color='#333', lw=1.5))
-ax.text(0.0, 2.25, 'upload', ha='center', va='bottom', fontsize=7, color='#555', style='italic')
+            arrowprops=dict(arrowstyle='->', color=PALETTE['dark'], lw=1.5))
+ax.text(0.0, 2.25, 'upload', ha='center', va='bottom', fontsize=8, color=PALETTE['gray'], style='italic')
 
-# Transitions
 transitions = [
     ('UPLOADED', 'PROCESSING', 'upload\ncomplete'),
     ('PROCESSING', 'READY', 'transcode\ndone'),
@@ -93,80 +100,83 @@ for src, dst, label in transitions:
     x1r = x1 + 0.8
     x2l = x2 - 0.8
     ax.annotate('', xy=(x2l, y2), xytext=(x1r, y1),
-                arrowprops=dict(arrowstyle='->', color='#555', lw=1.5, connectionstyle='arc3,rad=0.15'))
+                arrowprops=dict(arrowstyle='->', color=PALETTE['gray'], lw=1.5, connectionstyle='arc3,rad=0.15'))
     mx = (x1r + x2l) / 2
-    ax.text(mx, y1 + 0.35, label, ha='center', va='bottom', fontsize=6.5, color='#555', style='italic')
+    ax.text(mx, y1 + 0.35, label, ha='center', va='bottom', fontsize=7.5, color=PALETTE['gray'], style='italic')
 
-# Error transition
 ax.annotate('', xy=(3.5, 3.0), xytext=(5.0, 3.0),
             arrowprops=dict(arrowstyle='->', color='#E74C3C', lw=1.2, connectionstyle='arc3,rad=0.3'))
-ax.text(4.25, 3.4, 'error', ha='center', va='bottom', fontsize=6.5, color='#E74C3C', style='italic')
+ax.text(4.25, 3.4, 'error', ha='center', va='bottom', fontsize=7.5, color='#E74C3C', style='italic')
 
-ax.set_title('Video Asset State Machine with MP4 Rendition', fontsize=11, fontweight='bold', pad=10)
+ax.set_title('Video Asset State Machine with MP4 Rendition', fontsize=13, fontweight='bold', pad=10)
 plt.tight_layout()
-plt.savefig(f'{OUT}/video_rendition_statemachine.png', dpi=180, bbox_inches='tight')
+plt.savefig(f'{OUT}/video_rendition_statemachine.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUT}/video_rendition_statemachine.pdf', bbox_inches='tight')
 plt.close()
-print('Generated video_rendition_statemachine.png')
-
+print('video_rendition_statemachine.png/pdf')
 
 # ============================================================
 # Figure 6.3: Future Work Roadmap
 # ============================================================
-fig, ax = plt.subplots(figsize=(10, 5))
-ax.set_xlim(0, 10)
-ax.set_ylim(0, 6)
+fig, ax = plt.subplots(figsize=(11, 5.5))
+ax.set_xlim(0, 12)
+ax.set_ylim(0, 7)
 ax.axis('off')
 
-# Timeline base
-ax.plot([0.5, 9.5], [0.5, 0.5], color='#333', lw=2, zorder=1)
-for x, label in [(1.5, 'Month 1'), (4.0, 'Month 6'), (6.5, 'Month 12'), (9.0, 'Month 18+')]:
-    ax.plot([x, x], [0.3, 0.7], color='#333', lw=2, zorder=1)
-    ax.text(x, 0.1, label, ha='center', va='top', fontsize=8, fontweight='bold')
+timeline_y = 6.2
+ax.plot([0.8, 11.2], [timeline_y, timeline_y], color=PALETTE['dark'], lw=2, zorder=1)
+ticks = [(2.0, 'Month 1'), (4.5, 'Month 6'), (7.0, 'Month 12'), (9.5, 'Month 18'), (11.0, '24+')]
+for x, label in ticks:
+    ax.plot([x, x], [timeline_y - 0.2, timeline_y + 0.2], color=PALETTE['dark'], lw=2, zorder=1)
+    ax.text(x, timeline_y - 0.5, label, ha='center', va='top', fontsize=8, fontweight='bold', color=PALETTE['dark'])
+ax.text(0.8, timeline_y + 0.4, 'Timeline', ha='left', va='bottom', fontsize=9, fontweight='bold', color=PALETTE['dark'])
 
-# Phase labels
 phases = [
-    (1.5, 'Short Term\n(1--6 months)', '#2980B9', [
-        ('WebSocket Real-Time', 2.5),
-        ('OAuth2 Social Login', 2.0),
-        ('Redis Rate Limiter', 1.5),
-        ('React/Next.js Frontend', 1.0),
+    ('Short Term\n(1–6 months)', PALETTE['blue'], 1.5, 3.0, [
+        ('WebSocket Real-Time Updates', 5.0, PALETTE['blue']),
+        ('OAuth2 Social Login (Google/GitHub)', 4.2, PALETTE['blue']),
+        ('Redis Rate Limiter & Caching', 3.4, PALETTE['blue']),
+        ('React / Next.js Frontend', 2.6, PALETTE['blue']),
     ]),
-    (5.0, 'Medium Term\n(7--12 months)', '#8E44AD', [
-        ('Microservices Extraction', 6.0),
-        ('GraphQL API Layer', 5.5),
-        ('Multi-Tenant Isolation', 5.0),
-        ('Push Notifications', 4.5),
+    ('Medium Term\n(7–12 months)', '#8E44AD', 4.0, 3.0, [
+        ('Microservices Extraction (Bounded Contexts)', 5.0, '#8E44AD'),
+        ('GraphQL API Layer (code-first)', 4.2, '#8E44AD'),
+        ('Multi-Tenant Organisation Isolation', 3.4, '#8E44AD'),
+        ('Push Notifications (FCM / APNs)', 2.6, '#8E44AD'),
     ]),
-    (8.5, 'Long Term\n(12+ months)', '#27AE60', [
-        ('Course Recommendation', 9.0),
-        ('Blockchain Certificates', 8.5),
-        ('Mobile SDK', 8.0),
+    ('Long Term\n(12+ months)', PALETTE['green'], 6.5, 3.0, [
+        ('AI Course Recommendation Engine', 5.0, PALETTE['green']),
+        ('Blockchain-Backed Certificates', 4.2, PALETTE['green']),
+        ('Mobile SDK for iOS / Android', 3.4, PALETTE['green']),
+    ]),
+    ('Vision\n(24+ months)', PALETTE['teal'], 9.0, 2.8, [
+        ('Full LMS Marketplace', 5.0, PALETTE['teal']),
+        ('White-Label Deployments', 3.4, PALETTE['teal']),
     ]),
 ]
 
-for phase_x, phase_label, phase_color, items in phases:
-    item_ys = [item[1] for item in items]
+for phase_label, phase_color, px, pw, items in phases:
+    item_ys = [iy for _, iy, _ in items]
     y_min = min(item_ys) - 0.5
     y_max = max(item_ys) + 0.5
-    rect = mpatches.FancyBboxPatch((phase_x - 0.3, y_min - 0.3), 2.6, y_max - y_min + 0.6,
-                                    boxstyle="round,pad=0.08",
-                                    facecolor=phase_color, alpha=0.08, ec=phase_color, lw=1.5, ls='--')
-    ax.add_patch(rect)
+    bg = mpatches.FancyBboxPatch((px - 0.3, y_min - 0.3), pw + 0.6, y_max - y_min + 0.6,
+                                  boxstyle="round,pad=0.1",
+                                  facecolor=phase_color, alpha=0.06, ec=phase_color, lw=1.5, ls='-')
+    ax.add_patch(bg)
+    ax.text(px + pw / 2, y_max + 0.3, phase_label, ha='center', va='bottom',
+            fontsize=10, fontweight='bold', color=phase_color)
+    for item_label, item_y, _ in items:
+        bar_w = pw * 0.75
+        bar_h = 0.3
+        bar_x = px + pw * 0.1
+        ax.barh(item_y, bar_w, height=bar_h, left=bar_x, color=phase_color, alpha=0.6,
+                edgecolor=phase_color, lw=1, zorder=3)
+        ax.text(bar_x + bar_w + 0.15, item_y, item_label, va='center', fontsize=8.5,
+                color=PALETTE['dark'], fontweight='bold')
 
-    # Phase title
-    ax.text(phase_x + 1.0, y_max + 0.3, phase_label, ha='center', va='bottom',
-            fontsize=9, fontweight='bold', color=phase_color)
-
-    for item_label, item_y in items:
-        ax.plot([phase_x + 0.3, 9.5], [item_y, item_y],
-                color=phase_color, lw=1, alpha=0.3, ls='--')
-        dot_x = phase_x + 0.3
-        dot = mpatches.Circle((dot_x, item_y), 0.08, color=phase_color, zorder=3)
-        ax.add_patch(dot)
-        ax.text(dot_x + 0.2, item_y, item_label, va='center', fontsize=7.5, color='#333')
-
-ax.set_title('Future Development Roadmap', fontsize=13, fontweight='bold', pad=15)
+ax.set_title('Future Development Roadmap', fontsize=15, fontweight='bold', pad=15)
 plt.tight_layout()
-plt.savefig(f'{OUT}/future_work_roadmap.png', dpi=180, bbox_inches='tight')
+plt.savefig(f'{OUT}/future_work_roadmap.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUT}/future_work_roadmap.pdf', bbox_inches='tight')
 plt.close()
-print('Generated future_work_roadmap.png')
+print('future_work_roadmap.png/pdf')

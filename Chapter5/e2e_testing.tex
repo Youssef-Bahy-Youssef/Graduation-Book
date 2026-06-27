@@ -15,21 +15,30 @@ E2E tests are organised by user role and primary use case, following the user-st
   \centering
   \caption{End-to-End Test Scenarios}\label{tab:e2e-scenarios}
   \small
-  \begin{tabular}{lll}
+  \begin{tabular}{@{}p{3.5cm} p{1.8cm} p{\dimexpr\textwidth-6.3cm\relax}@{}}
     \toprule
     \textbf{Test File}                       & \textbf{Role}   & \textbf{Scenario} \\
     \midrule
+    \rowcolor{green!10}
     \texttt{auth.e2e-spec.ts}                & Student         & Register, verify email, login, refresh, logout \\
+    \rowcolor{green!10}
     \texttt{courses.e2e-spec.ts}             & Instructor      & Create course, add module, add lessons, publish, preview \\
+    \rowcolor{green!10}
     \texttt{assessment.e2e-spec.ts}          & Student         & View quiz, submit answers, receive grade, review feedback \\
+    \rowcolor{green!10}
     \texttt{media.e2e-spec.ts}               & Instructor      & Upload video, await transcoding, verify HLS stream URL \\
+    \rowcolor{green!10}
     \texttt{payment.e2e-spec.ts}             & Student         & Select course, create payment intent, complete checkout \\
+    \rowcolor{green!10}
     \texttt{enrollment.e2e-spec.ts}          & Student         & Enrol in course, access lesson, update progress, complete \\
+    \rowcolor{green!10}
     \texttt{discussion.e2e-spec.ts}          & Student         & Create thread, post reply, moderate by instructor \\
+    \rowcolor{green!10}
     \texttt{reviews.e2e-spec.ts}             & Student         & Submit review, update rating, verify eligibility rules \\
+    \rowcolor{green!10}
     \texttt{ai-pipeline.e2e-spec.ts}         & Instructor      & Submit video for AI processing, await quiz generation \\
     \midrule
-    \textbf{Total: 9 files, 34 test cases}  & (3 roles)       & (9 complete workflows) \\
+    \textbf{Total: 9 files, 50 test cases}  & (3 roles)       & All passed \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -53,7 +62,7 @@ All assertions include HTTP status code verification, response body shape valida
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{images/e2e_enrollment_flow.png}
+  \includegraphics[width=0.85\textwidth]{images/e2e_enrollment_flow.pdf}
   \caption{E2E test sequence diagram for the student enrollment flow, showing HTTP calls across Auth, Payment, and Enrollment modules.}\label{fig:e2e-enrollment}
 \end{figure}
 

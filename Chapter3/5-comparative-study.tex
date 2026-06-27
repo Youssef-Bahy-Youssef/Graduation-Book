@@ -33,14 +33,14 @@ Mehta, Soni, and Thakkar~\cite{mehta2023eda} propose an event-driven architectur
 
 \subsection{Synthesis and Gap Analysis}
 
-Table~\ref{tab:lit-comparison} summarises the coverage of key architectural dimensions across the four studies and NexaLearn. The comparison reveals that no single prior work addresses the full combination of DDD decomposition, reliable event processing via the outbox pattern, AI-assisted transcription and quiz generation with HMAC-secured callbacks, and HLS-based video streaming with lifecycle management. NexaLearn's contribution is the \textit{integration} of these patterns into a cohesive, open-source backend architecture that is deployable as a modular monolith without requiring a separate message broker infrastructure.
+Table~\ref{tab:lit-comparison} summarises the coverage of key architectural dimensions across the four studies and NexaLearn using $\checkmark$ (full coverage), $\sim$ (partial/reviewed), and $\times$ (not addressed). The comparison reveals that no single prior work addresses the full combination of DDD decomposition, reliable event processing via the outbox pattern, AI-assisted transcription and quiz generation with HMAC-secured callbacks, and HLS-based video streaming with lifecycle management. NexaLearn's contribution is the \textit{integration} of these patterns into a cohesive, open-source backend architecture that is deployable as a modular monolith without requiring a separate message broker infrastructure.
 
 \begin{table}[H]
   \centering
   \caption{Comparative Summary of Prior Work and NexaLearn Coverage}
   \label{tab:lit-comparison}
   \small
-  \begin{tabular}{@{}p{3.2cm} p{2.2cm} p{2.2cm} p{2.2cm} p{2.2cm} p{2.2cm}@{}}
+  \begin{tabularx}{\textwidth}{@{}X c c c c c@{}}
     \toprule
     \textbf{Dimension} &
     \textbf{Dossena} &
@@ -49,77 +49,34 @@ Table~\ref{tab:lit-comparison} summarises the coverage of key architectural dime
     \textbf{Mehta} &
     \textbf{NexaLearn} \\
     \midrule
-    DDD bounded contexts &
-    Full &
-    Reviewed &
-    --- &
-    --- &
-    Full \\
+    DDD bounded contexts     & $\checkmark$ & $\sim$ & $\times$ & $\times$ & $\checkmark$ \\
     \addlinespace
-    Clean Architecture layers &
-    Partial &
-    --- &
-    --- &
-    --- &
-    Full \\
+    Clean Architecture layers & $\sim$ & $\times$ & $\times$ & $\times$ & $\checkmark$ \\
     \addlinespace
-    Transactional outbox &
-    --- &
-    Reviewed &
-    --- &
-    --- &
-    Full \\
+    Transactional outbox     & $\times$ & $\sim$ & $\times$ & $\times$ & $\checkmark$ \\
     \addlinespace
-    Idempotent event processing &
-    --- &
-    --- &
-    --- &
-    Kafka-level &
-    Full \\
+    Idempotent event processing & $\times$ & $\times$ & $\times$ & $\sim$ & $\checkmark$ \\
     \addlinespace
-    ASR (Whisper) integration &
-    --- &
-    --- &
-    --- &
-    --- &
-    Full \\
+    ASR (Whisper) integration & $\times$ & $\times$ & $\times$ & $\times$ & $\checkmark$ \\
     \addlinespace
-    LLM quiz generation &
-    --- &
-    --- &
-    Full &
-    --- &
-    Full \\
+    LLM quiz generation      & $\times$ & $\times$ & $\checkmark$ & $\times$ & $\checkmark$ \\
     \addlinespace
-    Human-in-the-loop review &
-    --- &
-    --- &
-    --- &
-    --- &
-    Full \\
+    Human-in-the-loop review & $\times$ & $\times$ & $\times$ & $\times$ & $\checkmark$ \\
     \addlinespace
-    HLS video streaming &
-    --- &
-    Reviewed &
-    --- &
-    --- &
-    Full \\
+    HLS video streaming      & $\times$ & $\sim$ & $\times$ & $\times$ & $\checkmark$ \\
     \addlinespace
-    HMAC callback security &
-    --- &
-    --- &
-    --- &
-    --- &
-    Full \\
+    HMAC callback security   & $\times$ & $\times$ & $\times$ & $\times$ & $\checkmark$ \\
     \addlinespace
-    No broker dependency &
-    --- &
-    Partial &
-    --- &
-    Kafka req. &
-    Yes \\
+    No broker dependency     & $\times$ & $\sim$ & $\times$ & $\times$ & $\checkmark$ \\
+    \midrule
+    \textbf{Rationale} &
+    \parbox[t]{2.2cm}{\footnotesize DDD-focused; no AI or eventing} &
+    \parbox[t]{2.2cm}{\footnotesize Survey only; no implementation} &
+    \parbox[t]{2.2cm}{\footnotesize Standalone LLM; no backend integration} &
+    \parbox[t]{2.2cm}{\footnotesize Kafka-based; no DDD or AI} &
+    \parbox[t]{2.2cm}{\footnotesize \textbf{All dimensions integrated with modular monolith}} \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
 \end{table}
 
 NexaLearn is distinguished by its comprehensive coverage across all ten dimensions. The three dimensions not covered by any prior work---Whisper integration, human-in-the-loop quiz review, and HMAC callback security---represent the principal novel contributions of this project's architecture. The absence of a mandatory message broker (Kafka or RabbitMQ) is a deliberate design decision, justified in Section~\ref{sec:implemented-approach}, that reduces operational complexity for the primary target audience of edtech startups and university IT departments.

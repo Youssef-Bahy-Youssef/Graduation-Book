@@ -14,13 +14,13 @@ The \textbf{primary target segment} comprises edtech startups, independent softw
 
 \textbf{Pain points.} Generic NestJS boilerplates provide authentication scaffolding but omit enrollment state machines, Stripe webhook idempotency, and instructor analytics. Stitching together Stripe, Mux, SendGrid, and OpenAI APIs without a unified domain model produces fragile glue code that fails under duplicate webhook delivery or concurrent course edits. Venture-backed startups face investor scrutiny on time-to-market; bootstrapped founders face direct opportunity cost for every month spent reinventing outbox patterns instead of differentiating on curriculum or user experience.
 
-\textbf{How NexaLearn benefits this segment.} NexaLearn delivers a \textit{reference implementation} with sixteen bounded contexts, 150+ documented endpoints, Testcontainers integration tests, and architecture documentation sufficient to fork and customise. Teams can deploy via Docker Compose on day one, replace branding and frontend independently, extend the Courses or Assessment contexts for domain-specific rules, and inherit reliability patterns (idempotency keys, optimistic locking, HMAC callbacks) without research overhead. The open-source core eliminates licensing fees during MVP validation; enterprise support becomes relevant only when SLAs, security reviews, or dedicated migration assistance are required at scale.
+\textbf{How NexaLearn benefits this segment.} NexaLearn delivers a \textit{reference implementation} with fifteen bounded contexts, 150+ documented endpoints, Testcontainers integration tests, and architecture documentation sufficient to fork and customise. Teams can deploy via Docker Compose on day one, replace branding and frontend independently, extend the Courses or Assessment contexts for domain-specific rules, and inherit reliability patterns (idempotency keys, optimistic locking, HMAC callbacks) without research overhead. The open-source core eliminates licensing fees during MVP validation; enterprise support becomes relevant only when SLAs, security reviews, or dedicated migration assistance are required at scale.
 
 \textbf{Representative use cases} include a regional coding bootcamp launching a proprietary alumni learning portal, a startup white-labelling course delivery for influencer creators, and an agency building custom LMS backends for multiple clients from a shared NexaLearn fork.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.88\textwidth]{images/customer_segments.png}
+  \includegraphics[width=0.88\textwidth]{images/customer_segments.pdf}
   \caption{NexaLearn Target Customer Segments and Value Proposition Alignment}
   \label{fig:customer-segments}
 \end{figure}

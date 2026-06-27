@@ -4,6 +4,7 @@
 % =============================================================================
 
 \chapter{Feasibility Study}
+\chaptermark{Feasibility Study}
 \label{app:feasibility}
 
 This appendix presents a multi-dimensional feasibility analysis of the NexaLearn project, examining technical, operational, economic, and schedule considerations, along with a risk assessment.
@@ -125,8 +126,13 @@ The schedule was realistic: core modules (Auth, Courses) were completed in the f
 
 Table~\ref{tab:app-risk} identifies and analyses the key risks to project success, along with mitigation strategies.
 
-\begin{longtable}{lp{2cm}p{2cm}p{5cm}}
-  \caption{Risk Assessment Matrix}\label{tab:app-risk} \\
+\begin{longtable}{p{1.8cm}p{1.8cm}p{1.8cm}p{\dimexpr\textwidth-6.4cm\relax}}
+  \caption{Risk Assessment Matrix\label{tab:app-risk}} \\
+  \toprule
+  \textbf{Risk} & \textbf{Probability} & \textbf{Impact} & \textbf{Mitigation} \\
+  \midrule
+  \endfirsthead
+  \caption*{Risk Assessment Matrix (continued)} \\
   \toprule
   \textbf{Risk} & \textbf{Probability} & \textbf{Impact} & \textbf{Mitigation} \\
   \midrule
@@ -139,7 +145,7 @@ Table~\ref{tab:app-risk} identifies and analyses the key risks to project succes
   \addlinespace
   R3: AI pipeline latency or failure & Medium & High & Asynchronous processing with timeout (30 minutes). Dead-letter queue for failed jobs. Instructor notification and manual retry. Fallback to manual quiz creation if AI pipeline is unavailable. \\
   \addlinespace
-  R4: Security vulnerability (JWT theft, XSS, SQL injection) & Medium & Critical & RS256 JWT with short expiration (15 min). Refresh token rotation with reuse detection. Prisma parameterised queries prevent SQL injection. NestJS Helmet middleware for HTTP security headers. Regular dependency updates with Dependabot. \\
+  R4: Security vulnerability (JWT theft, XSS, SQL injection) & Medium & Critical & HS256 JWT with short expiration (15 min). Refresh token rotation with reuse detection. Prisma parameterised queries prevent SQL injection. NestJS Helmet middleware for HTTP security headers. Regular dependency updates with Dependabot. \\
   \addlinespace
   R5: Scope creep (feature expansion beyond available time) & High & Medium & Strict prioritisation: core DDD modules first (Auth, Courses, Assessment), AI and payments second, analytics and certificates third. Use cases scoped to minimum viable product. Non-critical features deferred to future work. \\
   \addlinespace

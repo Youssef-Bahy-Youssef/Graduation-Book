@@ -131,7 +131,7 @@ async function consumeRefreshToken(rawToken: string): Promise<Session | null> {
 
 \textbf{Challenge.} Stripe's webhook delivery guarantees are at-least-once; a single payment event may be delivered multiple times, especially after network interruptions or during Stripe's internal retry window. Without deduplication, duplicate \texttt{payment\_intent.succeeded} events would create multiple enrollment records (already partially addressed by the projection event ledger, but the enrollment creation itself also needed protection).
 
-\textbf{Solution.} The webhook handler wraps enrollment creation in the \texttt{tryBeginProjectionEvent()} pattern from Section~\ref{sec:challenges}. Additionally, the \texttt{PaymentIntent} aggregate enforces a state machine invariant: a payment intent in \texttt{SUCCEEDED} state cannot transition to \texttt{SUCCEEDED} again. This double layer of protection---database-level idempotency and domain-level state machine---ensures that duplicate webhooks cannot produce incorrect state.
+\textbf{Solution.} The webhook handler wraps enrollment creation in the \texttt{tryBegin\-Projection\-Event()} pattern from Section~\ref{sec:challenges}. Additionally, the \texttt{PaymentIntent} aggregate enforces a state machine invariant: a payment intent in \texttt{SUCCEEDED} state cannot transition to \texttt{SUCCEEDED} again. This double layer of protection---database-level idempotency and domain-level state machine---ensures that duplicate webhooks cannot produce incorrect state.
 
 \subsection{Video MP4 Rendition Timing}
 
@@ -141,7 +141,7 @@ async function consumeRefreshToken(rawToken: string): Promise<Session | null> {
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{images/video_rendition_statemachine.png}
+  \includegraphics[width=0.6\textwidth]{images/video_rendition_statemachine.pdf}
   \caption{Video Asset State Machine with MP4 Rendition Tracking}\label{fig:video-rendition-statemachine}
 \end{figure}
 

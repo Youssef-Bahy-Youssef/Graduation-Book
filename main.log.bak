@@ -1,0 +1,4695 @@
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.27)  27 JUN 2026 22:33
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count271
+\c@chapter=\count272
+\c@section=\count273
+\c@subsection=\count274
+\c@subsubsection=\count275
+\c@paragraph=\count276
+\c@subparagraph=\count277
+\c@figure=\count278
+\c@table=\count279
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(./Preamble/packages.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2026-01-19 L3 programming layer (loader) 
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
+\g__graphics_track_int=\count280
+\g__pdfannot_backend_int=\count281
+\g__pdfannot_backend_link_int=\count282
+))
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count283
+\l__fontspec_language_int=\count284
+\l__fontspec_strnum_int=\count285
+\l__fontspec_tmp_int=\count286
+\l__fontspec_tmpa_int=\count287
+\l__fontspec_tmpb_int=\count288
+\l__fontspec_tmpc_int=\count289
+\l__fontspec_em_int=\count290
+\l__fontspec_emdef_int=\count291
+\l__fontspec_strong_int=\count292
+\l__fontspec_strongdef_int=\count293
+\l__fontspec_tmpa_dim=\dimen149
+\l__fontspec_tmpb_dim=\dimen150
+\l__fontspec_tmpc_dim=\dimen151
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+
+Package fontspec Info: 
+(fontspec)             Font family 'Helvetica(0)' created for font 'Helvetica'
+(fontspec)             with options [Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"Helvetica/AAT:mapping=tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"Helvetica/B/AAT:mapping=tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"Helvetica/I/AAT:mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"Helvetica/BI/AAT:mapping=tex-text;"
+
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/polyglossia.sty
+Package: polyglossia 2025/12/01 v2.9 Modern multilingual typesetting with XeLaT
+eX and LuaLaTeX
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count294
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+\l_xpg_alias_keyvals_int=\count295
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-latex.ldf
+File: gloss-latex.ldf polyglossia: module for default language
+))
+
+Package fontspec Info: 
+(fontspec)             Script 'Arabic' not explicitly supported within font
+(fontspec)             'DecoType Naskh'. Check the typeset output, and if it
+(fontspec)             is okay then ignore this warning. Otherwise a different
+(fontspec)             font should be chosen.
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "DecoType Naskh/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "DecoType Naskh/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "DecoType Naskh/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'DecoTypeNaskh(0)' created for font
+(fontspec)             'DecoType Naskh' with options
+(fontspec)             [Script=Arabic,AutoFakeBold=2.5].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"DecoType
+(fontspec)             Naskh/OT:script=arab;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"DecoType
+(fontspec)             Naskh/OT:script=arab;language=dflt;embolden=2.5;"
+
+
+Package fontspec Info: 
+(fontspec)             Script 'Arabic' not explicitly supported within font
+(fontspec)             'DecoType Naskh'. Check the typeset output, and if it
+(fontspec)             is okay then ignore this warning. Otherwise a different
+(fontspec)             font should be chosen.
+
+
+Package fontspec Info: 
+(fontspec)             Script 'Arabic' not explicitly supported within font
+(fontspec)             'DecoType Naskh'. Check the typeset output, and if it
+(fontspec)             is okay then ignore this warning. Otherwise a different
+(fontspec)             font should be chosen.
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "DecoType Naskh/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "DecoType Naskh/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "DecoType Naskh/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'DecoTypeNaskh(1)' created for font
+(fontspec)             'DecoType Naskh' with options [Script=Arabic].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"DecoType
+(fontspec)             Naskh/OT:script=arab;language=dflt;"
+
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-english.ldf
+File: gloss-english.ldf polyglossia: module for English
+)
+
+Package polyglossia Info: Default language is english
+
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-arabic.ldf
+File: gloss-arabic.ldf polyglossia: module for Arabic
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/bidi.sty
+Package: bidi 2026/01/08 v26.01.08 (Release Iran) Bidirectional typesetting in 
+plain TeX and LaTeX
+
+****************************************************
+* 
+* bidi package (Bidirectional typesetting with
+* plain TeX and LaTeX formats in XeTeX and LuaTeX engines)
+* 
+* Description: A convenient interface for
+* typesetting bidirectional texts in plain TeX
+* and LaTeX. The package includes adaptations
+* for use with many other commonly-used packages.
+* 
+* Copyright (c) 2007--2026 Vafa Khalighi
+* Copyright (c) 2018--2020 bidi-tex GitHub organization
+* 
+* v26.01.08 (Release Iran), 2026/01/08
+* 
+* License: LaTeX Project Public License, version
+* 1.3c or higher (your choice)
+* 
+* Location on CTAN: /macros/unicodetex/generic/bidi
+* 
+* Issue tracker: https://github.com/xepersian/bidi/issues
+* 
+* Primary author of bidi package: Vafa Khalighi.
+* 
+****************************************************
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/biditools.sty
+Package: biditools 2025/12/19 v2.9 Programming tools for bidi package
+\@bidi@envbody=\toks17
+\@bidi@emptytoks=\toks18
+\bidi@poscount=\count296
+\bidi@tempcountb=\count297
+\bidi@temptoksa=\toks19
+\bidi@temptoksb=\toks20
+\bidi@dummies=\count298
+\bidi@are@these@correct=\toks21
+\bidi@toks@lista=\toks22
+\bidi@toks@listb=\toks23
+\bidi@stack@length=\count299
+\bidi@empty@stack=\toks24
+\bidi@looprepeat@depth=\count300
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/zref/zref-abspage.sty
+Package: zref-abspage 2026-03-07 v2.37 Module abspage for zref (HO)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/zref/zref-base.sty
+Package: zref-base 2026-03-07 v2.37 Module base for zref (HO)
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+Package zref Info: New property list: main on input line 767.
+Package zref Info: New property: default on input line 768.
+Package zref Info: New property: page on input line 769.
+)
+\c@abspage=\count301
+Package zref Info: New property: abspage on input line 67.
+)
+\@bidi@copyins@=\insert252
+\bidi@typesethour=\count302
+\bidi@typesetminute=\count303
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/latex-xetex-bidi.def
+File: latex-xetex-bidi.def 2025/12/19 v1.5.6 bidi adaptations for `latex.ltx' f
+or XeTeX engine
+\bidi@n@everypar=\toks25
+LaTeX Info: Redefining \centerline on input line 317.
+LaTeX Info: Redefining \leftline on input line 326.
+LaTeX Info: Redefining \rightline on input line 327.
+LaTeX Info: Redefining \underline on input line 335.
+\bidi@column@check@number=\count304
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/footnote-xetex-bidi.def
+File: footnote-xetex-bidi.def 2025/09/30 v1.6 bidi footnote macros for XeTeX en
+gine
+\c@footdir@label=\count305
+\footdir@toks=\toks26
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/report-xetex-bidi.def
+File: report-xetex-bidi.def 2025/12/19 v1.3 bidi adaptations for standard repor
+t class for XeTeX engine
+))
+\bidi@digits=\count306
+\bidi@digits@charclass=\XeTeXcharclass1
+\bidi@sepmark@charclass=\XeTeXcharclass2
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/arabicnumbers.sty
+Package: arabicnumbers 2010/03/18 v0.2 Formatting of Arabic and Farsi digits an
+d of Arabic abjad numerals
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/hijrical.sty
+Package: hijrical 2010/07/12 v0.2 Islamic calendar
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count307
+\calc@Bcount=\count308
+\calc@Adimen=\dimen152
+\calc@Bdimen=\dimen153
+\calc@Askip=\skip51
+\calc@Bskip=\skip52
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count309
+\calc@Cskip=\skip53
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/cal-util.def
+\c@tmpA=\count310
+\c@tmpB=\count311
+\c@tmpC=\count312
+\c@tmpD=\count313
+\c@tmpE=\count314
+\c@tmpF=\count315
+)
+\c@Hijriday=\count316
+\c@Hijrimonth=\count317
+\c@Hijriyear=\count318
+))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks27
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count319
+\Gm@cntv=\count320
+\c@Gm@tempcnt=\count321
+\Gm@bindingoffset=\dimen154
+\Gm@wd@mp=\dimen155
+\Gm@odd@mp=\dimen156
+\Gm@even@mp=\dimen157
+\Gm@layoutwidth=\dimen158
+\Gm@layoutheight=\dimen159
+\Gm@layouthoffset=\dimen160
+\Gm@layoutvoffset=\dimen161
+\Gm@dimlist=\toks28
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/geometry-xetex-bidi.def
+File: geometry-xetex-bidi.def 2017/01/14 v0.2 bidi adaptations for geometry pac
+kage for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box53
+\beforetitleunit=\skip54
+\aftertitleunit=\skip55
+\ttl@plus=\dimen162
+\ttl@minus=\dimen163
+\ttl@toksa=\toks29
+\titlewidth=\dimen164
+\titlewidthlast=\dimen165
+\titlewidthfirst=\dimen166
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/titlesec-xetex-bidi.def
+File: titlesec-xetex-bidi.def 2010/07/25 v0.1 bidi adaptations for titlesec pac
+kage for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip56
+\f@nch@offset@elh=\skip57
+\f@nch@offset@erh=\skip58
+\f@nch@offset@olh=\skip59
+\f@nch@offset@orh=\skip60
+\f@nch@offset@elf=\skip61
+\f@nch@offset@erf=\skip62
+\f@nch@offset@olf=\skip63
+\f@nch@offset@orf=\skip64
+\f@nch@height=\skip65
+\f@nch@footalignment=\skip66
+\f@nch@widthL=\skip67
+\f@nch@widthC=\skip68
+\f@nch@widthR=\skip69
+\@temptokenb=\toks30
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/fancyhdr-xetex-bidi.def
+File: fancyhdr-xetex-bidi.def 2025/09/03 v1.0 bidi adaptations for fancyhdr pac
+kage for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip70
+\cftbeforetoctitleskip=\skip71
+\cftaftertoctitleskip=\skip72
+\cftbeforepartskip=\skip73
+\cftpartnumwidth=\skip74
+\cftpartindent=\skip75
+\cftbeforechapskip=\skip76
+\cftchapindent=\skip77
+\cftchapnumwidth=\skip78
+\cftbeforesecskip=\skip79
+\cftsecindent=\skip80
+\cftsecnumwidth=\skip81
+\cftbeforesubsecskip=\skip82
+\cftsubsecindent=\skip83
+\cftsubsecnumwidth=\skip84
+\cftbeforesubsubsecskip=\skip85
+\cftsubsubsecindent=\skip86
+\cftsubsubsecnumwidth=\skip87
+\cftbeforeparaskip=\skip88
+\cftparaindent=\skip89
+\cftparanumwidth=\skip90
+\cftbeforesubparaskip=\skip91
+\cftsubparaindent=\skip92
+\cftsubparanumwidth=\skip93
+\cftbeforeloftitleskip=\skip94
+\cftafterloftitleskip=\skip95
+\cftbeforefigskip=\skip96
+\cftfigindent=\skip97
+\cftfignumwidth=\skip98
+\c@lofdepth=\count322
+\c@lotdepth=\count323
+\cftbeforelottitleskip=\skip99
+\cftafterlottitleskip=\skip100
+\cftbeforetabskip=\skip101
+\cfttabindent=\skip102
+\cfttabnumwidth=\skip103
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/tocloft-xetex-bidi.def
+File: tocloft-xetex-bidi.def 2025/01/03 v0.4 bidi adaptations for tocloft packa
+ge for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 106.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen167
+\Gin@req@width=\dimen168
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/graphicx-xetex-bidi.def
+File: graphicx-xetex-bidi.def 2017/06/17 v0.5 bidi adaptations for graphicx pac
+kage for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count324
+\float@exts=\toks31
+\float@box=\box54
+\@float@everytoks=\toks32
+\@floatcapt=\box55
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/float-xetex-bidi.def
+File: float-xetex-bidi.def 2013/04/04 v0.2 bidi adaptations for float package f
+or XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen169
+\captionmargin=\dimen170
+\caption@leftmargin=\dimen171
+\caption@rightmargin=\dimen172
+\caption@width=\dimen173
+\caption@indent=\dimen174
+\caption@parindent=\dimen175
+\caption@hangindent=\dimen176
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+Package caption Info: \@makecaption = \long macro:#1#2->\vskip \abovecaptionski
+p \sbox \@tempboxa {#1: #2}\ifdim \wd \@tempboxa >\hsize \if@RTL \beginR \fi #1
+: #2\if@RTL \endR \fi \par \else \global \@minipagefalse \hb@xt@ \hsize {\if@RT
+L \beginR \fi \hfil \box \@tempboxa \hfil \if@RTL \endR \fi }\fi \vskip \belowc
+aptionskip  on input line 1175.
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/caption3-xetex-bidi.def
+File: caption3-xetex-bidi.def 2013/04/01 v0.1 bidi adaptations for caption3 pac
+kage for XeTeX engine
+)
+
+Package caption Warning: Unknown document class (or package),
+(caption)                standard defaults will be used.
+See the caption package documentation for explanation.
+
+\c@caption@flags=\count325
+\c@continuedfloat=\count326
+Package caption Info: float package is loaded.
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/caption-xetex-bidi.def
+File: caption-xetex-bidi.def 2010/07/25 v0.1 bidi adaptations for caption packa
+ge for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count327
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count328
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen177
+\ar@mcellbox=\box56
+\extrarowheight=\dimen178
+\NC@list=\toks33
+\extratabsurround=\skip104
+\backup@length=\skip105
+\ar@cellbox=\box57
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/array-xetex-bidi.def
+File: array-xetex-bidi.def 2025/12/06 v0.8 bidi adaptations for array package f
+or XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen179
+\lightrulewidth=\dimen180
+\cmidrulewidth=\dimen181
+\belowrulesep=\dimen182
+\belowbottomsep=\dimen183
+\aboverulesep=\dimen184
+\abovetopsep=\dimen185
+\cmidrulesep=\dimen186
+\cmidrulekern=\dimen187
+\defaultaddspace=\dimen188
+\@cmidla=\count329
+\@cmidlb=\count330
+\@aboverulesep=\dimen189
+\@belowrulesep=\dimen190
+\@thisruleclass=\count331
+\@lastruleclass=\count332
+\@thisrulewidth=\dimen191
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
+\LTleft=\skip106
+\LTright=\skip107
+\LTpre=\skip108
+\LTpost=\skip109
+\LTchunksize=\count333
+\LTcapwidth=\dimen192
+\LT@head=\box58
+\LT@firsthead=\box59
+\LT@foot=\box60
+\LT@lastfoot=\box61
+\LT@gbox=\box62
+\LT@cols=\count334
+\LT@rows=\count335
+\c@LT@tables=\count336
+\c@LT@chunks=\count337
+\LT@p@ftn=\toks34
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/longtable-xetex-bidi.def
+File: longtable-xetex-bidi.def 2025/01/05 v0.8 bidi adaptations for longtable p
+ackage for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip110
+\multirow@cntb=\count338
+\multirow@dima=\skip111
+\bigstrutjot=\dimen193
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+\TX@col@width=\dimen194
+\TX@old@table=\dimen195
+\TX@old@col=\dimen196
+\TX@target=\dimen197
+\TX@delta=\dimen198
+\TX@cols=\count339
+\TX@ftn=\toks35
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/tabularx-xetex-bidi.def
+File: tabularx-xetex-bidi.def 2014/11/08 v0.1 bidi adaptations for tabularx pac
+kage for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks36
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip112
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks37
+\ex@=\dimen199
+))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/amstext-xetex-bidi.def
+File: amstext-xetex-bidi.def 2016/09/12 v0.2 bidi adaptations for amstext packa
+ge for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen256
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count340
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count341
+\leftroot@=\count342
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count343
+\DOTSCASE@=\count344
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box63
+\strutbox@=\box64
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen257
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count345
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count346
+\dotsspace@=\muskip17
+\c@parentequation=\count347
+\dspbrk@lvl=\count348
+\tag@help=\toks38
+\row@=\count349
+\column@=\count350
+\maxfields@=\count351
+\andhelp@=\toks39
+\eqnshift@=\dimen258
+\alignsep@=\dimen259
+\tagshift@=\dimen260
+\tagwidth@=\dimen261
+\totwidth@=\dimen262
+\lineht@=\dimen263
+\@envbody=\toks40
+\multlinegap=\skip113
+\multlinetaggap=\skip114
+\mathdisplay@stack=\toks41
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/amsmath-xetex-bidi.def
+File: amsmath-xetex-bidi.def 2020/05/16 v1.2 bidi adaptations for amsmath packa
+ge for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 274.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+\everycr=\toks42
+\minrowclearance=\skip115
+\rownum=\count352
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/colortbl-xetex-bidi.def
+File: colortbl-xetex-bidi.def 2012/06/10 v0.2 bidi adaptations for colortbl pac
+kage for XeTeX engine
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/xcolor-xetex-bidi.def
+File: xcolor-xetex-bidi.def 2022/06/13 v0.3 bidi adaptations for xcolor package
+ for XeTeX engine
+LaTeX Info: Redefining \color on input line 49.
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count353
+\lst@gtempboxa=\box65
+\lst@token=\toks43
+\lst@length=\count354
+\lst@currlwidth=\dimen264
+\lst@column=\count355
+\lst@pos=\count356
+\lst@lostspace=\dimen265
+\lst@width=\dimen266
+\lst@newlines=\count357
+\lst@lineno=\count358
+\lst@maxwidth=\dimen267
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count359
+\lst@skipnumbers=\count360
+\lst@framebox=\box66
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/listings-xetex-bidi.def
+File: listings-xetex-bidi.def 2025/01/03 v1.6 bidi adaptations for listings pac
+kage for XeTeX engine
+)
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count361
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen268
+\Hy@linkcounter=\count362
+\Hy@pagecounter=\count363
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count364
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4468.
+\c@Hy@tempcnt=\count365
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4807.
+\XeTeXLinkMargin=\dimen269
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count366
+\Field@Width=\dimen270
+\Fld@charsize=\dimen271
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring OFF on input line 6104.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count367
+\c@Item=\count368
+\c@Hfootnote=\count369
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2026-01-29 v7.01p Hyperref driver for XeTeX
+\pdfm@box=\box67
+\c@Hy@AnnotLevel=\count370
+\HyField@AnnotCount=\count371
+\Fld@listcount=\count372
+\c@bookmark@seq@number=\count373
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip116
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/hyperref-xetex-bidi.def
+File: hyperref-xetex-bidi.def 2025/12/06 v1.5 bidi adaptations for hyperref pac
+kage for XeTeX engine
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2025/07/10 v3.21 programmable bibliographies (PK/MW)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count374
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\c@tabx@nest=\count375
+\c@listtotal=\count376
+\c@listcount=\count377
+\c@liststart=\count378
+\c@liststop=\count379
+\c@citecount=\count380
+\c@citetotal=\count381
+\c@multicitecount=\count382
+\c@multicitetotal=\count383
+\c@instcount=\count384
+\c@maxnames=\count385
+\c@minnames=\count386
+\c@maxitems=\count387
+\c@minitems=\count388
+\c@citecounter=\count389
+\c@maxcitecounter=\count390
+\c@savedcitecounter=\count391
+\c@uniquelist=\count392
+\c@uniquename=\count393
+\c@refsection=\count394
+\c@refsegment=\count395
+\c@maxextratitle=\count396
+\c@maxextratitleyear=\count397
+\c@maxextraname=\count398
+\c@maxextradate=\count399
+\c@maxextraalpha=\count400
+\c@abbrvpenalty=\count401
+\c@highnamepenalty=\count402
+\c@lownamepenalty=\count403
+\c@maxparens=\count404
+\c@parenlevel=\count405
+\blx@tempcnta=\count406
+\blx@tempcntb=\count407
+\blx@tempcntc=\count408
+\c@blx@maxsection=\count409
+\blx@maxsegment@0=\count410
+\blx@notetype=\count411
+\blx@parenlevel@text=\count412
+\blx@parenlevel@foot=\count413
+\blx@sectionciteorder@0=\count414
+\blx@sectionciteorderinternal@0=\count415
+\blx@entrysetcounter=\count416
+\blx@biblioinstance=\count417
+\labelnumberwidth=\skip117
+\labelalphawidth=\skip118
+\biblabelsep=\skip119
+\bibitemsep=\skip120
+\bibnamesep=\skip121
+\bibinitsep=\skip122
+\bibparsep=\skip123
+\bibhang=\skip124
+\blx@bcfin=\read2
+\blx@bcfout=\write3
+\blx@langwohyphens=\language91
+\c@mincomprange=\count418
+\c@maxcomprange=\count419
+\c@mincompwidth=\count420
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2025/07/10 v3.21 biblatex datamodel (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'numeric.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count421
+\c@savedafterword=\count422
+\c@annotator=\count423
+\c@savedannotator=\count424
+\c@author=\count425
+\c@savedauthor=\count426
+\c@bookauthor=\count427
+\c@savedbookauthor=\count428
+\c@commentator=\count429
+\c@savedcommentator=\count430
+\c@editor=\count431
+\c@savededitor=\count432
+\c@editora=\count433
+\c@savededitora=\count434
+\c@editorb=\count435
+\c@savededitorb=\count436
+\c@editorc=\count437
+\c@savededitorc=\count438
+\c@foreword=\count439
+\c@savedforeword=\count440
+\c@holder=\count441
+\c@savedholder=\count442
+\c@introduction=\count443
+\c@savedintroduction=\count444
+\c@namea=\count445
+\c@savednamea=\count446
+\c@nameb=\count447
+\c@savednameb=\count448
+\c@namec=\count449
+\c@savednamec=\count450
+\c@translator=\count451
+\c@savedtranslator=\count452
+\c@shortauthor=\count453
+\c@savedshortauthor=\count454
+\c@shorteditor=\count455
+\c@savedshorteditor=\count456
+\c@labelname=\count457
+\c@savedlabelname=\count458
+\c@institution=\count459
+\c@savedinstitution=\count460
+\c@lista=\count461
+\c@savedlista=\count462
+\c@listb=\count463
+\c@savedlistb=\count464
+\c@listc=\count465
+\c@savedlistc=\count466
+\c@listd=\count467
+\c@savedlistd=\count468
+\c@liste=\count469
+\c@savedliste=\count470
+\c@listf=\count471
+\c@savedlistf=\count472
+\c@location=\count473
+\c@savedlocation=\count474
+\c@organization=\count475
+\c@savedorganization=\count476
+\c@origlocation=\count477
+\c@savedoriglocation=\count478
+\c@origpublisher=\count479
+\c@savedorigpublisher=\count480
+\c@publisher=\count481
+\c@savedpublisher=\count482
+\c@language=\count483
+\c@savedlanguage=\count484
+\c@origlanguage=\count485
+\c@savedoriglanguage=\count486
+\c@pageref=\count487
+\c@savedpageref=\count488
+\shorthandwidth=\skip125
+\shortjournalwidth=\skip126
+\shortserieswidth=\skip127
+\shorttitlewidth=\skip128
+\shortauthorwidth=\skip129
+\shorteditorwidth=\skip130
+\locallabelnumberwidth=\skip131
+\locallabelalphawidth=\skip132
+\localshorthandwidth=\skip133
+\localshortjournalwidth=\skip134
+\localshortserieswidth=\skip135
+\localshorttitlewidth=\skip136
+\localshortauthorwidth=\skip137
+\localshorteditorwidth=\skip138
+Package biblatex Info: Trying to load enhanced support for Unicode engines...
+Package biblatex Info: ... file 'blx-unicode.def' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/blx-unicode.def)
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
+\c@textcitecount=\count489
+\c@textcitetotal=\count490
+\c@textcitemaxnames=\count491
+\c@biburlbigbreakpenalty=\count492
+\c@biburlbreakpenalty=\count493
+\c@biburlnumpenalty=\count494
+\c@biburlucpenalty=\count495
+\c@biburllcpenalty=\count496
+\biburlbigskip=\muskip19
+\biburlnumskip=\muskip20
+\biburlucskip=\muskip21
+\biburllcskip=\muskip22
+\c@smartand=\count497
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
+File: numeric.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count498
+\c@bbx:relatedtotal=\count499
+))
+Package biblatex Info: Trying to load citation style 'numeric'...
+Package biblatex Info: ... file 'numeric.cbx' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx
+File: numeric.cbx 2025/07/10 v3.21 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+)
+Package biblatex Info: XeTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             2026-01-19 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
+Package: blx-case-expl3 2025/07/10 v3.21 expl3 case changing code for biblatex
+))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
+\MT@toks=\toks44
+\MT@tempbox=\box68
+\MT@count=\count500
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
+LaTeX Info: Redefining \leftprotrusion on input line 1085.
+\MT@prot@toks=\toks45
+LaTeX Info: Redefining \rightprotrusion on input line 1104.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen272
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count501
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype-xetex.def
+File: microtype-xetex.def 2026/03/01 v3.2d Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 443.
+LaTeX Info: Redefining \lslig on input line 451.
+\MT@outer@space=\skip139
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
+))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2023/06/22 v3.6 ragged2e Package
+\CenteringLeftskip=\skip140
+\RaggedLeftLeftskip=\skip141
+\RaggedRightLeftskip=\skip142
+\CenteringRightskip=\skip143
+\RaggedLeftRightskip=\skip144
+\RaggedRightRightskip=\skip145
+\CenteringParfillskip=\skip146
+\RaggedLeftParfillskip=\skip147
+\RaggedRightParfillskip=\skip148
+\JustifyingParfillskip=\skip149
+\CenteringParindent=\skip150
+\RaggedLeftParindent=\skip151
+\RaggedRightParindent=\skip152
+\JustifyingParindent=\skip153
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/ragged2e-xetex-bidi.def
+File: ragged2e-xetex-bidi.def 2018/10/17 v0.3 bidi adaptations for ragged2e pac
+kage for XeTeX engine
+)
+(./Preamble/formatting.tex
+Package hyperref Info: Option `colorlinks' set `true' on input line 93.
+) (./Preamble/begin_document.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/bidi/float-xetex-bidi.def
+File: float-xetex-bidi.def 2013/04/04 v0.2 bidi adaptations for float package f
+or XeTeX engine
+)
+\@quotelevel=\count502
+\@quotereset=\count503
+
+(./main.aux (./Chapter1/Chapter1.aux) (./Chapter2/Chapter2.aux)
+(./Chapter3/Chapter3.aux) (./Chapter4/Chapter4.aux) (./Chapter5/Chapter5.aux)
+(./Chapter6/Chapter6.aux) (./AppendixA/AppendixA.aux)
+(./AppendixB/AppendixB.aux) (./AppendixC/AppendixC.aux)
+(./AppendixD/AppendixD.aux) (./AppendixE/AppendixE.aux))
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+
+Package fontspec Info: 
+(fontspec)             Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 8.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 8.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 8.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 8.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 8.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 8.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 8.
+LaTeX Font Info:    Redeclaring math accent \check on input line 8.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 8.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 8.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 8.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 8.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 8.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 8.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/Helvetica(0)/m/n on input line 8.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 8.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/Helvetica(0)/m/n on input line 8.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/Helvetica(0)/m/n --> TU/Helvetica(0)/m/n on input li
+ne 8.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/Helvetica(0)/m/it on input line 8.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/Helvetica(0)/b/n on input line 8.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/Helvetica(0)/m/n on input line 8.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 8.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/Helvetica(0)/m/n --> TU/Helvetica(0)/b/n on input li
+ne 8.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/Helvetica(0)/b/it on input line 8.
+
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/Helvetica(0)/b/n on input line 8.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 8.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 441.01773pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=441.01773pt
+* \textheight=702.78308pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-38.1381pt
+* \headheight=15.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count504
+Package hyperref Info: Link coloring ON on input line 8.
+
+(./main.out) (./main.out)
+\@outlinefile=\write4
+\openout4 = `main.out'.
+
+Package biblatex Info: Trying to load language 'arabic' -> 'american'...
+Package biblatex Info: ... file 'american.lbx' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/lbx/american.lbx
+File: american.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
+))
+Package biblatex Info: XeTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout3 = `main.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'main.bbl' found.
+
+(./main.bbl)
+Package biblatex Info: Reference section=0 on input line 8.
+Package biblatex Info: Reference segment=0 on input line 8.
+LaTeX Info: Redefining \microtypecontext on input line 8.
+Package microtype Info: Applying patch `item' on input line 8.
+Package microtype Info: Applying patch `toc' on input line 8.
+Package microtype Info: Applying patch `eqnum' on input line 8.
+
+
+Package microtype Warning: Unable to apply patch `footnote' on input line 8.
+
+Package microtype Info: Applying patch `verbatim' on input line 8.
+LaTeX Info: Redefining \microtypesetup on input line 8.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `Helvetica' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+) (./Preamble/Frontpage.tex
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=452.9679pt
+* \textheight=700.50687pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-40.0pt
+* \headheight=15.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+File: images/cairo_uni_logo.png Graphic file (type bmp)
+<images/cairo_uni_logo.png>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
+
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
+
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+) [1
+
+
+]
+[2]) (./Preamble/Abstract.tex
+Overfull \hbox (97.35938pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Abstract|[] 
+ []
+
+
+Underfull \hbox (badness 2384) in paragraph at lines 11--12
+[]\TU/Helvetica(0)/m/n/12 Notifications, and Instructor Analytics—each encapsul
+ated with clear domain[]
+ []
+
+[3
+
+
+
+] [4]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `DecoTypeNaskh' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package microtype Info: Character `A' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `F' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `J' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `K' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `L' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `T' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `V' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `W' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `X' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `Y' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `k' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `r' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `v' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `w' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `x' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `y' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `1' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `4' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `7' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `,' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `;' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `?' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `@' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `~ (= ~)' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\%' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `*' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textendash ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textemdash ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteleft ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteright ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblleft ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblright ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\AE ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotesinglbase ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotedblbase ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guilsinglleft ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guilsinglright ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textexclamdown ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquestiondown ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/b/n/14'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `A' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `F' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `J' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `K' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `L' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `T' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `V' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `W' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `X' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `Y' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `k' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `r' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `v' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `w' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `x' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `y' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `1' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `4' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `7' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `,' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `;' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `?' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `@' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `~ (= ~)' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\%' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `*' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textendash ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textemdash ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteleft ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteright ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblleft ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblright ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\AE ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotesinglbase ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotedblbase ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guilsinglleft ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guilsinglright ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textexclamdown ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquestiondown ' is missing
+(microtype)             in font `\TU/DecoTypeNaskh(0)/m/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+ [5
+
+]) (./Preamble/Acknowledgments.tex
+Overfull \hbox (198.6914pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Acknowledgment|[] 
+ []
+
+[6
+
+
+]) (./Preamble/toc.tex (./main.toc [7
+
+
+] [8] [9]
+Underfull \hbox (badness 6032) in paragraph at lines 123--123
+ [][][] [][][][]\TU/Helvetica(0)/m/n/12 HandleGenerationCallbackUseCase — Exact
+ly-Once Pro-[][] 
+ []
+
+[10] [11] [12] [13])
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+) (./Preamble/ListofFigures.tex [14] (./main.lof
+Underfull \hbox (badness 2277) in paragraph at lines 8--8
+ [][][] [][][][]\TU/Helvetica(0)/m/n/12 Global E-Learning Market by Segment (20
+25). Data sources:[][] 
+ []
+
+[15
+
+]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+)
+\tf@lof=\write6
+\openout6 = `main.lof'.
+
+) (./Preamble/ListofListings.tex [16]
+Overfull \hbox (92.0039pt too wide) in paragraph at lines 8--8
+ []|[]\TU/Helvetica(0)/b/n/24 Listings|[] 
+ []
+
+(./main.lol
+Overfull \hbox (1.42145pt too wide) detected at line 17
+ []\TU/Helvetica(0)/m/n/12 104[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 18
+ []\TU/Helvetica(0)/m/n/12 108[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 19
+ []\TU/Helvetica(0)/m/n/12 109[]
+ []
+
+
+Overfull \hbox (0.53668pt too wide) detected at line 20
+ []\TU/Helvetica(0)/m/n/12 110[]
+ []
+
+
+Overfull \hbox (0.53668pt too wide) detected at line 22
+ []\TU/Helvetica(0)/m/n/12 112[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 23
+ []\TU/Helvetica(0)/m/n/12 128[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 24
+ []\TU/Helvetica(0)/m/n/12 148[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 25
+ []\TU/Helvetica(0)/m/n/12 148[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 26
+ []\TU/Helvetica(0)/m/n/12 148[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 27
+ []\TU/Helvetica(0)/m/n/12 148[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 28
+ []\TU/Helvetica(0)/m/n/12 149[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 29
+ []\TU/Helvetica(0)/m/n/12 149[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 30
+ []\TU/Helvetica(0)/m/n/12 150[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 31
+ []\TU/Helvetica(0)/m/n/12 150[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 32
+ []\TU/Helvetica(0)/m/n/12 150[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 33
+ []\TU/Helvetica(0)/m/n/12 151[]
+ []
+
+[17
+
+
+]
+Overfull \hbox (1.42145pt too wide) detected at line 34
+ []\TU/Helvetica(0)/m/n/12 151[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 35
+ []\TU/Helvetica(0)/m/n/12 152[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 36
+ []\TU/Helvetica(0)/m/n/12 152[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 37
+ []\TU/Helvetica(0)/m/n/12 152[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 38
+ []\TU/Helvetica(0)/m/n/12 152[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 39
+ []\TU/Helvetica(0)/m/n/12 152[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 40
+ []\TU/Helvetica(0)/m/n/12 153[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 41
+ []\TU/Helvetica(0)/m/n/12 153[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 42
+ []\TU/Helvetica(0)/m/n/12 153[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 43
+ []\TU/Helvetica(0)/m/n/12 153[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 44
+ []\TU/Helvetica(0)/m/n/12 153[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 45
+ []\TU/Helvetica(0)/m/n/12 153[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 46
+ []\TU/Helvetica(0)/m/n/12 154[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 47
+ []\TU/Helvetica(0)/m/n/12 154[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 48
+ []\TU/Helvetica(0)/m/n/12 154[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 49
+ []\TU/Helvetica(0)/m/n/12 154[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 50
+ []\TU/Helvetica(0)/m/n/12 155[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 51
+ []\TU/Helvetica(0)/m/n/12 155[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 52
+ []\TU/Helvetica(0)/m/n/12 155[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 53
+ []\TU/Helvetica(0)/m/n/12 155[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 54
+ []\TU/Helvetica(0)/m/n/12 156[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 55
+ []\TU/Helvetica(0)/m/n/12 157[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 56
+ []\TU/Helvetica(0)/m/n/12 158[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 57
+ []\TU/Helvetica(0)/m/n/12 158[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 58
+ []\TU/Helvetica(0)/m/n/12 159[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 59
+ []\TU/Helvetica(0)/m/n/12 160[]
+ []
+
+
+Overfull \hbox (1.42145pt too wide) detected at line 60
+ []\TU/Helvetica(0)/m/n/12 163[]
+ []
+
+)
+\tf@lol=\write7
+\openout7 = `main.lol'.
+
+) [18] (./main.lot
+Underfull \hbox (badness 10000) in paragraph at lines 3--3
+ [][][] [][][][]\TU/Helvetica(0)/m/n/12 High-Level Comparison of Platform Categ
+ories Relevant to[][] 
+ []
+
+)
+\tf@lot=\write8
+\openout8 = `main.lot'.
+
+ (./Preamble/Abbreviations.tex [19
+
+] [20]
+Overfull \hbox (42.66797pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 List[] 
+ []
+
+[21
+
+] [22]) (./Preamble/Symbols.tex
+Overfull \hbox (42.66797pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 List[] 
+ []
+
+[23
+
+
+]) (./Preamble/Contacts.tex
+Overfull \hbox (102.67969pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Contacts|[] 
+ []
+
+[24
+
+
+]
+LaTeX Font Info:    Font shape `TU/Helvetica(0)/m/sl' in size <12> not availabl
+e
+(Font)              Font shape `TU/Helvetica(0)/m/it' tried instead on input li
+ne 33.
+ [25
+
+])
+\openout2 = `Chapter1/Chapter1.aux'.
+
+ (./Chapter1/Chapter1.tex
+Chapter 1.
+
+Overfull \hbox (139.96875pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Introduction|[] 
+ []
+
+[1
+
+
+
+
+] (./Chapter1/1-motivation.tex
+Underfull \hbox (badness 2173) in paragraph at lines 15--16
+[]\TU/Helvetica(0)/m/n/12 on course catalogues, but long-running asynchronous p
+ipelines (transcoding,[]
+ []
+
+[2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[][]|\TU/Helvetica(0)/b/n/10.95 Representative[]
+ []
+
+
+Underfull \hbox (badness 2050) in paragraph at lines 37--38
+[][]|\TU/Helvetica(0)/b/n/10.95 Gap NexaLearn Ad-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--39
+[][]|\TU/Helvetica(0)/m/n/10.95 Commercial[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+[][]|\TU/Helvetica(0)/m/n/10.95 No source access;[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+[]\TU/Helvetica(0)/m/n/10.95 opaque architecture;[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[][]|\TU/Helvetica(0)/m/n/10.95 Legacy OSS[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+[][]|\TU/Helvetica(0)/m/n/10.95 Institutional adop-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+[]\TU/Helvetica(0)/m/n/10.95 tion; rich plugin[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+[][]|\TU/Helvetica(0)/m/n/10.95 Monolithic plugin[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+[][]|\TU/Helvetica(0)/m/n/10.95 No e-learning do-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--54
+[][]|\TU/Helvetica(0)/m/n/10.95 Vertical SaaS[]
+ []
+
+
+Underfull \hbox (badness 4120) in paragraph at lines 56--56
+[][]|\TU/Helvetica(0)/m/n/10.95 Best-in-class single[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+[][]|\TU/Helvetica(0)/m/n/10.95 No unified domain[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+[]\TU/Helvetica(0)/m/n/10.95 model or cross-[]
+ []
+
+[4]
+File: images/system_overview.png Graphic file (type bmp)
+<images/system_overview.png>
+ [5] [6]) (./Chapter1/2-problem_statement.tex
+Underfull \hbox (badness 6157) in paragraph at lines 14--15
+[][]\TU/Helvetica(0)/m/it/12 Given a multi-stakeholder e-learning platform serv
+ing concurrent[]
+ []
+
+[7]
+Overfull \hbox (35.31874pt too wide) in paragraph at lines 32--33
+[][]\TU/Helvetica(0)/b/n/12 Stripe webhooks \TU/Helvetica(0)/m/n/12 — \TU/lmtt/
+m/n/12 payment_intent.succeeded\TU/Helvetica(0)/m/n/12 , \TU/lmtt/m/n/12 paymen
+t_intent.payment_failed\TU/Helvetica(0)/m/n/12 ,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+[][]\TU/Helvetica(0)/b/n/12 Internal domain events \TU/Helvetica(0)/m/n/12 — \T
+U/lmtt/m/n/12 EnrollmentActivated\TU/Helvetica(0)/m/n/12 , \TU/lmtt/m/n/12 Less
+onCompleted\TU/Helvetica(0)/m/n/12 ,[]
+ []
+
+[8]
+Underfull \hbox (badness 4726) in paragraph at lines 57--58
+[][]\TU/Helvetica(0)/m/n/12 Conversely, legitimately retried webhooks after tra
+nsient 503 responses[]
+ []
+
+
+Underfull \hbox (badness 3930) in paragraph at lines 62--63
+[]\TU/Helvetica(0)/m/n/12 Instructors require aggregated insights—module comple
+tion funnels, median[]
+ []
+
+[9]
+Underfull \hbox (badness 4341) in paragraph at lines 81--81
+[][]|\TU/Helvetica(0)/m/n/10.95 Fair access after pay-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+[][]|\TU/Helvetica(0)/m/n/10.95 Idempotent enrollment activation;[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--88
+[][]|\TU/Helvetica(0)/m/n/10.95 Platform ad-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+[][]|\TU/Helvetica(0)/m/n/10.95 Security; auditability;[]
+ []
+
+
+Underfull \hbox (badness 7238) in paragraph at lines 90--91
+[][]|\TU/Helvetica(0)/m/n/10.95 RBAC; Audit module; admin dash-[]
+ []
+
+
+Underfull \hbox (badness 3568) in paragraph at lines 93--93
+[][]|\TU/Helvetica(0)/m/n/10.95 Maintainability; testabil-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[][]|\TU/Helvetica(0)/m/n/10.95 Reproducibility; self-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[]\TU/Helvetica(0)/m/n/10.95 contained documenta-[]
+ []
+
+File: images/bounded_contexts.png Graphic file (type bmp)
+<images/bounded_contexts.png>
+[10]) (./Chapter1/3-project_objectives.tex [11] [12]
+Underfull \hbox (badness 4634) in paragraph at lines 27--28
+[][]\TU/Helvetica(0)/m/it/12 Success criteria: \TU/Helvetica(0)/m/n/12 Webhook 
+signature verification; idempotent handler[]
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 27--28
+[]\TU/Helvetica(0)/m/n/12 rollment/Progress guards; instructor dashboard listin
+g assets with error[]
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+[][]|\TU/Helvetica(0)/m/n/10.95 Integration + E2E[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+[][]|\TU/Helvetica(0)/m/n/10.95 Unit + integration[]
+ []
+
+
+Underfull \hbox (badness 4954) in paragraph at lines 74--74
+[][]|\TU/Helvetica(0)/m/n/10.95 AI Pipeline, Assess-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+[][]|\TU/Helvetica(0)/m/n/10.95 Callback idempo-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+[][]|\TU/Helvetica(0)/m/n/10.95 Payment flow int-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+[][]|\TU/Helvetica(0)/m/n/10.95 Discussion, Notifica-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+[][]|\TU/Helvetica(0)/m/n/10.95 Authorisation +[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+[][]|\TU/Helvetica(0)/m/n/10.95 Concurrent outbox[]
+ []
+
+[14]) (./Chapter1/4-project_outcomes.tex [15] [16]
+Underfull \hbox (badness 2261) in paragraph at lines 48--49
+[]\TU/Helvetica(0)/m/n/12 at \TU/lmtt/m/n/12 /api/docs\TU/Helvetica(0)/m/n/12 ,
+ documenting paths, request/response schemas, authentication[]
+ []
+
+[17]
+File: images/deliverables_overview.png Graphic file (type bmp)
+<images/deliverables_overview.png>
+ [18]) (./Chapter1/5-document_organization.tex
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+[][]|\TU/Helvetica(0)/m/n/10.95 Test strategy, module/integration results,[]
+ []
+
+[19] [20]
+Underfull \hbox (badness 5288) in paragraph at lines 52--53
+[]\TU/Helvetica(0)/b/n/12 Clean Architecture \TU/Helvetica(0)/m/n/12 and depend
+ency inversion, \TU/Helvetica(0)/b/n/12 CQRS-lite \TU/Helvetica(0)/m/n/12 comma
+nd/query[]
+ []
+
+
+Underfull \hbox (badness 2409) in paragraph at lines 54--55
+[]\TU/Helvetica(0)/m/n/12 microservice reliability, and LMS modernisation from 
+approximately the past[]
+ []
+
+[21] [22])) [23]
+\openout2 = `Chapter2/Chapter2.aux'.
+
+ (./Chapter2/Chapter2.tex
+Chapter 2.
+
+Overfull \hbox (77.36719pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Market[] 
+ []
+
+(./Chapter2/1-targeted-customers.tex [24
+
+
+
+
+
+]
+File: images/customer_segments.pdf Graphic file (type pdf)
+<use images/customer_segments.pdf>
+ [25] [26] [27]
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
+[][]|\TU/Helvetica(0)/m/n/10.95 EdTech star-[]
+ []
+
+
+Underfull \hbox (badness 4805) in paragraph at lines 64--64
+[]\TU/Helvetica(0)/m/n/10.95 tups & indie[]
+ []
+
+
+Underfull \hbox (badness 4144) in paragraph at lines 66--66
+[][]|\TU/Helvetica(0)/m/n/10.95 CTO / lead devel-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--74
+[][]|\TU/Helvetica(0)/m/n/10.95 Corporate[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+[][]|\TU/Helvetica(0)/m/n/10.95 White-label; SSO-ready;[]
+ []
+
+) (./Chapter2/2-market-survey.tex [28] [29] [30] [31]
+Underfull \hbox (badness 6252) in paragraph at lines 93--94
+[]\TU/Helvetica(0)/m/n/12 safety, and Testcontainers integration testing patter
+ns exemplified by[]
+ []
+
+
+Underfull \hbox (badness 5519) in paragraph at lines 108--109
+[][]\TU/Helvetica(0)/b/n/12 Institutional brand association \TU/Helvetica(0)/m/
+n/12 — credibility for universities offering[]
+ []
+
+[32] [33]
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/b/n/10.95 Price (in-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/m/n/10.95 Udemy /[]
+ []
+
+
+Underfull \hbox (badness 2057) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/m/n/10.95 Per-seat en-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/m/n/10.95 $39–[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]\TU/Helvetica(0)/m/n/10.95 $499/mo[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/m/n/10.95 $0–$499/mo[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/m/n/10.95 Free (GPL)[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]\TU/Helvetica(0)/m/n/10.95 + host-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]\TU/Helvetica(0)/m/n/10.95 ing/support[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/m/n/10.95 Coursera[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/m/n/10.95 Institutional[]
+ []
+
+
+Underfull \hbox (badness 6708) in paragraph at lines 233--233
+[]\TU/Helvetica(0)/m/n/10.95 licence (per[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/m/n/10.95 $̃199/yr[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]\TU/Helvetica(0)/m/n/10.95 plugin +[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]\TU/Helvetica(0)/m/n/10.95 WordPress[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/b/n/10.95 NexaLearn[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[][]|\TU/Helvetica(0)/b/n/10.95 OSS core[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]\TU/Helvetica(0)/b/n/10.95 + $5,000/yr[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]\TU/Helvetica(0)/b/n/10.95 enterprise[]
+ []
+
+[34]
+File: images/competitive_positioning.pdf Graphic file (type pdf)
+<use images/competitive_positioning.pdf>
+ [35]
+File: images/market_segments.pdf Graphic file (type pdf)
+<use images/market_segments.pdf>
+ [36]) (./Chapter2/3-business-case.tex
+Underfull \hbox (badness 5446) in paragraph at lines 8--9
+[]\TU/Helvetica(0)/m/n/12 This section presents a feasibility-level business ca
+se for commercialising[]
+ []
+
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+[]\TU/Helvetica(0)/m/n/12 utes), monitoring (Datadog/Grafana[]
+ []
+
+
+Underfull \hbox (badness 6808) in paragraph at lines 47--48
+[][]|\TU/Helvetica(0)/m/n/12 Stripe Connect/platform configuration,[]
+ []
+
+
+Underfull \hbox (badness 6808) in paragraph at lines 71--72
+[][]|\TU/Helvetica(0)/m/n/12 API containers, PostgreSQL (man-[]
+ []
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 79--80
+[]\TU/Helvetica(0)/m/n/12 action if NexaLearn processes sub-[]
+ []
+
+
+Overfull \hbox (47.23068pt too wide) in paragraph at lines 65--88
+ [][][][] 
+ []
+
+[38] [39]
+Overfull \hbox (23.18146pt too wide) in alignment at lines 110--121
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (23.18146pt too wide) in alignment at lines 121--125
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (23.18146pt too wide) in alignment at lines 125--128
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (23.18146pt too wide) in alignment at lines 128--154
+ [] [] [] [] [] [] [] 
+ []
+
+[40]
+File: images/break_even_chart.pdf Graphic file (type pdf)
+<use images/break_even_chart.pdf>
+ [41]
+File: images/revenue_projection.pdf Graphic file (type pdf)
+<use images/revenue_projection.pdf>
+ [42])) [43]
+\openout2 = `Chapter3/Chapter3.aux'.
+
+ (./Chapter3/Chapter3.tex
+Chapter 3.
+
+Overfull \hbox (110.69531pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Literature[] 
+ []
+
+(./Chapter3/1-ddd-clean-architecture.tex [44
+
+
+
+
+
+]
+Underfull \hbox (badness 4634) in paragraph at lines 18--19
+[][]\TU/Helvetica(0)/m/n/10.95 An immutable object defined solely by the values
+ of its attributes.[]
+ []
+
+[45] [46]) (./Chapter3/2-event-driven-outbox.tex [47]
+Underfull \hbox (badness 5681) in paragraph at lines 25--26
+[]\TU/lmtt/m/n/10.95 aggregate_type\TU/Helvetica(0)/m/n/10.95 , \TU/lmtt/m/n/10
+.95 aggregate_id\TU/Helvetica(0)/m/n/10.95 , \TU/lmtt/m/n/10.95 event_type\TU/H
+elvetica(0)/m/n/10.95 , \TU/lmtt/m/n/10.95 payload \TU/Helvetica(0)/m/n/10.95 (
+JSONB), \TU/lmtt/m/n/10.95 created_at\TU/Helvetica(0)/m/n/10.95 ,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+[]\TU/lmtt/m/n/10.95 BY created_at ASC LIMIT $\OML/cmm/m/it/10.95 n$ \TU/lmtt/m
+/n/10.95 FOR UPDATE SKIP LOCKED\TU/Helvetica(0)/m/n/10.95 . The \TU/lmtt/m/n/10
+.95 FOR UPDATE SKIP[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+[]\TU/lmtt/m/n/10.95 (event_id, projection_type, handler_id) VALUES ($1, $2, $3
+) ON CONFLICT[]
+ []
+
+[48]) (./Chapter3/3-ai-elearning.tex [49] [50]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 30.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 37.
+ [51])
+(./Chapter3/4-video-streaming.tex
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+[]\TU/lmtt/m/n/10.95 video.upload.asset_created\TU/Helvetica(0)/m/n/10.95 , \TU
+/lmtt/m/n/10.95 video.asset.ready\TU/Helvetica(0)/m/n/10.95 , \TU/lmtt/m/n/10.9
+5 video.asset.errored\TU/Helvetica(0)/m/n/10.95 ,[]
+ []
+
+[52]
+Underfull \hbox (badness 5175) in paragraph at lines 32--33
+[][]\TU/Helvetica(0)/m/n/10.95 Mux sends \TU/lmtt/m/n/10.95 video.upload.asset_
+created\TU/Helvetica(0)/m/n/10.95 , indicating that the source[]
+ []
+
+) (./Chapter3/5-comparative-study.tex [53] [54] [55]
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 DDD[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/m/n/10.95 bounded[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 Clean Archi-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 Transactional[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 Idempotent[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/m/n/10.95 event pro-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 ASR (Whis-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/m/n/10.95 per) integra-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 Human-in-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/m/n/10.95 the-loop[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 HLS video[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 HMAC call-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]\TU/Helvetica(0)/m/n/10 DDD-focused;[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]\TU/Helvetica(0)/m/n/10 Survey only;[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]\TU/Helvetica(0)/m/n/10 Standalone[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/m/n/10 LLM; no[]
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/m/n/10 backend inte-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]\TU/Helvetica(0)/m/n/10 Kafka-based;[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]\TU/Helvetica(0)/b/n/10 All dimen-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/b/n/10 sions inte-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/b/n/10 grated with[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/b/n/10 modular[]
+ []
+
+[56]) (./Chapter3/6-implemented-approach.tex [57] [58]
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+[][]|\TU/Helvetica(0)/m/n/10.95 Spring Boot,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+[][]|\TU/Helvetica(0)/m/n/10.95 TypeScript ecosystem[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
+[][]|\TU/Helvetica(0)/m/n/10.95 TypeORM,[]
+ []
+
+
+Underfull \hbox (badness 4492) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 Outbox (Post-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--80
+[][]|\TU/Helvetica(0)/m/n/10.95 Kafka, Rab-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+[][]|\TU/Helvetica(0)/m/n/10.95 No broker dependency[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
+[][]|\TU/Helvetica(0)/m/n/10.95 Deployment[]
+ []
+
+
+Underfull \hbox (badness 7221) in paragraph at lines 86--87
+[][]|\TU/Helvetica(0)/m/n/10.95 Reduced ops overhead;[]
+ []
+
+
+Underfull \hbox (badness 3407) in paragraph at lines 86--87
+[]\TU/Helvetica(0)/m/n/10.95 no network latency; ex-[]
+ []
+
+
+Underfull \hbox (badness 2828) in paragraph at lines 88--88
+[][]|\TU/Helvetica(0)/m/n/10.95 AI pipeline invo-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--89
+[][]|\TU/Helvetica(0)/m/n/10.95 HMAC-signed[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--90
+[][]|\TU/Helvetica(0)/m/n/10.95 Polling, syn-[]
+ []
+
+
+Underfull \hbox (badness 3482) in paragraph at lines 91--92
+[][]|\TU/Helvetica(0)/m/n/10.95 Stripe-style security; de-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--94
+[][]|\TU/Helvetica(0)/m/n/10.95 Mux (HLS +[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+[][]|\TU/Helvetica(0)/m/n/10.95 Cloudflare[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+[]\TU/Helvetica(0)/m/n/10.95 Stream, self-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+[]\TU/Helvetica(0)/m/n/10.95 hosted FFm-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+[][]|\TU/Helvetica(0)/m/n/10.95 Managed transcoding;[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+[]\TU/Helvetica(0)/m/n/10.95 JWT-signed playback;[]
+ []
+
+[59])) [60]
+\openout2 = `Chapter4/Chapter4.aux'.
+
+ (./Chapter4/Chapter4.tex
+Chapter 4.
+
+Overfull \hbox (85.38281pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 System[] 
+ []
+
+(./Chapter4/introduction.tex [61
+
+
+
+
+
+]) (./Chapter4/system_architecture.tex
+File: images/system_arch.pdf Graphic file (type pdf)
+<use images/system_arch.pdf>
+ [62]
+File: images/module_interaction.pdf Graphic file (type pdf)
+<use images/module_interaction.pdf>
+
+[63]
+Overfull \hbox (19.54767pt too wide) in alignment at lines 42--47
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (19.54767pt too wide) in alignment at lines 47--52
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (19.54767pt too wide) in alignment at lines 52--54
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
+[][]|\TU/Helvetica(0)/m/n/10.95 UserLoggedIn,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
+[]\TU/Helvetica(0)/m/n/10.95 UserLoggedOut,[]
+ []
+
+
+Underfull \hbox (badness 4686) in paragraph at lines 57--57
+[][]|\TU/Helvetica(0)/m/n/10.95 Course, Course-[]
+ []
+
+
+Underfull \hbox (badness 4048) in paragraph at lines 57--57
+[]\TU/Helvetica(0)/m/n/10.95 Module, Lesson,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
+[][]|\TU/Helvetica(0)/m/n/10.95 CoursePublished,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
+[]\TU/Helvetica(0)/m/n/10.95 LessonUpdated,[]
+ []
+
+
+Overfull \hbox (1.1236pt too wide) in paragraph at lines 59--59
+[][]|\TU/Helvetica(0)/m/n/10.95 Enrollment| []
+ []
+
+
+Overfull \hbox (6.81406pt too wide) in paragraph at lines 59--59
+[][]|\TU/Helvetica(0)/m/n/10.95 Enrollment| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[][]|\TU/Helvetica(0)/m/n/10.95 Enrollment, En-[]
+ []
+
+
+Overfull \hbox (13.541pt too wide) in paragraph at lines 59--59
+[][]|\TU/Helvetica(0)/m/n/10.95 EnrollmentActivated,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]\TU/Helvetica(0)/m/n/10.95 EnrollmentCan-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]\TU/Helvetica(0)/m/n/10.95 celled, Enroll-[]
+ []
+
+
+Overfull \hbox (3.16228pt too wide) in paragraph at lines 61--61
+[][]|\TU/Helvetica(0)/m/n/10.95 Payments| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--61
+[][]|\TU/Helvetica(0)/m/n/10.95 PaymentIntent,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--61
+[]\TU/Helvetica(0)/m/n/10.95 PaymentTransac-[]
+ []
+
+
+Overfull \hbox (14.16656pt too wide) in paragraph at lines 61--61
+[][]|\TU/Helvetica(0)/m/n/10.95 PaymentSucceeded,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--61
+[]\TU/Helvetica(0)/m/n/10.95 PaymentFailed,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--61
+[]\TU/Helvetica(0)/m/n/10.95 PaymentRe-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[][]|\TU/Helvetica(0)/m/n/10.95 VideoAsset,[]
+ []
+
+
+Underfull \hbox (badness 6047) in paragraph at lines 63--63
+[]\TU/Helvetica(0)/m/n/10.95 UploadUrl, Play-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[][]|\TU/Helvetica(0)/m/n/10.95 VideoUploaded,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[]\TU/Helvetica(0)/m/n/10.95 VideoReady,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[][]|\TU/Helvetica(0)/m/n/10.95 AI-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[][]|\TU/Helvetica(0)/m/n/10.95 AI-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[][]|\TU/Helvetica(0)/m/n/10.95 GenerationJob,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[]\TU/Helvetica(0)/m/n/10.95 Transcript, Gen-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[][]|\TU/Helvetica(0)/m/n/10.95 JobCompleted,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[]\TU/Helvetica(0)/m/n/10.95 Callback-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[]\TU/Helvetica(0)/m/n/10.95 Received,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[]\TU/Helvetica(0)/m/n/10.95 QuizReady-[]
+ []
+
+
+Overfull \hbox (8.42181pt too wide) in paragraph at lines 67--67
+[][]|\TU/Helvetica(0)/m/n/10.95 Assessment| []
+ []
+
+
+Overfull \hbox (14.11227pt too wide) in paragraph at lines 67--67
+[][]|\TU/Helvetica(0)/m/n/10.95 Assessment| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+[][]|\TU/Helvetica(0)/m/n/10.95 Quiz, Question,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+[]\TU/Helvetica(0)/m/n/10.95 QuestionOption,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+[]\TU/Helvetica(0)/m/n/10.95 QuizAttempt,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+[]\TU/Helvetica(0)/m/n/10.95 ShortAnswer-[]
+ []
+
+
+Overfull \hbox (25.71004pt too wide) in paragraph at lines 67--67
+[][]|\TU/Helvetica(0)/m/n/10.95 QuizAttemptSubmitted,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+[]\TU/Helvetica(0)/m/n/10.95 AttemptGraded,[]
+ []
+
+
+Overfull \hbox (1.72777pt too wide) in paragraph at lines 69--69
+[][]|\TU/Helvetica(0)/m/n/10.95 Discussion| []
+ []
+
+
+Overfull \hbox (7.41823pt too wide) in paragraph at lines 69--69
+[][]|\TU/Helvetica(0)/m/n/10.95 Discussion| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[][]|\TU/Helvetica(0)/m/n/10.95 Thread, Post,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]\TU/Helvetica(0)/m/n/10.95 ThreadInstructor-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[][]|\TU/Helvetica(0)/m/n/10.95 ThreadCreated,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]\TU/Helvetica(0)/m/n/10.95 PostAdded,[]
+ []
+
+
+Overfull \hbox (18.21935pt too wide) in paragraph at lines 71--71
+[][]|\TU/Helvetica(0)/m/n/10.95 CourseProgressView,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+[]\TU/Helvetica(0)/m/n/10.95 LessonProgress,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+[]\TU/Helvetica(0)/m/n/10.95 ResumeView,[]
+ []
+
+
+Overfull \hbox (1.3773pt too wide) in paragraph at lines 71--71
+[][]|\TU/Helvetica(0)/m/n/10.95 ProgressUpdated,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+[]\TU/Helvetica(0)/m/n/10.95 LessonCom-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
+[][]|\TU/Helvetica(0)/m/n/10.95 Review, Re-[]
+ []
+
+
+Overfull \hbox (1.36661pt too wide) in paragraph at lines 73--73
+[][]|\TU/Helvetica(0)/m/n/10.95 ReviewSubmitted,[]
+ []
+
+
+Overfull \hbox (3.55098pt too wide) in paragraph at lines 75--75
+[][]|\TU/Helvetica(0)/m/n/10.95 Certificates| []
+ []
+
+
+Overfull \hbox (9.24144pt too wide) in paragraph at lines 75--75
+[][]|\TU/Helvetica(0)/m/n/10.95 Certificates| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
+[][]|\TU/Helvetica(0)/m/n/10.95 CertificateIssued,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
+[]\TU/Helvetica(0)/m/n/10.95 CertificateRe-[]
+ []
+
+
+Overfull \hbox (12.94217pt too wide) in paragraph at lines 77--77
+[][]|\TU/Helvetica(0)/m/n/10.95 CourseSearchIndex,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--77
+[]\TU/Helvetica(0)/m/n/10.95 LessonSearchIn-[]
+ []
+
+
+Overfull \hbox (17.52252pt too wide) in paragraph at lines 77--77
+[][]|\TU/Helvetica(0)/m/n/10.95 SearchIndexUpdated| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 StreakRecord,[]
+ []
+
+
+Overfull \hbox (8.67552pt too wide) in paragraph at lines 79--79
+[][]|\TU/Helvetica(0)/m/n/10.95 StreakIncremented,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\TU/Helvetica(0)/m/n/10.95 StreakMile-[]
+ []
+
+
+Overfull \hbox (8.42715pt too wide) in paragraph at lines 81--81
+[][]|\TU/Helvetica(0)/m/n/10.95 Notifications| []
+ []
+
+
+Overfull \hbox (14.11761pt too wide) in paragraph at lines 81--81
+[][]|\TU/Helvetica(0)/m/n/10.95 Notifications| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+[][]|\TU/Helvetica(0)/m/n/10.95 Notification,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+[]\TU/Helvetica(0)/m/n/10.95 EmailTemplate,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+[]\TU/Helvetica(0)/m/n/10.95 NotificationPref-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+[][]|\TU/Helvetica(0)/m/n/10.95 NotificationSent,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+[]\TU/Helvetica(0)/m/n/10.95 EmailDelivered,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+[][]|\TU/Helvetica(0)/m/n/10.95 Auth, Discussion, Assess-[]
+ []
+
+
+Overfull \hbox (28.55981pt too wide) in paragraph at lines 83--83
+[][]|\TU/Helvetica(0)/m/n/10.95 InstructorAnalyticsView,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
+[]\TU/Helvetica(0)/m/n/10.95 InstructorDash-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+[][]|\TU/Helvetica(0)/m/n/10.95 Progress, Assessment,[]
+ []
+
+
+Overfull \hbox (19.54767pt too wide) in alignment at lines 54--85
+ [] [] [] [] [] 
+ []
+
+[64] [65]
+File: images/er_diagram.pdf Graphic file (type pdf)
+<use images/er_diagram.pdf>
+ [66]) (./Chapter4/auth_module.tex [67]
+Overfull \hbox (62.65999pt too wide) in paragraph at lines 20--21
+[][]\TU/Helvetica(0)/m/n/10.95 A 64-character cryptographically random string g
+enerated via \TU/lmtt/m/n/10.95 crypto.randomBytes(32)\TU/Helvetica(0)/m/n/10.9
+5 .[]
+ []
+
+[68]
+File: images/statemachines/auth_session_statemachine.pdf Graphic file (type pdf
+)
+<use images/statemachines/auth_session_statemachine.pdf>
+) (./Chapter4/course_module.tex [69] [70] [71]
+File: images/statemachines/course_curriculum_statemachine.pdf Graphic file (typ
+e pdf)
+<use images/statemachines/course_curriculum_statemachine.pdf>
+)
+(./Chapter4/media_module.tex [72]
+File: images/statemachines/video_asset_statemachine.pdf Graphic file (type pdf)
+
+<use images/statemachines/video_asset_statemachine.pdf>
+
+Overfull \hbox (130.32289pt too wide) in paragraph at lines 28--29
+[][]\TU/Helvetica(0)/b/n/10.95 AWAITING_UPLOAD. \TU/Helvetica(0)/m/n/10.95 A le
+sson is created, and an instructor calls \TU/lmtt/m/n/10.95 POST /instructor/vi
+deo-assets/upload-url[]
+ []
+
+[73]
+Underfull \hbox (badness 2134) in paragraph at lines 30--31
+[][]\TU/Helvetica(0)/b/n/10.95 TRANSCODING. \TU/Helvetica(0)/m/n/10.95 Mux send
+s \TU/lmtt/m/n/10.95 video.upload.asset_created\TU/Helvetica(0)/m/n/10.95 , ind
+icating that the[]
+ []
+
+[74]
+Underfull \hbox (badness 2556) in paragraph at lines 61--62
+[]\TU/Helvetica(0)/m/n/10.95 client uploads directly to Mux. Asynchronous webho
+oks drive the state machine:[]
+ []
+
+
+Underfull \hbox (badness 4168) in paragraph at lines 61--62
+[]\TU/lmtt/m/n/10.95 video.upload.asset_created \TU/Helvetica(0)/m/n/10.95 tran
+sitions to UPLOADED and then TRANSCODING;[]
+ []
+
+File: images/seq_video_streaming.pdf Graphic file (type pdf)
+<use images/seq_video_streaming.pdf>
+) (./Chapter4/ai_pipeline_module.tex [75] [76] [77]
+File: images/seq_ai_pipeline.pdf Graphic file (type pdf)
+<use images/seq_ai_pipeline.pdf>
+File: images/statemachines/ai_job_statemachine.pdf Graphic file (type pdf)
+<use images/statemachines/ai_job_statemachine.pdf>
+)
+(./Chapter4/assessment_module.tex [78] [79] [80]
+File: images/statemachines/quiz_attempt_statemachine.pdf Graphic file (type pdf
+)
+<use images/statemachines/quiz_attempt_statemachine.pdf>
+ [81])
+(./Chapter4/payment_module.tex [82]
+Underfull \hbox (badness 5050) in paragraph at lines 21--22
+[][]\TU/Helvetica(0)/m/n/10.95 Stripe sends a \TU/lmtt/m/n/10.95 checkout.sessi
+on.completed \TU/Helvetica(0)/m/n/10.95 webhook to NexaLearn’s \TU/lmtt/m/n/10.
+95 POST[]
+ []
+
+File: images/statemachines/payment_intent_statemachine.pdf Graphic file (type p
+df)
+<use images/statemachines/payment_intent_statemachine.pdf>
+[83]) (./Chapter4/enrollment_module.tex [84]
+Overfull \hbox (4.92941pt too wide) in paragraph at lines 24--25
+[]\TU/Helvetica(0)/m/n/10.95 Enrollment creation is protected against concurren
+t requests. The \TU/lmtt/m/n/10.95 CreateEnrollmentUseCase[]
+ []
+
+[85]
+File: images/statemachines/enrollment_statemachine.pdf Graphic file (type pdf)
+<use images/statemachines/enrollment_statemachine.pdf>
+ [86]
+File: images/seq_enrollment_flow.pdf Graphic file (type pdf)
+<use images/seq_enrollment_flow.pdf>
+) (./Chapter4/discussion_module.tex [87] [88]
+File: images/statemachines/discussion_statemachine.pdf Graphic file (type pdf)
+<use images/statemachines/discussion_statemachine.pdf>
+)
+(./Chapter4/security.tex [89]
+Underfull \hbox (badness 2150) in paragraph at lines 43--44
+[][]\TU/Helvetica(0)/m/n/10.95 This guards can be applied to specific controlle
+r routes via NestJS decorators:[]
+ []
+
+[90])) [91]
+\openout2 = `Chapter5/Chapter5.aux'.
+
+ (./Chapter5/Chapter5.tex
+Chapter 5.
+
+Overfull \hbox (85.38281pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 System[] 
+ []
+
+(./Chapter5/testing_setup.tex [92
+
+
+
+
+
+]
+Overfull \hbox (27.60342pt too wide) in paragraph at lines 51--52
+[]\TU/Helvetica(0)/m/n/10.95 For integration tests that require a real database
+, the test suite uses \TU/lmtt/m/n/10.95 @testcontainers/postgresql[]
+ []
+
+[93] [94]) (./Chapter5/testing_strategy.tex
+File: images/testing_pyramid.pdf Graphic file (type pdf)
+<use images/testing_pyramid.pdf>
+ [95]) (./Chapter5/unit_testing.tex
+[96] [97]
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+[][]\TU/lmtt/m/n/10.95 gradeQuizAttempt(answers: Answer[], answerKey: AnswerKey
+[]): Score\TU/Helvetica(0)/m/n/10.95 :[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+[][]\TU/lmtt/m/n/10.95 calculateGradeFromStoredAnswers(rawScore: number, totalQ
+uestions:[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+[][]\TU/lmtt/m/n/10.95 computeNextStreak(currentStreak: Streak, lessonCompleted
+At: Date):[]
+ []
+
+
+Overfull \hbox (61.89987pt too wide) in paragraph at lines 84--85
+[][]\TU/lmtt/m/n/10.95 checkReviewEligibility(enrollment: Enrollment, course: C
+ourse): EligibilityResult\TU/Helvetica(0)/m/n/10.95 :[]
+ []
+
+) (./Chapter5/integration_testing.tex [98]
+Overfull \hbox (0.93126pt too wide) in paragraph at lines 25--25
+[][]|\TU/lmtt/m/n/10.95 auth.int-spec.ts| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[][]|\TU/Helvetica(0)/m/n/10.95 Auth, User[]
+ []
+
+
+Overfull \hbox (18.1775pt too wide) in paragraph at lines 27--27
+[][]|\TU/lmtt/m/n/10.95 courses.int-spec.ts| []
+ []
+
+
+Overfull \hbox (35.42374pt too wide) in paragraph at lines 29--29
+[][]|\TU/lmtt/m/n/10.95 assessment.int-spec.ts| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[][]|\TU/Helvetica(0)/m/n/10.95 Assessment, AI[]
+ []
+
+
+Overfull \hbox (6.68001pt too wide) in paragraph at lines 31--31
+[][]|\TU/lmtt/m/n/10.95 media.int-spec.ts| []
+ []
+
+
+Overfull \hbox (41.1725pt too wide) in paragraph at lines 33--33
+[][]|\TU/lmtt/m/n/10.95 ai-pipeline.int-spec.ts| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[][]|\TU/Helvetica(0)/m/n/10.95 AI Pipeline, As-[]
+ []
+
+
+Overfull \hbox (18.1775pt too wide) in paragraph at lines 35--35
+[][]|\TU/lmtt/m/n/10.95 payment.int-spec.ts| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[][]|\TU/Helvetica(0)/m/n/10.95 Payment, Stripe[]
+ []
+
+
+Overfull \hbox (12.42876pt too wide) in paragraph at lines 37--37
+[][]|\TU/lmtt/m/n/10.95 outbox.int-spec.ts| []
+ []
+
+
+Overfull \hbox (35.42374pt too wide) in paragraph at lines 39--39
+[][]|\TU/lmtt/m/n/10.95 enrollment.int-spec.ts| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--39
+[][]|\TU/Helvetica(0)/m/n/10.95 Enrollment, Pay-[]
+ []
+
+[99] [100]
+Underfull \hbox (badness 2080) in paragraph at lines 60--61
+[]\TU/Helvetica(0)/m/n/10.95 with at-least-once semantics; the integration test
+ verifies that processing the same[]
+ []
+
+
+Underfull \hbox (badness 2689) in paragraph at lines 70--71
+[][]\TU/Helvetica(0)/m/n/10.95 This test exposed an early bug in which the paym
+ent webhook handler used[]
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 70--71
+[]\TU/lmtt/m/n/10.95 prisma.paymentIntent.update() \TU/Helvetica(0)/m/n/10.95 w
+ithout an idempotency guard, causing a unique[]
+ []
+
+) (./Chapter5/e2e_testing.tex [101]
+Overfull \hbox (9.64159pt too wide) in paragraph at lines 25--25
+[][]|\TU/lmtt/m/n/10.95 courses.e2e-spec.ts| []
+ []
+
+
+Overfull \hbox (26.88782pt too wide) in paragraph at lines 27--27
+[][]|\TU/lmtt/m/n/10.95 assessment.e2e-spec.ts| []
+ []
+
+
+Overfull \hbox (9.64159pt too wide) in paragraph at lines 31--31
+[][]|\TU/lmtt/m/n/10.95 payment.e2e-spec.ts| []
+ []
+
+
+Overfull \hbox (26.88782pt too wide) in paragraph at lines 33--33
+[][]|\TU/lmtt/m/n/10.95 enrollment.e2e-spec.ts| []
+ []
+
+
+Overfull \hbox (26.88782pt too wide) in paragraph at lines 35--35
+[][]|\TU/lmtt/m/n/10.95 discussion.e2e-spec.ts| []
+ []
+
+
+Overfull \hbox (9.64159pt too wide) in paragraph at lines 37--37
+[][]|\TU/lmtt/m/n/10.95 reviews.e2e-spec.ts| []
+ []
+
+
+Overfull \hbox (32.63658pt too wide) in paragraph at lines 39--39
+[][]|\TU/lmtt/m/n/10.95 ai-pipeline.e2e-spec.ts| []
+ []
+
+[102]
+File: images/e2e_enrollment_flow.pdf Graphic file (type pdf)
+<use images/e2e_enrollment_flow.pdf>
+ [103]) (./Chapter5/test_schedule.tex [104]
+File: images/test_schedule_gantt.pdf Graphic file (type pdf)
+<use images/test_schedule_gantt.pdf>
+)
+(./Chapter5/comparative_results.tex [105] [106]
+Underfull \hbox (badness 2393) in paragraph at lines 54--55
+[][]\TU/Helvetica(0)/b/n/10.95 Mock-heavy testing in legacy LMS platforms leave
+s webhook idempotency[]
+ []
+
+)) [107]
+\openout2 = `Chapter6/Chapter6.aux'.
+
+ (./Chapter6/Chapter6.tex
+Chapter 6.
+
+Overfull \hbox (144.01172pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Conclusions[] 
+ []
+
+(./Chapter6/challenges.tex [108
+
+
+
+
+
+] [109] [110] [111]
+File: images/video_rendition_statemachine.pdf Graphic file (type pdf)
+<use images/video_rendition_statemachine.pdf>
+ [112])
+(./Chapter6/experience.tex
+File: images/skills_radar.pdf Graphic file (type pdf)
+<use images/skills_radar.pdf>
+ [113] [114] [115]) (./Chapter6/conclusions.tex
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+[][]|\TU/Helvetica(0)/m/n/10.95 100+ endpoints documented via Swag-[]
+ []
+
+[116] [117]
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[][]|\TU/Helvetica(0)/m/n/10.95 Unified domain[]
+ []
+
+
+Overfull \hbox (2.36664pt too wide) in paragraph at lines 65--65
+[][]|\TU/Helvetica(0)/m/n/10.95 Achieved| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+[][]|\TU/Helvetica(0)/m/n/10.95 Reliable event-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+[]\TU/Helvetica(0)/m/n/10.95 driven communica-[]
+ []
+
+
+Overfull \hbox (2.36664pt too wide) in paragraph at lines 66--66
+[][]|\TU/Helvetica(0)/m/n/10.95 Achieved| []
+ []
+
+
+Overfull \hbox (2.36664pt too wide) in paragraph at lines 67--67
+[][]|\TU/Helvetica(0)/m/n/10.95 Achieved| []
+ []
+
+
+Overfull \hbox (2.36664pt too wide) in paragraph at lines 68--68
+[][]|\TU/Helvetica(0)/m/n/10.95 Achieved| []
+ []
+
+
+Overfull \hbox (2.36664pt too wide) in paragraph at lines 69--69
+[][]|\TU/Helvetica(0)/m/n/10.95 Achieved| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+[][]|\TU/Helvetica(0)/m/n/10.95 Containerised de-[]
+ []
+
+
+Overfull \hbox (2.36664pt too wide) in paragraph at lines 70--70
+[][]|\TU/Helvetica(0)/m/n/10.95 Achieved| []
+ []
+
+
+Overfull \hbox (2.36664pt too wide) in paragraph at lines 71--71
+[][]|\TU/Helvetica(0)/m/n/10.95 Achieved| []
+ []
+
+) (./Chapter6/future_work.tex [118] [119] [120]
+Underfull \hbox (badness 3108) in paragraph at lines 59--60
+[][]\TU/Helvetica(0)/m/n/10.95 Row-level security policies in PostgreSQL that a
+utomatically filter queries by[]
+ []
+
+[121]
+File: images/future_work_roadmap.pdf Graphic file (type pdf)
+<use images/future_work_roadmap.pdf>
+)) [122]
+Overfull \hbox (129.41016pt too wide) in paragraph at lines 64--64
+ []|[]\TU/Helvetica(0)/b/n/24 References|[] 
+ []
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'dossena2022ddd' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'in' untranslated
+(biblatex)                at entry 'dossena2022ddd' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'pages' untranslated
+(biblatex)                at entry 'dossena2022ddd' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'yang2023micro' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'in' untranslated
+(biblatex)                at entry 'yang2023micro' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'pages' untranslated
+(biblatex)                at entry 'yang2023micro' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'fowler2005eda' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Underfull \hbox (badness 6575) in paragraph at lines 64--64
+[][]\TU/Helvetica(0)/m/n/10 Martin Fowler. \TU/Helvetica(0)/m/it/10 Event-Drive
+n Architecture\TU/Helvetica(0)/m/n/10 . Pattern overview from \TU/Helvetica(0)/
+m/it/10 Patterns of Enter-[]
+ []
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'richardson2018outbox' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'stripe2024api' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'fowler2011cqrs' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'mehta2023eda' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'in' untranslated
+(biblatex)                at entry 'mehta2023eda' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'pages' untranslated
+(biblatex)                at entry 'mehta2023eda' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'radford2023whisper' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'in' untranslated
+(biblatex)                at entry 'radford2023whisper' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'pages' untranslated
+(biblatex)                at entry 'radford2023whisper' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'panthel2024whisper' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'in' untranslated
+(biblatex)                at entry 'panthel2024whisper' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'volume' untranslated
+(biblatex)                at entry 'panthel2024whisper' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'pages' untranslated
+(biblatex)                at entry 'panthel2024whisper' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'kumar2023llmquiz' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'in' untranslated
+(biblatex)                at entry 'kumar2023llmquiz' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'pages' untranslated
+(biblatex)                at entry 'kumar2023llmquiz' on input line 64.
+
+[123
+
+
+
+
+]
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'pantos2022hls' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'september' untranslated
+(biblatex)                at entry 'pantos2022hls' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'mux2024' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'jones2015jwt' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'may' untranslated
+(biblatex)                at entry 'jones2015jwt' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'nestjs2024' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'garcia2022typescript' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'in' untranslated
+(biblatex)                at entry 'garcia2022typescript' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'pages' untranslated
+(biblatex)                at entry 'garcia2022typescript' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'zhang2024nestjs' on input line 64.
+
+
+Package biblatex Warning: Bibliography string 'in' untranslated
+(biblatex)                at entry 'zhang2024nestjs' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'page' untranslated
+(biblatex)                at entry 'zhang2024nestjs' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'prisma2024' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'fowler2012testpyramid' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'urlseen' untranslated
+(biblatex)                at entry 'testcontainers2024' on input line 64.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdateshort.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdateshort.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+[124]
+\openout2 = `AppendixA/AppendixA.aux'.
+
+ (./AppendixA/AppendixA.tex
+Appendix A.
+
+Overfull \hbox (150.70313pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Development[] 
+ []
+
+[125
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+[]\TU/lmtt/m/n/10.95 UNIQUE INDEX idx_single_active_enrollment ON enrollments (
+user_id,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+[]\TU/lmtt/m/n/10.95 course_id) WHERE status = 'ACTIVE'\TU/Helvetica(0)/m/n/10.
+95 —enforce business invariants at the[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[126]
+Overfull \hbox (6.98085pt too wide) in paragraph at lines 87--88
+[][]\TU/Helvetica(0)/b/n/10.95 Rate limiting. \TU/Helvetica(0)/m/n/10.95 The \T
+U/lmtt/m/n/10.95 @nestjs/throttler \TU/Helvetica(0)/m/n/10.95 package with \TU/
+lmtt/m/n/10.95 ThrottlerStorageRedisService[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[127]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[128]
+Overfull \hbox (62.8979pt too wide) in paragraph at lines 138--139
+[][]\TU/Helvetica(0)/b/n/10.95 Webhook events. \TU/Helvetica(0)/m/n/10.95 Strip
+e delivers \TU/lmtt/m/n/10.95 payment_intent.succeeded\TU/Helvetica(0)/m/n/10.9
+5 , \TU/lmtt/m/n/10.95 payment_intent.payment_failed\TU/Helvetica(0)/m/n/10.95 
+,[]
+ []
+
+
+Overfull \hbox (12.78151pt too wide) in paragraph at lines 139--140
+[][]\TU/Helvetica(0)/b/n/10.95 Idempotency keys. \TU/Helvetica(0)/m/n/10.95 The
+ Stripe API supports idempotency keys via the \TU/lmtt/m/n/10.95 Idempotency-Ke
+y[]
+ []
+
+
+Overfull \hbox (3.20564pt too wide) in paragraph at lines 151--152
+[][]\TU/Helvetica(0)/b/n/10.95 Asset lifecycle. \TU/Helvetica(0)/m/n/10.95 Mux 
+fires webhooks for asset state transitions: \TU/lmtt/m/n/10.95 video.asset.crea
+ted\TU/Helvetica(0)/m/n/10.95 ,[]
+ []
+
+
+Overfull \hbox (5.626pt too wide) in paragraph at lines 151--152
+[]\TU/lmtt/m/n/10.95 video.asset.ready\TU/Helvetica(0)/m/n/10.95 , \TU/lmtt/m/n
+/10.95 video.asset.errored\TU/Helvetica(0)/m/n/10.95 , and \TU/lmtt/m/n/10.95 v
+ideo.asset.mp4_rendition.ready\TU/Helvetica(0)/m/n/10.95 .[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[129]
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+[][]\TU/Helvetica(0)/b/n/10.95 Testcontainers. \TU/Helvetica(0)/m/n/10.95 Integ
+ration tests use \TU/lmtt/m/n/10.95 @testcontainers/postgresql \TU/Helvetica(0)
+/m/n/10.95 and[]
+ []
+
+
+Underfull \hbox (badness 3240) in paragraph at lines 188--189
+[]\TU/lmtt/m/n/10.95 @testcontainers/redis \TU/Helvetica(0)/m/n/10.95 to spin u
+p disposable Docker containers. This ap-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
+[][]\TU/Helvetica(0)/m/n/10.95 Each endpoint method is annotated with \TU/lmtt/
+m/n/10.95 @ApiOperation( summary: '...',[]
+ []
+
+)
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[130]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[131]
+\openout2 = `AppendixB/AppendixB.aux'.
+
+ (./AppendixB/AppendixB.tex
+Appendix B.
+
+Overfull \hbox (44.02734pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Use[] 
+ []
+
+
+Underfull \hbox (badness 2837) in paragraph at lines 30--31
+[][]\TU/Helvetica(0)/m/n/10.95 The student submits a registration request with[
+]
+ []
+
+
+Underfull \hbox (badness 7099) in paragraph at lines 33--34
+[][]\TU/Helvetica(0)/m/n/10.95 The system generates a cryptographically ran-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]\TU/Helvetica(0)/m/n/10.95 dom email verification token (64 hex char-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]\TU/Helvetica(0)/m/n/10.95 acters), stores its SHA-256 hash in Redis[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]\TU/Helvetica(0)/m/n/10.95 with a 24-hour TTL, and sends an email[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]\TU/Helvetica(0)/m/n/10.95 via Resend containing a verification link:[]
+ []
+
+
+Overfull \hbox (39.57657pt too wide) in paragraph at lines 33--34
+[]\TU/lmtt/m/n/10.95 https://nexalearn.app/auth/verify?token=<raw_token>\TU/Hel
+vetica(0)/m/n/10.95 . []
+ []
+
+[132
+
+
+
+
+
+]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[133]
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+[][]\TU/Helvetica(0)/m/n/10.95 The system transitions the \TU/lmtt/m/n/10.95 Co
+urse \TU/Helvetica(0)/m/n/10.95 aggregate[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+[]\TU/Helvetica(0)/m/n/10.95 from \TU/lmtt/m/n/10.95 DRAFT \TU/Helvetica(0)/m/n
+/10.95 to \TU/lmtt/m/n/10.95 PUBLISHED \TU/Helvetica(0)/m/n/10.95 and publishes
+ a[]
+ []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 69--70
+[]\TU/lmtt/m/n/10.95 CoursePublished \TU/Helvetica(0)/m/n/10.95 domain event th
+rough the out-[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[134]
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+[][]\TU/Helvetica(0)/m/n/10.95 The student requests enrollment via \TU/lmtt/m/n
+/10.95 POST[]
+ []
+
+
+Underfull \hbox (badness 2521) in paragraph at lines 98--99
+[][]\TU/Helvetica(0)/m/n/10.95 The system creates a \TU/lmtt/m/n/10.95 PaymentI
+ntent \TU/Helvetica(0)/m/n/10.95 record in[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[135]
+Underfull \hbox (badness 2237) in paragraph at lines 132--133
+[][]\TU/Helvetica(0)/m/n/10.95 The system creates a \TU/lmtt/m/n/10.95 VideoAss
+et \TU/Helvetica(0)/m/n/10.95 aggregate in[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+[][]\TU/Helvetica(0)/m/n/10.95 Mux transcodes the video and fires[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+[]\TU/lmtt/m/n/10.95 video.asset.ready \TU/Helvetica(0)/m/n/10.95 (HLS availabl
+e) and later[]
+ []
+
+
+Underfull \hbox (badness 8056) in paragraph at lines 135--136
+[][]\TU/Helvetica(0)/m/n/10.95 The AI pipeline (Whisper) transcribes the au-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+[]\TU/Helvetica(0)/m/n/10.95 dio and POSTs the transcript back to \TU/lmtt/m/n/
+10.95 POST[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+[]\TU/lmtt/m/n/10.95 /webhooks/ai-pipeline/transcription\TU/Helvetica(0)/m/n/10
+.95 . The[]
+ []
+
+
+Underfull \hbox (badness 2119) in paragraph at lines 135--136
+[]\TU/Helvetica(0)/m/n/10.95 system verifies the HMAC signature, stores the[]
+ []
+
+
+Underfull \hbox (badness 2961) in paragraph at lines 135--136
+[]\TU/Helvetica(0)/m/n/10.95 transcript, and creates a \TU/lmtt/m/n/10.95 QuizG
+enerationJob \TU/Helvetica(0)/m/n/10.95 in[]
+ []
+
+
+Underfull \hbox (badness 2150) in paragraph at lines 136--137
+[][]\TU/Helvetica(0)/m/n/10.95 The AI pipeline (LLM) generates quiz questions[]
+
+ []
+
+
+Underfull \hbox (badness 7925) in paragraph at lines 142--143
+[][]\TU/Helvetica(0)/b/n/10.95 E01: Transcoding failure. \TU/Helvetica(0)/m/n/1
+0.95 If Mux reports[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
+[]\TU/Helvetica(0)/m/n/10.95 does not respond within 30 minutes, the[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
+[]\TU/lmtt/m/n/10.95 TranscriptionJob \TU/Helvetica(0)/m/n/10.95 transitions to
+ \TU/lmtt/m/n/10.95 TIMEOUT \TU/Helvetica(0)/m/n/10.95 and[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[136]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[137]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[138]
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
+[][]\TU/Helvetica(0)/m/n/10.95 The student submits answers via \TU/lmtt/m/n/10.
+95 POST[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[139]
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+[][]\TU/Helvetica(0)/m/n/10.95 The instructor requests the quiz via \TU/lmtt/m/
+n/10.95 GET[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+[][]\TU/Helvetica(0)/m/n/10.95 The instructor publishes the quiz via \TU/lmtt/m
+/n/10.95 POST[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[140]
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
+[][]\TU/Helvetica(0)/m/n/10.95 The student requests the lesson via \TU/lmtt/m/n
+/10.95 GET[]
+ []
+
+
+Underfull \hbox (badness 3735) in paragraph at lines 227--228
+[]\TU/lmtt/m/n/10.95 /lessons/:id\TU/Helvetica(0)/m/n/10.95 . The system verifi
+es enrollment[]
+ []
+
+
+Underfull \hbox (badness 3735) in paragraph at lines 229--230
+[]\TU/Helvetica(0)/m/n/10.95 back position (in seconds) and the percentage[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+[][]\TU/Helvetica(0)/m/n/10.95 The system publishes a \TU/lmtt/m/n/10.95 Lesson
+Completed[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+[]\TU/Helvetica(0)/m/n/10.95 event, which triggers streak computa-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+[]\TU/Helvetica(0)/m/n/10.95 tion (via \TU/lmtt/m/n/10.95 StreakService\TU/Helv
+etica(0)/m/n/10.95 ) and updates the[]
+ []
+
+
+Underfull \hbox (badness 2538) in paragraph at lines 233--234
+[][]|\TU/Helvetica(0)/m/n/10.95 The lesson is marked as completed in the studen
+t’s[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[141]
+Underfull \hbox (badness 4391) in paragraph at lines 261--262
+[][]\TU/Helvetica(0)/m/n/10.95 The student can mark the thread as resolved[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[142]
+Underfull \hbox (badness 2837) in paragraph at lines 288--289
+[][]\TU/Helvetica(0)/m/n/10.95 When the last lesson in the course is marked[]
+ []
+
+
+Underfull \hbox (badness 4634) in paragraph at lines 288--289
+[]\TU/Helvetica(0)/m/n/10.95 as completed, the \TU/lmtt/m/n/10.95 CourseProgres
+sView \TU/Helvetica(0)/m/n/10.95 detects[]
+ []
+
+
+Underfull \hbox (badness 2213) in paragraph at lines 288--289
+[]\TU/Helvetica(0)/m/n/10.95 that all lessons are completed and publishes a[]
+ []
+
+
+Overfull \hbox (5.68633pt too wide) in paragraph at lines 293--294
+[]\TU/lmtt/m/n/10.95 https://nexalearn.app/verify/<certificate_id>\TU/Helvetica
+(0)/m/n/10.95 ,[]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[143]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[144]
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[145])
+
+Package fancyhdr Warning: \headheight is too small (15.0pt): 
+(fancyhdr)                Make it at least 27.69183pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.69183pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.69183pt}.
+
+[146]
+\openout2 = `AppendixC/AppendixC.aux'.
+
+ (./AppendixC/AppendixC.tex
+Appendix C.
+
+Overfull \hbox (52.9112pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 User[] 
+ []
+
+File: images/swagger_mockup.pdf Graphic file (type pdf)
+<use images/swagger_mockup.pdf>
+[147
+
+
+
+
+
+] [148] [149] [150] [151] [152] [153] [154] [155]) [156]
+\openout2 = `AppendixD/AppendixD.aux'.
+
+
+(./AppendixD/AppendixD.tex
+Appendix D.
+
+Overfull \hbox (60.0pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Code[] 
+ []
+
+[157
+
+
+
+
+
+] [158] [159] [160] [161]
+Underfull \hbox (badness 3029) in paragraph at lines 243--244
+[]\TU/lmtt/m/n/10.95 HandleGenerationCallbackUseCase \TU/Helvetica(0)/m/n/10.95
+ demonstrates the pattern for webhook-driven AI[]
+ []
+
+[162] [163] [164]) [165]
+\openout2 = `AppendixE/AppendixE.aux'.
+
+ (./AppendixE/AppendixE.tex
+Appendix E.
+
+Overfull \hbox (116.703pt too wide) in paragraph at lines 6--6
+ []|[]\TU/Helvetica(0)/b/n/24 Feasibility[] 
+ []
+
+
+Underfull \hbox (badness 2368) in paragraph at lines 20--21
+[][]\TU/Helvetica(0)/b/n/10.95 Team competency. \TU/Helvetica(0)/m/n/10.95 The 
+project team possesses the required skills: Type-[]
+ []
+
+[166
+
+
+
+
+
+]
+Overfull \hbox (132.78003pt too wide) in paragraph at lines 60--75
+ [][][][] 
+ []
+
+[167]
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+[][]|\TU/Helvetica(0)/m/n/10.95 System architecture diagram,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+[]\TU/Helvetica(0)/m/n/10.95 module dependency graph,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+[][]|\TU/Helvetica(0)/m/n/10.95 Prisma schema[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+[]\TU/Helvetica(0)/m/n/10.95 (\TU/lmtt/m/n/10.95 schema.prisma\TU/Helvetica(0)/
+m/n/10.95 ), migration[]
+ []
+
+
+Underfull \hbox (badness 3364) in paragraph at lines 102--103
+[][]|\TU/Helvetica(0)/m/n/10.95 Course CRUD, module/lesson[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
+[]\TU/Helvetica(0)/m/n/10.95 hierarchy, category manage-[]
+ []
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 103--104
+[][]|\TU/Helvetica(0)/m/n/10.95 Mux upload integration, video[]
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 103--104
+[]\TU/Helvetica(0)/m/n/10.95 asset lifecycle, HLS playback[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+[][]|\TU/Helvetica(0)/m/n/10.95 Quiz CRUD, question types,[]
+ []
+
+
+Underfull \hbox (badness 5302) in paragraph at lines 108--109
+[]\TU/Helvetica(0)/m/n/10.95 processing, enrollment activa-[]
+ []
+
+
+Underfull \hbox (badness 2617) in paragraph at lines 109--110
+[][]|\TU/Helvetica(0)/m/n/10.95 Short-answer AI grading, per-[]
+ []
+
+
+Underfull \hbox (badness 5245) in paragraph at lines 113--114
+[][]|\TU/Helvetica(0)/m/n/10.95 Jest test suite, Testcontainer[]
+ []
+
+
+Underfull \hbox (badness 4217) in paragraph at lines 117--118
+[][]|\TU/Helvetica(0)/m/n/10.95 Graduation project book (this[]
+ []
+
+
+Overfull \hbox (40.21594pt too wide) in paragraph at lines 92--120
+ [][][][] 
+ []
+
+[168]
+Overfull \vbox (144.04004pt too high) has occurred while \output is active []
+
+
+[169]
+Overfull \hbox (5.36885pt too wide) in paragraph at lines 132--132
+[][]|\TU/Helvetica(0)/b/n/10.95 Probability| []
+ []
+
+
+Overfull \hbox (19.54767pt too wide) in alignment at lines 129--134
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (5.36885pt too wide) in paragraph at lines 137--137
+[][]|\TU/Helvetica(0)/b/n/10.95 Probability| []
+ []
+
+
+Overfull \hbox (19.54767pt too wide) in alignment at lines 134--139
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (19.54767pt too wide) in alignment at lines 139--141
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 6691) in paragraph at lines 142--142
+[]\TU/Helvetica(0)/m/n/10.95 party API[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--142
+[]\TU/Helvetica(0)/m/n/10.95 breaking[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--144
+[][]|\TU/Helvetica(0)/m/n/10.95 R2:[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--144
+[]\TU/Helvetica(0)/m/n/10.95 Database[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--144
+[]\TU/Helvetica(0)/m/n/10.95 perfor-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--144
+[]\TU/Helvetica(0)/m/n/10.95 mance[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--144
+[]\TU/Helvetica(0)/m/n/10.95 degrada-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--146
+[][]|\TU/Helvetica(0)/m/n/10.95 R3: AI[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--146
+[]\TU/Helvetica(0)/m/n/10.95 pipeline[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+[][]|\TU/Helvetica(0)/m/n/10.95 R4: Se-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+[]\TU/Helvetica(0)/m/n/10.95 curity[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+[]\TU/Helvetica(0)/m/n/10.95 vulner-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+[]\TU/Helvetica(0)/m/n/10.95 ability[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
+[][]|\TU/Helvetica(0)/m/n/10.95 R5:[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
+[]\TU/Helvetica(0)/m/n/10.95 Scope[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
+[]\TU/Helvetica(0)/m/n/10.95 creep[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
+[]\TU/Helvetica(0)/m/n/10.95 (feature[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
+[]\TU/Helvetica(0)/m/n/10.95 expansion[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
+[]\TU/Helvetica(0)/m/n/10.95 beyond[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
+[]\TU/Helvetica(0)/m/n/10.95 available[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
+[]\TU/Helvetica(0)/m/n/10.95 member[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
+[]\TU/Helvetica(0)/m/n/10.95 unavail-[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--154
+[][]|\TU/Helvetica(0)/m/n/10.95 R7:[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--154
+[]\TU/Helvetica(0)/m/n/10.95 Docker[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--154
+[]\TU/Helvetica(0)/m/n/10.95 image[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--154
+[]\TU/Helvetica(0)/m/n/10.95 size and[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--154
+[]\TU/Helvetica(0)/m/n/10.95 cold start[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--156
+[][]|\TU/Helvetica(0)/m/n/10.95 R8:[]
+ []
+
+
+Overfull \hbox (0.8445pt too wide) in paragraph at lines 156--156
+[]\TU/Helvetica(0)/m/n/10.95 Stripe/Mux[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--156
+[]\TU/Helvetica(0)/m/n/10.95 webhook[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--156
+[]\TU/Helvetica(0)/m/n/10.95 delivery[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
+[][]|\TU/Helvetica(0)/m/n/10.95 At-least-once handling with idempotency via[]
+ []
+
+
+Underfull \hbox (badness 2894) in paragraph at lines 156--157
+[]\TU/lmtt/m/n/10.95 ProjectionEventLedger\TU/Helvetica(0)/m/n/10.95 . Retry wi
+th exponential[]
+ []
+
+
+Overfull \hbox (19.54767pt too wide) in alignment at lines 141--158
+ [] [] [] [] 
+ []
+
+[170]) [171] (./main.aux (./Chapter1/Chapter1.aux) (./Chapter2/Chapter2.aux)
+(./Chapter3/Chapter3.aux) (./Chapter4/Chapter4.aux) (./Chapter5/Chapter5.aux)
+(./Chapter6/Chapter6.aux) (./AppendixA/AppendixA.aux)
+(./AppendixB/AppendixB.aux) (./AppendixC/AppendixC.aux)
+(./AppendixD/AppendixD.aux) (./AppendixE/AppendixE.aux))
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 753FAF6D0974B9BE3A6F3F1CB3E511DB;52779.
+Package logreq Info: Writing requests to 'main.run.xml'.
+\openout1 = `main.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 31276 strings out of 468168
+ 634171 string characters out of 5432815
+ 1783648 words of memory out of 5000000
+ 59290 multiletter control sequences out of 15000+600000
+ 636461 words of font info for 114 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 87i,16n,95p,1806b,5050s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on main.pdf (196 pages).

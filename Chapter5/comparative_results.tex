@@ -13,35 +13,34 @@ Table~\ref{tab:comparison-lms-testing} summarises the quantitative and qualitati
   \centering
   \caption{Testing Methodology Comparison: NexaLearn vs. Open-Source LMS Backends}\label{tab:comparison-lms-testing}
   \small
-  \begin{tabular}{lcccc}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lccccc}
     \toprule
-    \textbf{Criterion}              & \textbf{NexaLearn}   & \textbf{Moodle 4.5} & \textbf{Totara 18} & \textbf{Open edX (Lilac)} \\
+    \textbf{Criterion} & & \textbf{NexaLearn} & \textbf{Moodle 4.5} & \textbf{Totara 18} & \textbf{Open edX (Lilac)} \\
     \midrule
-    Test framework                  & Jest                 & PHPUnit             & PHPUnit            & Pytest + tox             \\
-    Language                        & TypeScript           & PHP                 & PHP                & Python                   \\
-    Total test cases                & 396                  & $\sim$8,400         & $\sim$6,200        & $\sim$4,100             \\
-    Unit test ratio                 & 68\%                 & 52\%                & 48\%               & 55\%                     \\
-    Integration test ratio          & 23\%                 & 31\%                & 35\%               & 28\%                     \\
-    E2E test ratio                  & 9\%                  & 17\%                & 17\%               & 17\%                     \\
-    \midrule
-    \textbf{Infrastructure}         &                      &                     &                    \\
-    Real DB in integration tests    & Yes (Testcontainers) & Yes (PHPUnit DB)    & Yes (PHPUnit DB)   & Partial (sqlite in-memory)\\
-    Containerised test environment  & Yes                  & Partial             & Partial            & Yes (Docker Compose)     \\
-    CI parallelisation              & 4 shards             & 8 shards            & 4 shards           & 6 shards                 \\
-    Coverage threshold (enforced)   & 90\% entity / 80\% svc. & 80\% (PHP projects)& 75\% (PHP projects)& 80\% (Python projects)\\
-    \midrule
-    \textbf{DDD-Specific Testing}   &                      &                     &                    \\
-    Aggregate invariant tests       & Yes (all aggregates) & Partial             & Partial            & No                       \\
-    State machine enforcement       & Yes (code-level)     & No                  & No                 & No                       \\
-    Domain event tests              & Yes (outbox)         & Partial (events)    & Partial (events)   & Partial (signals)        \\
-    Idempotency tests               & Yes (webhooks)       & No                  & No                 & Partial                  \\
-    \midrule
-    \textbf{Developer Experience}   &                      &                     &                    \\
-    Average CI time (full suite)    & 4 min 12 s           & 22 min              & 18 min             & 35 min                   \\
-    Test warm-up (cold cache)       & 8 s (Testcontainers) & 12 s (DB setup)     & 12 s (DB setup)    & 45 s (Docker Compose)    \\
-    Watch-mode support              & Yes (Jest --watch)   & Partial (PHPUnit)   & Partial (PHPUnit)  & No (pytest-watch 3rd-party)\\
+    \textbf{Scale} & Test framework & Jest & PHPUnit & PHPUnit & Pytest + tox \\
+    & Language & TypeScript & PHP & PHP & Python \\
+    \addlinespace
+    \textbf{Distribution} & Total test cases & 402 & $\sim$8,400 & $\sim$6,200 & $\sim$4,100 \\
+    & Unit test ratio & 65\% & 52\% & 48\% & 55\% \\
+    & Integration ratio & 22\% & 31\% & 35\% & 28\% \\
+    \addlinespace
+    \textbf{Infrastructure} & Real DB in int. tests & Yes (Testcontainers) & Yes (PHPUnit DB) & Yes (PHPUnit DB) & Partial (sqlite in-memory)\\
+    & Containerised env. & Yes & Partial & Partial & Yes (Docker Compose) \\
+    & CI parallelisation & 4 shards & 8 shards & 4 shards & 6 shards \\
+    & Coverage threshold & 90\% / 80\% & 80\% & 75\% & 80\% \\
+    \addlinespace
+    \textbf{DDD Testing} & Aggregate invariants & Yes (all aggregates) & Partial & Partial & No \\
+    & State machine tests & Yes (code-level) & No & No & No \\
+    & Domain event tests & Yes (outbox) & Partial (events) & Partial (events) & Partial (signals) \\
+    & Idempotency tests & Yes (webhooks) & No & No & Partial \\
+    \addlinespace
+    \textbf{DevX} & Avg. CI time & 4 min 12 s & 22 min & 18 min & 35 min \\
+    & Test warm-up & 8 s (Testcontainers) & 12 s (DB setup) & 12 s (DB setup) & 45 s (Docker Compose) \\
+    & Watch-mode support & Yes (Jest --watch) & Partial (PHPUnit) & Partial (PHPUnit) & No (3rd-party) \\
     \bottomrule
-  \end{tabular}
+  \end{tabular}%
+  }
 \end{table}
 
 \subsection{Key Findings}

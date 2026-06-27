@@ -28,13 +28,14 @@ The Media bounded context implements a state machine for each \texttt{VideoAsset
 
 \begin{description}
   \item[\texttt{AWAITING\_UPLOAD}.] Initial state. A \texttt{Video} or \texttt{Lesson} entity has been created with an association to a new video, but the instructor has not yet uploaded the file. No Mux resource exists.
-  \item[\texttt{TRANSCODING}.] The instructor has initiated an upload and Mux has confirmed receipt and begun transcoding. The NexaLearn backend creates a \texttt{GenerationJob} entity for the AI pipeline (Section~\ref{sec:ai-elearning}) in a pending state, awaiting the completed transcript.
-  \item[\texttt{READY}.] Mux sends \texttt{video.asset.ready}, indicating that all HLS renditions are available. NexaLearn updates the \texttt{VideoAsset} with the playback ID and signed URL expiration policy. The AI pipeline receives a \texttt{VideoTranscodingCompleted} event via the outbox, triggering the transcript-generation workflow.
-  \item[\texttt{ERROR}.] Transcoding failed. NexaLearn logs the Mux error code and message, notifies the instructor, and makes the upload available for retry.
+  \item[\texttt{UPLOADED}.] The instructor has initiated an upload and Mux has confirmed receipt of the source file. The state transitions from AWAITING\_UPLOAD to UPLOADED.
+  \item[\texttt{TRANSCODING}.] Mux sends \texttt{video.upload.asset\_created}, indicating that the source file is being transcoded into HLS renditions. The NexaLearn backend creates a \texttt{GenerationJob} entity for the AI pipeline (Section~\ref{sec:ai-elearning}) in QUEUED state, awaiting the completed transcript.
+  \item[\texttt{READY}.] Mux sends \texttt{video.asset.ready}, indicating that all HLS renditions are available. NexaLearn updates the \texttt{VideoAsset} with the playback ID and signed URL expiration policy. The AI pipeline receives a \texttt{VideoReady} event via the outbox, triggering the transcript-generation workflow.
+  \item[\texttt{FAILED}.] Transcoding failed. NexaLearn logs the Mux error code and message, notifies the instructor, and makes the upload available for retry.
 \end{description}
 
 \subsection{MP4 Renditions for the AI Pipeline}
 
 While HLS is the delivery format for learner playback, the Whisper transcription model (Section~\ref{sec:ai-elearning}) requires a contiguous audio or video file, not segmented HLS chunks. Mux provides a static MP4 rendition for each asset, accessible through a separate signed URL with an extended expiration window---sufficient for the AI pipeline to download the file, extract the audio track using FFmpeg, and feed it to Whisper. This dual-delivery strategy---HLS for learners, MP4 for automated processing---is transparent to the instructor, who uploads a single source file.
 
-The interplay between video lifecycle and the AI pipeline exemplifies NexaLearn's event-driven design: a single external event (\texttt{video.asset.ready}) propagates through the outbox to trigger transcript generation, quiz creation, instructor notification, and search index updates, all without explicit orchestration code in the Media context.
+The interplay between video lifecycle and the AI pipeline exemplifies NexaLearn's event-driven design: a single external event (\texttt{video.asset.ready}) propagates through the outbox to trigger transcript generation, quiz creation, instructor notification, and search index updates, all without explicit orchestration code in the Media context. An asset may also transition directly to FAILED from UPLOADED or TRANSCODING if an error occurs at any stage.

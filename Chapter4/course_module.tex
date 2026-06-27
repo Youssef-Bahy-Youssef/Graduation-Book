@@ -92,11 +92,11 @@ If two instructors open the same course, both modify it, and both submit their c
 
 All mutating endpoints in the Courses module accept an optional \texttt{Idempotency-Key} header. The system maintains an idempotency ledger table (\texttt{course\_idempotency\_keys}) keyed by the SHA-256 hash of the key. If the same key is received within a configurable time window (default 24 hours), the response from the first request is returned without re-executing the operation. This is essential for mobile clients on unreliable networks, where a create-lesson request might succeed but the client never receives the response and retries, potentially creating duplicate lessons.
 
-The course curriculum lifecycle is summarised by the state machine in Figure~\ref{fig:course-statemachine} showing transitions between DRAFT, PUBLISHED, and ARCHIVED.
+The course curriculum lifecycle is summarised by the state machine in Figure~\ref{fig:course-statemachine} showing transitions between DRAFT, UNDER\_REVIEW, PUBLISHED, and ARCHIVED.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\textwidth]{images/statemachines/course_curriculum_statemachine.png}
+  \includegraphics[width=0.55\textwidth]{images/statemachines/course_curriculum_statemachine.pdf}
   \caption{Course Status Lifecycle}
   \label{fig:course-statemachine}
 \end{figure}

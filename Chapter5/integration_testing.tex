@@ -17,20 +17,28 @@ Table~\ref{tab:integration-files} lists the primary integration test files and t
   \centering
   \caption{Integration Test Files and Scope}\label{tab:integration-files}
   \small
-  \begin{tabular}{lll}
+  \begin{tabular}{@{}p{3.2cm} p{3.2cm} p{\dimexpr\textwidth-7.4cm\relax}@{}}
     \toprule
     \textbf{Test File}                     & \textbf{Modules Involved}         & \textbf{Workflow Under Test} \\
     \midrule
+    \rowcolor{green!10}
     \texttt{auth.int-spec.ts}              & Auth, User (shared)               & Full signup $\rightarrow$ login $\rightarrow$ refresh $\rightarrow$ logout cycle \\
+    \rowcolor{green!10}
     \texttt{courses.int-spec.ts}           & Courses, Media                    & Course create $\rightarrow$ add module $\rightarrow$ add lesson with video \\
+    \rowcolor{green!10}
     \texttt{assessment.int-spec.ts}        & Assessment, AI Pipeline           & Quiz create $\rightarrow$ AI grade $\rightarrow$ score persistence \\
+    \rowcolor{green!10}
     \texttt{media.int-spec.ts}             & Media, AI Pipeline                & Video upload $\rightarrow$ transcription $\rightarrow$ transcription callback \\
+    \rowcolor{green!10}
     \texttt{ai-pipeline.int-spec.ts}       & AI Pipeline, Assessment, Media    & Full pipeline: video $\rightarrow$ transcript $\rightarrow$ quiz generation \\
+    \rowcolor{green!10}
     \texttt{payment.int-spec.ts}           & Payment, Stripe (mock webhook)    & Payment intent $\rightarrow$ stripe webhook $\rightarrow$ enrollment activation \\
+    \rowcolor{green!10}
     \texttt{outbox.int-spec.ts}            & Outbox (shared infrastructure)    & Event write $\rightarrow$ outbox poll $\rightarrow$ event delivery \\
+    \rowcolor{green!10}
     \texttt{enrollment.int-spec.ts}        & Enrollment, Payment, Auth         & Enroll $\rightarrow$ pay $\rightarrow$ access granted flow \\
     \midrule
-    \textbf{Total: 8 files, 89 test cases} & (15 bounded contexts)             & \\
+    \textbf{Total: 8 files, 89 test cases} & (15 bounded contexts)             & All passed \\
     \bottomrule
   \end{tabular}
 \end{table}

@@ -17,7 +17,7 @@ The \texttt{VideoAsset} aggregate root tracks the lifecycle of each uploaded vid
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{images/statemachines/video_asset_statemachine.png}
+  \includegraphics[width=0.75\textwidth]{images/statemachines/video_asset_statemachine.pdf}
   \caption{Video Asset State Machine}
   \label{fig:video-statemachine}
 \end{figure}
@@ -25,11 +25,11 @@ The \texttt{VideoAsset} aggregate root tracks the lifecycle of each uploaded vid
 The lifecycle proceeds as follows:
 
 \begin{enumerate}
-  \item \textbf{AWAITING\_UPLOAD.} A lesson is created, and an instructor calls \texttt{POST /api/media/uploads} to request a direct upload URL. The server calls Mux's \texttt{Upload.create()} API, obtains a signed upload URL, and stores the \texttt{upload\_id} in the \texttt{VideoAsset} entity.
-  \item \textbf{UPLOADING.} The client PUTs the video file directly to Mux using the signed URL. The server does not proxy the file, avoiding bandwidth costs and latency. The state remains UPLOADING until Mux confirms receipt.
-  \item \textbf{TRANSCODING.} Mux sends \texttt{video.upload.asset\_created}, indicating that the source file is being transcoded into HLS renditions. The Media module updates the state and creates a \texttt{GenerationJob} in the AI Pipeline module with status PENDING.
+  \item \textbf{AWAITING\_UPLOAD.} A lesson is created, and an instructor calls \texttt{POST /instructor/video-assets/upload-url} to request a direct upload URL. The server calls Mux's \texttt{Upload.create()} API, obtains a signed upload URL, and stores the \texttt{upload\_id} in the \texttt{VideoAsset} entity.
+  \item \textbf{UPLOADED.} The client PUTs the video file directly to Mux using the signed URL. The server does not proxy the file, avoiding bandwidth costs and latency. The state transitions to UPLOADED once Mux confirms receipt.
+  \item \textbf{TRANSCODING.} Mux sends \texttt{video.upload.asset\_created}, indicating that the source file is being transcoded into HLS renditions. The Media module updates the state and creates a \texttt{GenerationJob} in the AI Pipeline module with status QUEUED.
   \item \textbf{READY.} Mux sends \texttt{video.asset.ready} with the playback ID. The Media module stores the playback ID, sets the signed URL expiry policy, and transitions the asset to READY. An outbox event \texttt{VideoReady} is published, triggering the AI pipeline to begin transcript generation.
-  \item \textbf{ERROR.} Mux sends \texttt{video.asset.errored} with an error code. The state transitions to ERROR, and the instructor is notified via the Notifications module.
+  \item \textbf{FAILED.} Mux sends \texttt{video.asset.errored} with an error code. The state transitions to FAILED, and the instructor is notified via the Notifications module.
 \end{enumerate}
 
 \subsection{Signed Playback URL Generation}
@@ -57,3 +57,12 @@ async function getPlaybackUrl(
 \end{lstlisting}
 
 This design ensures that: (1) learners cannot share playback URLs beyond the 4-hour window; (2) revoked enrollments are immediately reflected---the next request generates a playback URL only if the enrollment is still active; and (3) unauthorised users never receive a valid playback URL because the authorization check happens server-side before the JWT is signed.
+
+Figure~\ref{fig:seq-video-streaming} illustrates the end-to-end flow. The instructor uploads a video through the Media module, which obtains a Mux upload URL without proxying the file. The client uploads directly to Mux. Asynchronous webhooks drive the state machine: \texttt{video.upload.asset\_created} transitions to UPLOADED and then TRANSCODING; \texttt{video.asset.ready} transitions to READY and stores the playback ID. When a learner later requests the lesson content, the server verifies the learner has an active enrollment, generates a signed JWT playback URL with a 4-hour expiry, and the client streams HLS segments directly from the Mux CDN.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{images/seq_video_streaming.pdf}
+  \caption{Sequence Diagram: Video Upload, Transcoding \& Playback}
+  \label{fig:seq-video-streaming}
+\end{figure}

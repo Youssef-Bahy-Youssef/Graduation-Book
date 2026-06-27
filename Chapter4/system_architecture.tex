@@ -12,21 +12,21 @@ Figure~\ref{fig:system-arch} presents the layered architecture of NexaLearn foll
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{images/system_arch.png}
+  \includegraphics[width=\textwidth]{images/system_arch.pdf}
   \caption{NexaLearn System Architecture --- Clean Architecture Layers}
   \label{fig:system-arch}
 \end{figure}
 
-The Presentation layer routes HTTP requests to the appropriate Application use case. For example, a POST request to \texttt{/api/enrollments} is received by \texttt{EnrollmentController}, validated by a NestJS \texttt{ValidationPipe} using class-validator DTOs, and delegated to \texttt{CreateEnrollmentUseCase}. The use case loads the relevant domain aggregates (Course, User), enforces business rules (course is published, user is not already enrolled), creates a new \texttt{Enrollment} aggregate, and persists it through an \texttt{EnrollmentRepository} port. The repository implementation in Infrastructure writes to PostgreSQL via Prisma and---within the same transaction---inserts an outbox event for \texttt{EnrollmentCreated}. The outbox processor subsequently publishes this event to downstream consumers (Progress, Notifications, Search).
+The Presentation layer routes HTTP requests to the appropriate Application use case. For example, a POST request to \texttt{/courses/:courseId/enroll} is received by \texttt{EnrollmentController}, validated by a NestJS \texttt{ValidationPipe} using class-validator DTOs, and delegated to \texttt{EnrollInFreeCourseUseCase}. The use case loads the relevant domain aggregates (Course, User), enforces business rules (course is published, user is not already enrolled), creates a new \texttt{Enrollment} aggregate, and persists it through an \texttt{EnrollmentRepository} port. The repository implementation in Infrastructure writes to PostgreSQL via Prisma and---within the same transaction---inserts an outbox event for \texttt{EnrollmentActivated}. The outbox processor subsequently publishes this event to downstream consumers (Progress, Notifications, Search).
 
 \subsection{Module Dependency Graph}
 \label{subsec:module-dependency}
 
-Figure~\ref{fig:module-interaction} shows the dependency and event-flow relationships among the fifteen bounded contexts. Solid arrows represent direct method-call dependencies (use cases in one context invoking repository or query service interfaces exported by another). Dashed arrows represent event-driven communication through the outbox: the source context publishes an event that is consumed by the target context's event handler.
+Figure~\ref{fig:module-interaction} shows the dependency and event-flow relationships among the bounded contexts. Solid arrows represent direct method-call dependencies (use cases in one context invoking repository or query service interfaces exported by another). Dashed arrows represent event-driven communication through the outbox: the source context publishes an event that is consumed by the target context's event handler.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{images/module_interaction.png}
+  \includegraphics[width=0.8\textwidth]{images/module_interaction.pdf}
   \caption{NexaLearn Module Interaction Diagram}
   \label{fig:module-interaction}
 \end{figure}
@@ -38,9 +38,14 @@ The diagram reveals several structural patterns. \textbf{Enrollment} acts as a h
 
 Table~\ref{tab:module-summary} enumerates all fifteen bounded contexts with their primary entities, published events, and module dependencies. This table serves as a quick reference for the detailed module descriptions that follow in Sections~\ref{sec:auth-module} through~\ref{sec:discussion-module}.
 
-\begin{longtable}{@{}p{2.0cm} p{1.8cm} p{3.2cm} p{3.2cm} p{2.8cm}@{}}
-  \caption{Module Summary --- Bounded Contexts, Entities, Events, and Dependencies}
-  \label{tab:module-summary} \\
+\small
+\begin{longtable}{@{}p{1.8cm} p{1.6cm} p{3.0cm} p{3.0cm} p{\dimexpr\textwidth-10.4cm\relax}@{}}
+  \caption{Module Summary --- Bounded Contexts, Entities, Events, and Dependencies\label{tab:module-summary}} \\
+  \toprule
+  \textbf{Module} & \textbf{Context} & \textbf{Key Entities} & \textbf{Key Events} & \textbf{Depends On} \\
+  \midrule
+  \endfirsthead
+  \caption*{Module Summary (continued)} \\
   \toprule
   \textbf{Module} & \textbf{Context} & \textbf{Key Entities} & \textbf{Key Events} & \textbf{Depends On} \\
   \midrule
@@ -78,5 +83,19 @@ Table~\ref{tab:module-summary} enumerates all fifteen bounded contexts with thei
   Instructor & Instructor & InstructorAnalyticsView, InstructorDashboard & --- (read-only) & Progress, Assessment, Streak \\
   \bottomrule
 \end{longtable}
+
+\subsection{Entity-Relationship Diagram}
+\label{subsec:er-diagram}
+
+Figure~\ref{fig:er-diagram} presents the core domain entities and their relationships, derived from the Prisma schema and domain entity definitions. Entities are colour-coded by bounded context: blue for Auth/Identity, green for Course Content, orange for Enrollment and Payments, purple for Assessment, red for Discussion, and teal for Media and AI Pipeline. Arrowheads denote one-to-many (1:*) and one-to-one (1:1) relationships as enforced by the database schema and application-layer invariants.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{images/er_diagram.pdf}
+  \caption{Entity-Relationship Diagram (Core Domain)}
+  \label{fig:er-diagram}
+\end{figure}
+
+The diagram highlights several architectural decisions. \textbf{User} is the central actor, connected to Enrollments, QuizAttempts, Reviews, and Discussion entities. \textbf{Course} forms a three-level hierarchy (Course $\rightarrow$ Module $\rightarrow$ Lesson), with Lesson linking to a single Quiz and optionally to VideoAssets or GenerationJobs. \textbf{Enrollment} and \textbf{PaymentIntent} both reference User and Course but serve distinct lifecycle purposes. \textbf{QuizAttempt} bridges the Quiz (authoring aggregate) with the User (student runtime), recording per-question answers through AttemptAnswer. The full database schema with all fields, indexes, and constraints is available in the \texttt{prisma/schema.prisma} file in the project repository.
 
 The next eight sections examine the core modules---Auth, Courses, Media, AI-Pipeline, Assessment, Payments, Enrollment, and Discussion---in architectural depth. Each section includes the domain aggregate design, state machine diagram, key code listings, and the design trade-offs that shaped the implementation.

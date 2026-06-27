@@ -160,9 +160,10 @@ Table~\ref{tab:platform-comparison} consolidates the market survey into a single
   \centering
   \caption{Competitive Platform Comparison (Table 2.1)}
   \label{tab:platform-comparison}
-  \footnotesize
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{@{}p{2.1cm} c c c c c p{2.4cm}@{}}
+  \small
+  \setlength{\tabcolsep}{2.5pt}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{@{}p{2.0cm} c c c c c p{2.2cm}@{}}
     \toprule
     \textbf{Platform} &
     \textbf{Open Source} &
@@ -228,14 +229,23 @@ Table~\ref{tab:platform-comparison} consolidates the market survey into a single
     \textbf{Yes} &
     \textbf{OSS core + \$5,000/yr enterprise support} \\
     \bottomrule
-  \end{tabular}
+  \end{tabular}%
+  }
 \end{table}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.90\textwidth]{images/competitive_positioning.png}
+  \includegraphics[width=0.90\textwidth]{images/competitive_positioning.pdf}
   \caption{Competitive Positioning: Architectural Openness versus Backend Customisation Depth}
   \label{fig:competitive-positioning}
+\end{figure}
+
+Figure~\ref{fig:market-segments} contextualises NexaLearn's target market within the broader e-learning landscape. Corporate e-learning and higher education dominate in market size, consistent with NexaLearn's primary and secondary customer segments (Section~\ref{sec:targeted-customers}). The STEM and coding segment---at \$11B---represents a growing overlap with the developer-adoption funnel described in the business case (Section~\ref{sec:business-case}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\textwidth]{images/market_segments.pdf}
+  \caption{Global E-Learning Market by Segment (2025). Data sources: HolonIQ, Statista Global EdTech Market Report, Grand View Research.}\label{fig:market-segments}
 \end{figure}
 
 Figure~\ref{fig:competitive-positioning} visualises the strategic whitespace NexaLearn occupies: higher architectural openness and DDD discipline than closed SaaS platforms, and more modern API-first engineering than legacy Moodle/WordPress stacks. No surveyed competitor simultaneously offers open source, native Stripe/Mux/AI pipeline integration, and an explicit DDD modular monolith reference---validating the market gap identified in Chapter~\ref{ch:introduction}.

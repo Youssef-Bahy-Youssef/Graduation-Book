@@ -20,14 +20,16 @@ export class ThreadEntity {
     public readonly creatorId: string,
     public title: string,
     public body: string,
-    public status: ThreadStatus,
+    public isPinned: boolean,
+    public isResolved: boolean,
+    public isHidden: boolean,
     public posts: PostEntity[],
     public createdAt: Date,
     public updatedAt: Date,
   ) {}
 
   addPost(learnerId: string, body: string): PostEntity {
-    if (this.status === ThreadStatus.CLOSED)
+    if (this.isHidden)
       throw new BusinessRuleViolation('Thread is closed');
     if (body.length > 5000)
       throw new BusinessRuleViolation('Post exceeds 5000 characters');
@@ -43,13 +45,8 @@ export class ThreadEntity {
     return post;
   }
 
-  close(): void {
-    this.status = ThreadStatus.CLOSED;
-    this.updatedAt = new Date();
-  }
-
   markResolved(): void {
-    this.status = ThreadStatus.RESOLVED;
+    this.isResolved = true;
     this.updatedAt = new Date();
   }
 }
@@ -59,13 +56,13 @@ When a post is added by an instructor to a learner's thread, the \texttt{Instruc
 
 \subsection{Instructor Reply Notifications}
 
-Notification flow: \texttt{ThreadEntity.addPost()} creates a \texttt{PostEntity} and marks the thread as updated. The \texttt{AddPostUseCase} persists the thread and post, then publishes an outbox event. The Notifications module's event handler checks whether the author of the new post has the \texttt{instructor} role on the course. If so, it creates a \texttt{Notification} entity for each learner who has posted in the thread, containing the instructor's reply excerpt and a link to the thread. Notifications are delivered via SendGrid transactional email (configured per deployment to support SMTP or other providers) and are also accessible via the NexaLearn REST API for in-app notification display.
+Notification flow: \texttt{ThreadEntity.addPost()} creates a \texttt{PostEntity} and marks the thread as updated. The \texttt{AddPostUseCase} persists the thread and post, then publishes an outbox event. The Notifications module's event handler checks whether the author of the new post has the \texttt{instructor} role on the course. If so, it creates a \texttt{Notification} entity for each learner who has posted in the thread, containing the instructor's reply excerpt and a link to the thread. Notifications are delivered via Resend transactional email and are also accessible via the NexaLearn REST API for in-app notification display.
 
-Figure~\ref{fig:discussion-statemachine} illustrates the thread states: OPEN (accepting posts), RESOLVED (instructor marked the question as answered), and CLOSED (archived, no further posts).
+Figure~\ref{fig:discussion-statemachine} illustrates the thread lifecycle using boolean flags: a thread is open by default, marked as resolved by the instructor, or hidden through moderation.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{images/statemachines/discussion_statemachine.png}
+  \includegraphics[width=0.5\textwidth]{images/statemachines/discussion_statemachine.pdf}
   \caption{Discussion Thread State Machine}
   \label{fig:discussion-statemachine}
 \end{figure}

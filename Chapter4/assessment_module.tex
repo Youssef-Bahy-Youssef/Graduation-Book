@@ -51,7 +51,7 @@ export class QuizEntity {
       const question = this.questions.find(q => q.id === answer.questionId);
       if (!question) throw new BusinessRuleViolation('Question not found');
 
-      if (question.type === 'short-answer') {
+      if (question.type === QuestionType.SHORT_ANSWER) {
         return {
           questionId: question.id,
           status: 'PENDING_GRADING',
@@ -79,7 +79,7 @@ export class QuizEntity {
       answers: gradedAnswers,
       score,
       passed,
-      status: hasPendingGrading ? AttemptStatus.GRADING : AttemptStatus.COMPLETED,
+      status: hasPendingGrading ? QuizAttemptStatus.IN_PROGRESS : QuizAttemptStatus.GRADED,
     });
   }
 }
@@ -93,12 +93,12 @@ Figure~\ref{fig:quiz-attempt-statemachine} shows the states of a quiz attempt.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{images/statemachines/quiz_attempt_statemachine.png}
+  \includegraphics[width=0.7\textwidth]{images/statemachines/quiz_attempt_statemachine.pdf}
   \caption{Quiz Attempt State Machine}
   \label{fig:quiz-attempt-statemachine}
 \end{figure}
 
-When a learner starts a quiz, an attempt is created in IN\_PROGRESS state with a snapshot of the quiz questions (ensuring the quiz cannot change mid-attempt). When the learner submits, the attempt transitions to SUBMITTED. If all questions are auto-gradable (multiple-choice, true-or-false), the attempt is graded synchronously and transitions to COMPLETED. If the quiz includes short-answer questions, the attempt enters GRADING state. An outbox event triggers the AI pipeline to grade short-answer responses asynchronously. When grading completes, the attempt transitions to COMPLETED and the updated score is persisted.
+When a learner starts a quiz, an attempt is created in IN\_PROGRESS state with a snapshot of the quiz questions (ensuring the quiz cannot change mid-attempt). When the learner submits, the attempt transitions to SUBMITTED. If all questions are auto-gradable (multiple-choice, true-or-false), the attempt is graded synchronously and transitions to GRADED. If the quiz includes short-answer questions, the attempt remains in SUBMITTED while the grading callback is awaited. When the AI pipeline responds, the attempt transitions to GRADED and the updated score is persisted. Learners may also abandon an attempt, transitioning it to ABANDONED.
 
 \subsection{Asynchronous Short-Answer Grading}
 
